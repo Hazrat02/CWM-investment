@@ -137,6 +137,178 @@
           </div>
         </div>
       </section>
+      <section class="tables py-0">
+        
+        <div class="container-fluid">
+          <div class="row gy-4">
+            <div class="col-lg-6">
+              
+              <div class="card mb-0">
+                <h4 class="p-2">Recent Registrations</h4>
+                
+                <div class="card-body pt-0">
+                  <div class="table-responsive " >
+                    <table class="table mb-0" style="overflow-x: auto !important;">
+                      <thead>
+                        <tr>
+                          <th>SL. Number</th>
+                          <th>User Name</th>
+                          <th>Email</th>
+                         
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>HAzrat alli</td>
+                        
+                          <td>hazratsak4@gamil.com</td>
+                          
+                        </tr>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>HAzrat alli</td>
+                        
+                          <td>hazratsak4@gamil.com</td>
+                          
+                        </tr>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>HAzrat alli</td>
+                        
+                          <td>hazratsak4@gamil.com</td>
+                          
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              
+              <div class="card mb-0">
+                <h4 class="p-2">Recent Transactions</h4>
+                
+                <div class="card-body pt-0">
+                  <div class="table-responsive " >
+                    <table class="table mb-0" style="overflow-x: auto !important;">
+                      <thead>
+                        <tr>
+                          <th>SL. Number</th>
+                          <th>User Name</th>
+                          <th>Type</th>
+                          <th>Amount</th>
+                         
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>HAzrat alli</td>
+                        
+                          <td>Deposit</td>
+                          <td>4566</td>
+                          
+                        </tr>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>HAzrat alli</td>
+                        
+                          <td>Withdraw</td>
+                          <td>5666</td>
+                          
+                        </tr>
+                       
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>HAzrat alli</td>
+                        
+                          <td>Withdraw</td>
+                          <td>5666</td>
+                          
+                        </tr>
+                       
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>HAzrat alli</td>
+                        
+                          <td>Withdraw</td>
+                          <td>5666</td>
+                          
+                        </tr>
+                       
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              
+              <div class="card mb-0">
+                <h4 class="p-2">Today Uploaded Payment Details</h4>
+                
+                <div class="card-body pt-0">
+                  <div class="table-responsive " >
+                    <table class="table mb-0" style="overflow-x: auto !important;">
+                      <thead>
+                        <tr>
+                          <th>SL. Number</th>
+                          <th>User Name</th>
+                          <th>Payment Upload Type</th>
+                          <th>Action</th>
+                         
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>HAzrat alli</td>
+                        
+                          <td>Deposit</td>
+                          <td>4566</td>
+                          
+                        </tr>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>HAzrat alli</td>
+                        
+                          <td>Withdraw</td>
+                          <td>5666</td>
+                          
+                        </tr>
+                       
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>HAzrat alli</td>
+                        
+                          <td>Withdraw</td>
+                          <td>5666</td>
+                          
+                        </tr>
+                       
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>HAzrat alli</td>
+                        
+                          <td>Withdraw</td>
+                          <td>5666</td>
+                          
+                        </tr>
+                       
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       
     </AdminDeshboardLayout>
