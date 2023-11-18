@@ -254,7 +254,9 @@ export default {
               <span>User </span> </RouterLink>
           </li>
 
-          <li class="sidebar-item" >
+          <li class="sidebar-item" :class="{
+              active: this.$route.path === '/admin/leads',
+            }">
             <RouterLink class="sidebar-link" to="/admin/leads">
                 <i class="fa fa-comment svg-icon svg-icon-sm svg-icon-heavy" style="font-size:24px">
                 </i><span>Leads </span></RouterLink
