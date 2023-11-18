@@ -1,0 +1,8 @@
+@import "./deshboard/vendor/choices.js/public/assets/styles/choices.min.css";
+@import "./deshboard/css/style.default.css";
+@import "./deshboard/css/custom.css";
+
+label{
+    font-weight: 500;
+    color: rgb(230, 234, 238);
+}
