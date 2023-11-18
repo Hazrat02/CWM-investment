@@ -253,6 +253,16 @@ export default {
                 <i class="fa fa-user svg-icon svg-icon-sm svg-icon-heavy " style="font-size:24px"></i>
               <span>User </span> </RouterLink>
           </li>
+          <li
+            class="sidebar-item"
+            :class="{
+              active: this.$route.path === '/admin/transaction',
+            }"
+          >
+            <RouterLink class="sidebar-link" to="/admin/transaction">
+                <i class="fa fa-database svg-icon svg-icon-sm svg-icon-heavy " style="font-size:24px"></i>
+              <span>Transaction </span> </RouterLink>
+          </li>
 
           <li class="sidebar-item" :class="{
               active: this.$route.path === '/admin/leads',

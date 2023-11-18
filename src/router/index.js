@@ -28,6 +28,7 @@ import UserManageview from '../views/Admin/UserManageview.vue'
 import LeadsManageview from '../views/Admin/LeadsManageview.vue'
 import OfferManageview from '../views/Admin/OfferManageview.vue'
 import PortfolioManageView from '../views/Admin/PortfolioManageView.vue'
+import AdminTransactionView from '../views/Admin/TransactionView.vue'
 
 
 import LoginComponent from '../components/Auth/Login.vue'
@@ -278,6 +279,15 @@ const router = createRouter({
       name: 'portfolio',
 
       component:PortfolioManageView,
+      meta:{
+        // requiresAuth:true,
+      },
+    },
+    {
+      path: '/admin/transaction',
+      name: 'Admintransaction',
+
+      component:AdminTransactionView,
       meta:{
         // requiresAuth:true,
       },

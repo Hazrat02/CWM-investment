@@ -36,39 +36,21 @@
                           <td>012847923</td>
                           <td>hazratsak4@gamil.com</td>
                           <td>
-                            <div class="d-flex justify-content-between gap-1">
+                            <div class="d-flex justify-content-center gap-2">
                                 <a
                               
                               type="button"
-                              data-bs-toggle="modal"
-                              data-bs-target="#myModal"
+                          
                             >
                             <i class="fa fa-eye" style="color: beige;"></i>
                           </a>
                             
-                            <button
-                             class="btn btn-success"
-                              type="button"
-                              data-bs-toggle="modal"
-                              data-bs-target="#depositModal"
-                            >
-                              Deposit
-                            </button>
-                            <button
-                              class="btn btn-primary"
-                              type="button"
-                              data-bs-toggle="modal"
-                              data-bs-target="#WithdrawModal"
-                            >
-                              Withdraw
-                            </button>
+                      
                             <a
                               
-                              type="button"
-                              data-bs-toggle="modal"
-                              data-bs-target="#myModal"
+                         
                             >
-                            <i class="fa fa-trash"></i>
+                            <i class="fa fa-trash" style="color: brown;"></i>
                         </a>
                             </div>
                           </td>
@@ -81,39 +63,21 @@
                           <td>012847923</td>
                           <td>hazratsak4@gamil.com</td>
                           <td>
-                            <div class="d-flex justify-content-between gap-1">
+                            <div class="d-flex justify-content-center gap-2">
                                 <a
                               
                               type="button"
-                              data-bs-toggle="modal"
-                              data-bs-target="#myModal"
+                          
                             >
                             <i class="fa fa-eye" style="color: beige;"></i>
                           </a>
                             
-                            <button
-                             class="btn btn-success"
-                              type="button"
-                              data-bs-toggle="modal"
-                              data-bs-target="#depositModal"
-                            >
-                              Deposit
-                            </button>
-                            <button
-                              class="btn btn-primary"
-                              type="button"
-                              data-bs-toggle="modal"
-                              data-bs-target="#WithdrawModal"
-                            >
-                              Withdraw
-                            </button>
+                      
                             <a
                               
-                              type="button"
-                              data-bs-toggle="modal"
-                              data-bs-target="#myModal"
+                         
                             >
-                            <i class="fa fa-trash"></i>
+                            <i class="fa fa-trash" style="color: brown;"></i>
                         </a>
                             </div>
                           </td>
@@ -126,43 +90,26 @@
                           <td>012847923</td>
                           <td>hazratsak4@gamil.com</td>
                           <td>
-                            <div class="d-flex justify-content-between gap-1">
+                            <div class="d-flex justify-content-center gap-2">
                                 <a
                               
                               type="button"
-                              data-bs-toggle="modal"
-                              data-bs-target="#myModal"
+                          
                             >
                             <i class="fa fa-eye" style="color: beige;"></i>
                           </a>
                             
-                            <button
-                             class="btn btn-success"
-                              type="button"
-                              data-bs-toggle="modal"
-                              data-bs-target="#depositModal"
-                            >
-                              Deposit
-                            </button>
-                            <button
-                              class="btn btn-primary"
-                              type="button"
-                              data-bs-toggle="modal"
-                              data-bs-target="#WithdrawModal"
-                            >
-                              Withdraw
-                            </button>
+                      
                             <a
                               
-                              type="button"
-                              data-bs-toggle="modal"
-                              data-bs-target="#myModal"
+                         
                             >
-                            <i class="fa fa-trash"></i>
+                            <i class="fa fa-trash" style="color: brown;"></i>
                         </a>
                             </div>
                           </td>
                         </tr>
+                       
                         
                       </tbody>
                     </table>
@@ -173,186 +120,6 @@
           </div>
         </div>
       </section>
-      <div
-              class="modal fade text-start"
-              id="depositModal"
-              tabindex="-1"
-              aria-labelledby="depositModallabel"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="depositModallabel">deposit</h5>
-                    <button
-                      class="btn-close btn-close-white"
-                      type="button"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="mb-3">
-                        <label class="form-label" for="modalInputEmail1"
-                          >Date of birth</label
-                        >
-                        <input
-                          class="form-control"
-                          id="modalInputEmail1"
-                          type="date"
-                          aria-describedby="emailHelp"
-                        />
-                        
-                      </div>
-                      <div class="mb-3">
-                        <label class="form-label" for="mobile" 
-                          >Mobile Number</label
-                        >
-                        <input
-                          class="form-control"
-                          id="mobile"
-                          type="text"
-                        
-                        />
-                        
-                      </div>
-                      <div class="form-check">
-                            <input class="form-check-input" id="defaultCheck1" type="checkbox" v-model="checkbox">
-                            <label class="form-check-label" for="defaultCheck1">I Need Change Password</label>
-                          </div>
-                          <div v-if="checkbox">
-
-
-                         
-                      <div class="mb-3">
-                        <label class="form-label" for="modalInputPassword1"
-                          >New Password</label
-                        >
-                        <input
-                          class="form-control"
-                          id="modalInputPassword1"
-                          type="password"
-                        />
-                      </div>
-                      <div class="mb-3">
-                        <label class="form-label" for="modalInputPassword1"
-                          >Confirm Password</label
-                        >
-                        <input
-                          class="form-control"
-                          id="modalInputPassword1"
-                          type="password"
-                        />
-                      </div>
-                          </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button
-                      class="btn btn-secondary"
-                      type="button"
-                      data-bs-dismiss="modal"
-                    >
-                      Close
-                    </button>
-                    <button class="btn btn-primary" type="button">
-                      Save changes
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-      <div
-              class="modal fade text-start"
-              id="WithdrawModal"
-              tabindex="-1"
-              aria-labelledby="WithdrawModallabel"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="WithdrawModallabel">Withdraw</h5>
-                    <button
-                      class="btn-close btn-close-white"
-                      type="button"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="mb-3">
-                        <label class="form-label" for="modalInputEmail1"
-                          >Date of birth</label
-                        >
-                        <input
-                          class="form-control"
-                          id="modalInputEmail1"
-                          type="date"
-                          aria-describedby="emailHelp"
-                        />
-                        
-                      </div>
-                      <div class="mb-3">
-                        <label class="form-label" for="mobile" 
-                          >Mobile Number</label
-                        >
-                        <input
-                          class="form-control"
-                          id="mobile"
-                          type="text"
-                        
-                        />
-                        
-                      </div>
-                      <div class="form-check">
-                            <input class="form-check-input" id="defaultCheck1" type="checkbox" v-model="checkbox">
-                            <label class="form-check-label" for="defaultCheck1">I Need Change Password</label>
-                          </div>
-                          <div v-if="checkbox">
-
-
-                         
-                      <div class="mb-3">
-                        <label class="form-label" for="modalInputPassword1"
-                          >New Password</label
-                        >
-                        <input
-                          class="form-control"
-                          id="modalInputPassword1"
-                          type="password"
-                        />
-                      </div>
-                      <div class="mb-3">
-                        <label class="form-label" for="modalInputPassword1"
-                          >Confirm Password</label
-                        >
-                        <input
-                          class="form-control"
-                          id="modalInputPassword1"
-                          type="password"
-                        />
-                      </div>
-                          </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button
-                      class="btn btn-secondary"
-                      type="button"
-                      data-bs-dismiss="modal"
-                    >
-                      Close
-                    </button>
-                    <button class="btn btn-primary" type="button">
-                      Save changes
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
     </AdminDeshboardLayout>
   </div>
 </template>

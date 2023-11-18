@@ -22,7 +22,7 @@
                         <use xlink:href="#user-1"></use>
                       </svg>
                       <p class="text-sm text-uppercase text-gray-600 lh-1 mb-0">
-                        New Clients
+                        Total User
                       </p>
                     </div>
                     <p class="text-xxl lh-1 mb-0 text-dash-color-1">27</p>
@@ -137,86 +137,7 @@
         </div>
       </section>
 
-      <section class="pt-0">
-        <div class="container-fluid">
-          <div class="row gy-4">
-            <div class="col-lg-8">
-              <div class="card">
-                <div class="card-body">
-                  <strong>Line Chart Example</strong>
-                  <canvas id="lineChartCustom1"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="card">
-                <div class="card-body">
-                  <strong>Line Chart Example</strong>
-                  <canvas id="lineChartCustom2"></canvas>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-body">
-                  <canvas id="lineChartCustom3"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="card">
-                <div class="card-body">
-                  <strong>Bar Chart Example</strong>
-                  <canvas id="barChartCustom1"></canvas>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-body">
-                  <canvas id="barChartCustom2"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-8">
-              <div class="card">
-                <div class="card-body">
-                  <strong>Bar Chart Example</strong>
-                  <canvas id="barChartCustom3"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="card">
-                <div class="card-body">
-                  <strong>Pie Chart Example</strong>
-                  <canvas id="pieChartCustom1"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="card">
-                <div class="card-body">
-                  <strong>Pie Chart Example</strong>
-                  <canvas id="doughnutChartCustom1"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="card">
-                <div class="card-body">
-                  <strong>Polar Chart Example</strong>
-                  <canvas id="polarChartCustom"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="card">
-                <div class="card-body">
-                  <strong>Radar Chart Example</strong>
-                  <canvas id="radarChartCustom"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
     </AdminDeshboardLayout>
   </div>
 </template>
