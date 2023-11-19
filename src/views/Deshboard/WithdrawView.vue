@@ -104,13 +104,10 @@ import { useAuthUserStore } from "../../store/user";
 import isAuthenticated from "../../midleware/auth";
 import { vipStore } from "../../store/vip";
 import { workStore } from "../../store/work";
-import MultiSelect from "../../components/others/MultiSelect.vue"; // Adjust the path to the MultiSelect component
 import axios from "axios";
 
 export default {
-    components: {
-        MultiSelect,
-    },
+ 
     data() {
         return {
             options: [

@@ -1,14 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import HomeView from '../views/HomeView.vue'
-
-// import KycViewg from '../views/KycView.vue'
 import ServicesView from '../views/ServicesView.vue'
-// import RefferView from '../views/RefferView.vue'
 import ContactView from '../views/ContactView.vue'
-import WallateView from '../views/WallateView.vue'
-import EarnView from '../views/EarnView.vue'
-// import VipView from '../views/VipView.vue'
 import AboutView from '../views/AboutView.vue'
 
 // user
@@ -60,17 +54,15 @@ const router = createRouter({
       },
       
     },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: AboutView,
-    //   meta:{
-    //     // Layout:HomeLayout,
-    //   },
-    // },
+    {
+      path: '/about',
+      name: 'about',
+     
+      component: AboutView,
+      meta:{
+        // Layout:HomeLayout,
+      },
+    },
     {
       path: '/login',
       name: 'login',
@@ -102,56 +94,21 @@ const router = createRouter({
         // Layout:AuthLayout,
       },
     },
-    // {
-    //   path: '/helpcenter',
-    //   name: 'helpcenter',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component:ServicesView,
-    //   // meta:{
-    //   //   requiresGuest:true,
-    //   // },
-    // },
-    // {
-    //   path: '/contact',
-    //   name: 'contactUs',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component:ContactView,
-    //   // meta:{
-    //   //   requiresGuest:true,
-    //   // },
-    // },
-    // {
-    //   path: '/wallate',
-    //   name: 'wallate',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component:WallateView,
-    //   meta:{
-    //     requiresAuth:true,
-    //   },
-    // },
-    // {
-    //   path: '/earning',
-    //   name: 'earning',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component:EarnView,
-    //   meta:{
-    //     requiresAuth:true,
-    //   },
-    // },
+    {
+      path: '/servics',
+      name: 'servics',
 
-
-
-
-
-
+      component:ServicesView,
+     
+    },
+    {
+      path: '/contact',
+      name: 'contactUs',
+  
+      component:ContactView,
+ 
+    },
+    
 
 
     // user Deshboard--------------------------------------------------

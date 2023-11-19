@@ -1,141 +1,122 @@
+
+
+<script>
+import "./../assets/home.js"
+
+
+</script>
+
 <template>
   <div>
     <HomeLayout>
-      <!-- Service-details Section - Services Details Page -->
-      <!-- Contact Section - Home Page -->
-      <section id="contact" class="contact">
-        <!--  Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Contact</h2>
-          <p>
-            Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
-            consectetur velit
-          </p>
-        </div>
-        <!-- End Section Title -->
-
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-          <div class="row gy-4">
-            <div class="col-lg-6">
-              <div class="row gy-4">
-                <div class="col-md-6">
-                  <div class="info-item" data-aos="fade" data-aos-delay="200">
-                    <i class="bi bi-geo-alt"></i>
-                    <h3>Address</h3>
-                    <p>A108 Adam Street</p>
-                    <p>New York, NY 535022</p>
-                  </div>
+      <!-- Header Start -->
+    <div class="container-fluid hero-header bg-light py-5 mb-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 mb-3 animated slideInDown">Contact Us</h1>
+                    <nav aria-label="breadcrumb animated slideInDown">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+                        </ol>
+                    </nav>
                 </div>
-                <!-- End Info Item -->
-
-                <div class="col-md-6">
-                  <div class="info-item" data-aos="fade" data-aos-delay="300">
-                    <i class="bi bi-telephone"></i>
-                    <h3>Call Us</h3>
-                    <p>+1 5589 55488 55</p>
-                    <p>+1 6678 254445 41</p>
-                  </div>
+                <div class="col-lg-6 animated fadeIn">
+                    <img class="img-fluid animated pulse infinite" style="animation-duration: 3s;" src="./../assets/frontend/img/hero-2.png" alt="">
                 </div>
-                <!-- End Info Item -->
-
-                <div class="col-md-6">
-                  <div class="info-item" data-aos="fade" data-aos-delay="400">
-                    <i class="bi bi-envelope"></i>
-                    <h3>Email Us</h3>
-                    <p>info@example.com</p>
-                    <p>contact@example.com</p>
-                  </div>
-                </div>
-                <!-- End Info Item -->
-
-                <div class="col-md-6">
-                  <div class="info-item" data-aos="fade" data-aos-delay="500">
-                    <i class="bi bi-clock"></i>
-                    <h3>Open Hours</h3>
-                    <p>Monday - Friday</p>
-                    <p>9:00AM - 05:00PM</p>
-                  </div>
-                </div>
-                <!-- End Info Item -->
-              </div>
             </div>
+        </div>
+    </div>
+    <!-- Header End -->
 
-            <div class="col-lg-6">
-              <form
-                action="forms/contact.php"
-                method="post"
-                class="php-email-form"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
-                <div class="row gy-4">
-                  <div class="col-md-6">
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      placeholder="Your Name"
-                      required
-                    />
-                  </div>
 
-                  <div class="col-md-6">
-                    <input
-                      type="email"
-                      class="form-control"
-                      name="email"
-                      placeholder="Your Email"
-                      required
-                    />
-                  </div>
-
-                  <div class="col-md-12">
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="subject"
-                      placeholder="Subject"
-                      required
-                    />
-                  </div>
-
-                  <div class="col-md-12">
-                    <textarea
-                      class="form-control"
-                      name="message"
-                      rows="6"
-                      placeholder="Message"
-                      required
-                    ></textarea>
-                  </div>
-
-                  <div class="col-md-12 text-center">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">
-                      Your message has been sent. Thank you!
+    <!-- Contact Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-6">
+                    <h1 class="display-6">Contact Us</h1>
+                    <p class="text-primary fs-5 mb-0">If You Have Any Query, Please Contact Us</p>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <a class="btn btn-primary py-3 px-4" href="">Say Hello</a>
+                </div>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="mb-2">Our office:</p>
+                    <h4>123 Street, New York, USA</h4>
+                    <hr class="w-100">
+                    <p class="mb-2">Call us:</p>
+                    <h4>+012 345 6789</h4>
+                    <hr class="w-100">
+                    <p class="mb-2">Mail us:</p>
+                    <h4>info@example.com</h4>
+                    <hr class="w-100">
+                    <p class="mb-2">Follow us:</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-linkedin-in"></i></a>
                     </div>
-
-                    <button type="submit">Send Message</button>
-                  </div>
                 </div>
-              </form>
+                <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                    <label for="name">Your Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                    <label for="email">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                    <label for="subject">Subject</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                    <label for="message">Message</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary py-3 px-4" type="submit">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <!-- End Contact Form -->
-          </div>
         </div>
-      </section>
-      <!-- End Contact Section -->
-      <!-- End Faq Section -->
+    </div>
+    <!-- Contact End -->
+
+
+    <!-- Google Map Start -->
+    <div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
+        <iframe class="w-100 mb-n2" style="height: 450px;"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
+            frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+    
+
+
     </HomeLayout>
   </div>
 </template>
 
-<script>
-export default {
-  created() {
-    this.$setLoading(false);
-    console.log(this.$isLoading())
-  },
-};
-</script>
+<style scoped>
+@import "./../assets/home.css";
+</style>
+
