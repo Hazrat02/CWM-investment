@@ -10,7 +10,7 @@
 
 <main id="main">
   <div>
-    <AuthLayout>
+    <HomeLayout>
       <template v-slot:bodytext>
         <p class="mb-4 opacity-60" style="color: hsl(219, 61%, 76%)" data-aos="zoom-in" data-aos-delay="100">
           Log in your account and earn money from our international company
@@ -136,7 +136,7 @@
           </div>
         </form>
       </div>
-    </AuthLayout>
+    </HomeLayout>
  
   </div>
 

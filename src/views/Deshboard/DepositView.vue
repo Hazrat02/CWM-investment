@@ -340,17 +340,7 @@ export default {
 
 };
 </script>
-  
-<style scoped>
-a {
-    color: black !important;
-    text-decoration: none;
-    transition: 0.3s;
-}
 
-a:hover {
-    color: rgb(1, 9, 17) !important;
-    text-decoration: none;
-}
+<style scoped>
+ @import "./../../assets/main.css";
 </style>
-  

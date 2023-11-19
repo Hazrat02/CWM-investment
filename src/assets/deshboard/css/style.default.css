@@ -42,12 +42,6 @@ https://bootstrapious.com/p/bootstrap-4-dark-admin
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
 
-*,
-*::before,
-*::after {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   :root {

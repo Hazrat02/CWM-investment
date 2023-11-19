@@ -1,110 +1,497 @@
 <script>
+import "./../assets/home.js"
 
-import axios from "axios";
-import TheWelcome from "../components/TheWelcome.vue";
-import { useRouter } from "vue-router";
-import auth from "../midleware/auth.js";
-import CryptoPrice from "../components/Crypto/CryptoPrice.vue";
 
-import SavingPlan from "../components/package/SavingPlan.vue";
-
-export default {
-  components: {
-    TheWelcome,
-    CryptoPrice,
-    SavingPlan,
-  },
-
-  data() {
-    return {
-      banner: [
-        {
-          img: "https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-          title: "30% discount now",
-        },
-        {
-          img: "https://img.freepik.com/free-photo/smiling-young-man-filming-his-video-blog-episode-about-new-tech-devices-while-sitting-kitchen-table-with-laptop-showing-bunch-money-banknotes_171337-5530.jpg?w=900&t=st=1688490674~exp=1688491274~hmac=2ae6a48ea2c78660fb312e87a8accc5598782d0062f19f3940db925f2f862bef",
-          title: "40% discount now",
-        },
-        {
-          img: "https://e0.pxfuel.com/wallpapers/877/568/desktop-wallpaper-coin-money-bitcoin.jpg",
-          title: "40% discount now",
-        },
-      ],
-    };
-  },
-
-  methods: {
-    
-  },
-};
 </script>
 
 <template>
   <div>
     <HomeLayout>
-      <main style="background-color: #f0f2f5">
-        <div class="d-flex">
-          <span>Notics!</span>
-          <marquee
-            behavior="scroll"
-            direction="left"
-            onmouseover="this.stop();"
-            onmouseout="this.start();"
-          >
-            Wellcome in our company.you can deposit money any time but withdraw
-            sunday and friday off.
-          </marquee>
+        <!-- Header Start -->
+    <div class="container-fluid hero-header bg-light py-5 mb-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 mb-3 animated slideInDown">Make Better Life With Trusted CryptoCoin</h1>
+                    <p class="animated slideInDown">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu
+                        diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo
+                        magna dolore erat amet</p>
+                    <a href="" class="btn btn-primary py-3 px-4 animated slideInDown">Explore More</a>
+                </div>
+                <div class="col-lg-6 animated fadeIn">
+                    <img class="img-fluid animated pulse infinite" style="animation-duration: 3s;" src="./../assets/frontend/img/hero-1.png"
+                        alt="">
+                </div>
+            </div>
         </div>
+    </div>
+    <!-- Header End -->
 
-        <div>
-          <Carousel
-            :autoplay="20000"
-            :wrap-around="true"
-            style="margin-top: -55px"
-          >
-            <Slide class="" v-for="slide in banner" :key="slide">
-              <div
-                :style="{
-                  background:
-                    'url(' + slide.img + ') no-repeat center center fixed',
-                  backgroundSize: 'cover',
-                }"
-                class="carousel__item" data-aos="zoom-in-up"
-              >
-                <h1 style="color: #f0f2f5">{{ slide.title }}</h1>
-                {{ slide.img }}
-              </div>
-            </Slide>
 
-            <template #addons>
-              <Pagination class="" />
-            </template>
-          </Carousel>
+    <!-- About Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <img class="img-fluid" src="./../assets/frontend/img/about.png" alt="">
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="h-100">
+                        <h1 class="display-6">About Us</h1>
+                        <p class="text-primary fs-5 mb-4">The Most Trusted Cryptocurrency Platform</p>
+                        <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos.
+                            Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
+                        </p>
+                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet
+                            diam et eos. Clita erat ipsum et lorem et sit.</p>
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"></i>
+                            <span>Tempor erat elitr rebum at clita</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"></i>
+                            <span>Tempor erat elitr rebum at clita</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-4">
+                            <i class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"></i>
+                            <span>Tempor erat elitr rebum at clita</span>
+                        </div>
+                        <a class="btn btn-primary py-3 px-4" href="">Read More</a>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+    <!-- About End -->
 
-        <CryptoPrice style="margin-top: -100px" class="" />
 
-        <SavingPlan class="" />
+    <!-- Facts Start -->
+    <div class="container-xxl bg-light py-5 my-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6 text-center wow fadeIn" data-wow-delay="0.1s">
+                    <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-9.png" alt="">
+                    <h1 class="display-4" data-toggle="counter-up">123456</h1>
+                    <p class="fs-5 text-primary mb-0">Today Transactions</p>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center wow fadeIn" data-wow-delay="0.3s">
+                    <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-10.png" alt="">
+                    <h1 class="display-4" data-toggle="counter-up">123456</h1>
+                    <p class="fs-5 text-primary mb-0">Monthly Transactions</p>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center wow fadeIn" data-wow-delay="0.5s">
+                    <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-2.png" alt="">
+                    <h1 class="display-4" data-toggle="counter-up">123456</h1>
+                    <p class="fs-5 text-primary mb-0">Total Transactions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Facts End -->
 
-        <!-- <button @click="logout">logout</button> -->
-      </main>
+
+    <!-- Features Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h1 class="display-6">Why Us!</h1>
+                <p class="text-primary fs-5 mb-5">The Best In The crypto Industry</p>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="d-flex align-items-start">
+                        <img class="img-fluid flex-shrink-0" src="./../assets/frontend/img/icon-7.png" alt="">
+                        <div class="ps-4">
+                            <h5 class="mb-3">Easy To Start</h5>
+                            <span>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit
+                                clita duo justo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="d-flex align-items-start">
+                        <img class="img-fluid flex-shrink-0" src="./../assets/frontend/img/icon-6.png" alt="">
+                        <div class="ps-4">
+                            <h5 class="mb-3">Safe & Secure</h5>
+                            <span>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit
+                                clita duo justo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="d-flex align-items-start">
+                        <img class="img-fluid flex-shrink-0" src="./../assets/frontend/img/icon-5.png" alt="">
+                        <div class="ps-4">
+                            <h5 class="mb-3">Affordable Plans</h5>
+                            <span>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit
+                                clita duo justo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="d-flex align-items-start">
+                        <img class="img-fluid flex-shrink-0" src="./../assets/frontend/img/icon-4.png" alt="">
+                        <div class="ps-4">
+                            <h5 class="mb-3">Secure Storage</h5>
+                            <span>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit
+                                clita duo justo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="d-flex align-items-start">
+                        <img class="img-fluid flex-shrink-0" src="./../assets/frontend/img/icon-3.png" alt="">
+                        <div class="ps-4">
+                            <h5 class="mb-3">Protected By Insurance</h5>
+                            <span>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit
+                                clita duo justo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="d-flex align-items-start">
+                        <img class="img-fluid flex-shrink-0" src="./../assets/frontend/img/icon-8.png" alt="">
+                        <div class="ps-4">
+                            <h5 class="mb-3">24/7 Support</h5>
+                            <span>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit
+                                clita duo justo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Features End -->
+
+
+    <!-- Service Start -->
+    <div class="container-xxl bg-light py-5 my-5">
+        <div class="container py-5">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h1 class="display-6">Services</h1>
+                <p class="text-primary fs-5 mb-5">Buy, Sell And Exchange Cryptocurrency</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-white p-5">
+                        <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-7.png" alt="">
+                        <h5 class="mb-3">Currency Wallet</h5>
+                        <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo
+                            justo</p>
+                        <a href="">Read More <i class="fa fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item bg-white p-5">
+                        <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-3.png" alt="">
+                        <h5 class="mb-3">Currency Transaction</h5>
+                        <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo
+                            justo</p>
+                        <a href="">Read More <i class="fa fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item bg-white p-5">
+                        <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-9.png" alt="">
+                        <h5 class="mb-3">Bitcoin Investment</h5>
+                        <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo
+                            justo</p>
+                        <a href="">Read More <i class="fa fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-white p-5">
+                        <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-5.png" alt="">
+                        <h5 class="mb-3">Currency Exchange</h5>
+                        <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo
+                            justo</p>
+                        <a href="">Read More <i class="fa fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item bg-white p-5">
+                        <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-2.png" alt="">
+                        <h5 class="mb-3">Bitcoin Escrow</h5>
+                        <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo
+                            justo</p>
+                        <a href="">Read More <i class="fa fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item bg-white p-5">
+                        <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-8.png" alt="">
+                        <h5 class="mb-3">Token Sale</h5>
+                        <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo
+                            justo</p>
+                        <a href="">Read More <i class="fa fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+
+
+    <!-- Token Sale Start -->
+    <div class="container-xxl bg-light py-5 my-5">
+        <div class="container py-5">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h1 class="display-6">Token Sale</h1>
+                <p class="text-primary fs-5 mb-5">Token Sale Countdown</p>
+            </div>
+            <div class="row g-3">
+                <div class="col-6 col-md-3 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="bg-white text-center p-3">
+                        <h1 class="mb-0">0</h1>
+                        <span class="text-primary fs-5">Days</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="bg-white text-center p-3">
+                        <h1 class="mb-0">0</h1>
+                        <span class="text-primary fs-5">Hours</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="bg-white text-center p-3">
+                        <h1 class="mb-0">0</h1>
+                        <span class="text-primary fs-5">Minutes</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 wow fadeIn" data-wow-delay="0.7s">
+                    <div class="bg-white text-center p-3">
+                        <h1 class="mb-0">0</h1>
+                        <span class="text-primary fs-5">Seconds</span>
+                    </div>
+                </div>
+                <div class="col-12 text-center py-4">
+                    <a class="btn btn-primary py-3 px-4" href="">Buy Token</a>
+                </div>
+                <div class="col-12 text-center">
+                    <img class="img-fluid m-1" src="./../assets/frontend/img/payment-1.png" alt="" style="width: 50px;">
+                    <img class="img-fluid m-1" src="./../assets/frontend/img/payment-2.png" alt="" style="width: 50px;">
+                    <img class="img-fluid m-1" src="./../assets/frontend/img/payment-3.png" alt="" style="width: 50px;">
+                    <img class="img-fluid m-1" src="./../assets/frontend/img/payment-4.png" alt="" style="width: 50px;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Token Sale Start -->
+
+
+    <!-- FAQs Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h1 class="display-6">FAQs</h1>
+                <p class="text-primary fs-5 mb-5">Frequently Asked Questions</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.1s">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    How to build a website?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna
+                                    diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.2s">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    How long will it take to get a new website?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna
+                                    diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.3s">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Do you only create HTML websites?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna
+                                    diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.4s">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                    Will my website be mobile-friendly?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna
+                                    diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.5s">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Will you maintain my site for me?
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna
+                                    diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.6s">
+                            <h2 class="accordion-header" id="headingSix">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                    I’m on a strict budget. Do you have any low cost options?
+                                </button>
+                            </h2>
+                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna
+                                    diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.7s">
+                            <h2 class="accordion-header" id="headingSeven">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                    Will you maintain my site for me?
+                                </button>
+                            </h2>
+                            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna
+                                    diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.8s">
+                            <h2 class="accordion-header" id="headingEight">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                    I’m on a strict budget. Do you have any low cost options?
+                                </button>
+                            </h2>
+                            <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna
+                                    diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FAQs Start -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-md-6">
+                    <h1 class="text-primary mb-4"><img class="img-fluid me-2" src="./../assets/frontend/img/icon-1.png" alt=""
+                            style="width: 45px;">CryptoCoin</h1>
+                    <span>Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed
+                        stet lorem sit clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum
+                        et lorem et sit.</span>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="mb-4">Newsletter</h5>
+                    <p>Clita erat ipsum et lorem et sit, sed stet lorem sit clita.</p>
+                    <div class="position-relative">
+                        <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text"
+                            placeholder="Your email">
+                        <button type="button"
+                            class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-4">Get In Touch</h5>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                    <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-4">Our Services</h5>
+                    <a class="btn btn-link" href="">Currency Wallet</a>
+                    <a class="btn btn-link" href="">Currency Transaction</a>
+                    <a class="btn btn-link" href="">Bitcoin Investment</a>
+                    <a class="btn btn-link" href="">Token Sale</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <a class="btn btn-link" href="">About Us</a>
+                    <a class="btn btn-link" href="">Contact Us</a>
+                    <a class="btn btn-link" href="">Our Services</a>
+                    <a class="btn btn-link" href="">Terms & Condition</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-4">Follow Us</h5>
+                    <div class="d-flex">
+                        <a class="btn btn-square rounded-circle me-1" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square rounded-circle me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square rounded-circle me-1" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-square rounded-circle me-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a href="#">Your Site Name</a>, All Right Reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        Designed By <a href="https://htmlcodex.com">HTML Codex</a> Distributed By <a
+                            href="https://themewagon.com">ThemeWagon</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
     </HomeLayout>
   </div>
 </template>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
-
-.carousel__item {
-  min-height: 30rem;
-  width: 100%;
-
-  font-size: 20px;
-  display: flex;
-  margin-bottom: 0px;
-  padding-bottom: 0px;
-  justify-content: center;
-  align-items: center;
-}
+@import "./../assets/home.css";
 </style>

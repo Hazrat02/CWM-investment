@@ -91,14 +91,7 @@
   </div>
 </template>
     
-  <script>
-</script>
-  <style >
-.card-img-absolute {
-  position: absolute;
-  top: 0;
-  right: 0%;
-  height: 100%;
-}
+
+<style scoped>
+ @import "./../../assets/main.css";
 </style>
-    

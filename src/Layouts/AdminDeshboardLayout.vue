@@ -14,52 +14,7 @@ export default {
     };
   },
 
-  // async created() {
-  //   if (isAuthenticated() == true) {
-  //     // auth user data +++++++++++++++++++++++++++++
-
-  //     const userStore = useAuthUserStore();
-
-  //     const authUser = userStore.authUser;
-
-  //     if (authUser) {
-  //       this.authUser = authUser;
-  //     } else {
-  //       // userStore.reSetAuthUser();
-  //       this.authUser = await userStore.reSetAuthUser();
-  //     }
-  //     // worrk dataaaa------------------------------------------
-  //     const works = workStore();
-  //     const allwork = works.work;
-  //     if (allwork) {
-  //       this.work = allwork;
-  //     } else {
-  //       // userStore.reSetAuthUser();
-  //       this.work = await works.getWork();
-  //     }
-
-  //     console.log(this.work)
-  //   } else {
-  //     this.authUser = "";
-  //     this.work = "";
-  //   }
-
-  //   console.log(this.work);
-  //   // auth user data +++++++++++++++++++++++++++++
-
-  //   const vipPlan = vipStore();
-  //   const allVip = vipPlan.vip;
-
-  //   if (allVip) {
-  //     this.vip = allVip;
-  //   } else {
-  //     // userStore.reSetAuthUser();
-  //     this.vip = await vipPlan.getVip();
-  //   }
-
-  //   this.$setLoading(false);
-  // },
-
+ 
   methods: {
     toggleSidebar() {
       this.sidebar = !this.sidebar; // Toggle the value of sidebar between true and false
@@ -317,3 +272,7 @@ export default {
 </template>
 
 
+
+<style scoped>
+ @import "./../assets/main.css";
+</style>

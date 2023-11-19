@@ -1,8 +1,48 @@
 @import "./deshboard/vendor/choices.js/public/assets/styles/choices.min.css";
 @import "./deshboard/css/style.default.css";
-@import "./deshboard/css/custom.css";
+
 
 label{
     font-weight: 500;
     color: rgb(230, 234, 238);
 }
+:root {
+    --bs-blue: #0d6efd;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #d63384;
+    --bs-red: #dc3545;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #ffc107;
+    --bs-green: #28a745;
+    --bs-teal: #20c997;
+    --bs-cyan: #17a2b8;
+    --bs-white: #fff;
+    --bs-gray: #8a8d93;
+    --bs-gray-dark: #343a40;
+    --bs-primary: #db6574;
+    --bs-secondary: #8a8d93;
+    --bs-success: #28a745;
+    --bs-info: #17a2b8;
+    --bs-warning: #ffc107;
+    --bs-danger: #dc3545;
+    --bs-light: #f8f9fa;
+    --bs-dark: #343a40;
+    --bs-font-sans-serif: "Muli", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+  }
+  
+  *,
+  *::before,
+  *::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    :root {
+      scroll-behavior: smooth;
+    }
+  }
+  
