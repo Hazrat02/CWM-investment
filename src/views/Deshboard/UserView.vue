@@ -279,97 +279,97 @@ export default {
     };
   },
 
-  computed: {
-    filteredUsers() {
-      const oneMonthAgoUser = this.alluser.filter((item) => {
-        const itemDate = new Date(item.created_at);
-        const thirtyDaysAgo = new Date();
-        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  // computed: {
+  //   filteredUsers() {
+  //     const oneMonthAgoUser = this.alluser.filter((item) => {
+  //       const itemDate = new Date(item.created_at);
+  //       const thirtyDaysAgo = new Date();
+  //       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
-        return item.vip > 0 && itemDate < thirtyDaysAgo;
-      });
-      const lastMonthUser = this.alluser.filter((item) => {
-        const itemDate = new Date(item.created_at);
-        const thirtyDaysAgo = new Date();
-        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  //       return item.vip > 0 && itemDate < thirtyDaysAgo;
+  //     });
+  //     const lastMonthUser = this.alluser.filter((item) => {
+  //       const itemDate = new Date(item.created_at);
+  //       const thirtyDaysAgo = new Date();
+  //       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
-        return item.vip > 0 && itemDate >= thirtyDaysAgo;
-      });
+  //       return item.vip > 0 && itemDate >= thirtyDaysAgo;
+  //     });
 
-      return {
-        count: this.alluser
-          .filter((user) => user.vip > 0)
-          .length.toString()
-          .padStart(4, "0"),
-        change: (lastMonthUser.length / oneMonthAgoUser.length) * 100,
-      };
-    },
-    filterTrx() {
-      const oneMonthAgotransaction = this.transaction.filter((item) => {
-        const itemDate = new Date(item.created_at);
-        const thirtyDaysAgo = new Date();
-        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  //     return {
+  //       count: this.alluser
+  //         .filter((user) => user.vip > 0)
+  //         .length.toString()
+  //         .padStart(4, "0"),
+  //       change: (lastMonthUser.length / oneMonthAgoUser.length) * 100,
+  //     };
+  //   },
+  //   filterTrx() {
+  //     const oneMonthAgotransaction = this.transaction.filter((item) => {
+  //       const itemDate = new Date(item.created_at);
+  //       const thirtyDaysAgo = new Date();
+  //       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
-        return itemDate < thirtyDaysAgo;
-      });
-      const lastMonthtransaction = this.transaction.filter((item) => {
-        const itemDate = new Date(item.created_at);
-        const thirtyDaysAgo = new Date();
-        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  //       return itemDate < thirtyDaysAgo;
+  //     });
+  //     const lastMonthtransaction = this.transaction.filter((item) => {
+  //       const itemDate = new Date(item.created_at);
+  //       const thirtyDaysAgo = new Date();
+  //       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
-        return itemDate >= thirtyDaysAgo;
-      });
+  //       return itemDate >= thirtyDaysAgo;
+  //     });
 
-      return {
-        count: this.transaction.length.toString().padStart(4, "0"),
-        change:
-          (lastMonthtransaction.length / oneMonthAgotransaction.length) * 100,
-      };
-    },
-  },
+  //     return {
+  //       count: this.transaction.length.toString().padStart(4, "0"),
+  //       change:
+  //         (lastMonthtransaction.length / oneMonthAgotransaction.length) * 100,
+  //     };
+  //   },
+  // },
 
-  async created() {
-    // auth user data +++++++++++++++++++++++++++++
+  // async created() {
+  //   // auth user data +++++++++++++++++++++++++++++
 
-    const userStore = useAuthUserStore();
-    const alluser = userStore.allUser;
+  //   const userStore = useAuthUserStore();
+  //   const alluser = userStore.allUser;
 
-    if (alluser) {
-      this.alluser = alluser;
-    } else {
-      // userStore.reSetAuthUser();
-      this.alluser = await userStore.getAllUser();
-    }
-    this.userCount = this.alluser.length.toString().padStart(4, "0");
+  //   if (alluser) {
+  //     this.alluser = alluser;
+  //   } else {
+  //     // userStore.reSetAuthUser();
+  //     this.alluser = await userStore.getAllUser();
+  //   }
+  //   this.userCount = this.alluser.length.toString().padStart(4, "0");
 
-    const oneMonthAgoUser = this.alluser.filter((item) => {
-      const itemDate = new Date(item.created_at); // Convert itemDate to a Date object
-      const thirtyDaysAgo = new Date();
-      thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-      return itemDate < thirtyDaysAgo;
-    });
-    const lastMonthUser = this.alluser.filter((item) => {
-      const itemDate = new Date(item.created_at); // Convert itemDate to a Date object
-      const thirtyDaysAgo = new Date();
-      thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-      return itemDate >= thirtyDaysAgo;
-    });
-    this.userChange = (lastMonthUser.length / oneMonthAgoUser.length) * 100;
+  //   const oneMonthAgoUser = this.alluser.filter((item) => {
+  //     const itemDate = new Date(item.created_at); // Convert itemDate to a Date object
+  //     const thirtyDaysAgo = new Date();
+  //     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  //     return itemDate < thirtyDaysAgo;
+  //   });
+  //   const lastMonthUser = this.alluser.filter((item) => {
+  //     const itemDate = new Date(item.created_at); // Convert itemDate to a Date object
+  //     const thirtyDaysAgo = new Date();
+  //     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  //     return itemDate >= thirtyDaysAgo;
+  //   });
+  //   this.userChange = (lastMonthUser.length / oneMonthAgoUser.length) * 100;
 
-    const getTransaction = transactionStore();
+  //   const getTransaction = transactionStore();
 
-    // Try to get the data from the store
-    const transactionData = getTransaction.allTransaction;
+  //   // Try to get the data from the store
+  //   const transactionData = getTransaction.allTransaction;
 
-    if (transactionData) {
-      this.transaction = transactionData;
-    } else {
-      // If data is not available, fetch it and set the component property
-      this.transaction = await getTransaction.allUserTransaction();
-    }
+  //   if (transactionData) {
+  //     this.transaction = transactionData;
+  //   } else {
+  //     // If data is not available, fetch it and set the component property
+  //     this.transaction = await getTransaction.allUserTransaction();
+  //   }
 
-    this.$setLoading(false);
-  },
+  //   this.$setLoading(false);
+  // },
 };
 </script>
  

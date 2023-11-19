@@ -1,307 +1,378 @@
 <template>
     <div>
-        <DeshboardLayout>
-            <div class="content-wrapper">
-
-                <div class="page-header d-flex justify-content-between align-item-center mb-2">
-                    <h3 class="page-title">
-                        <span class="page-title-icon btn-gradient-primary text-white me-2 p-1">
-                            <i class="bi bi-info-circle"></i>
-                        </span>
-                        Ask
-                    </h3>
-
-                    <div class="">
-
-                        <button class="btn btn-gradient-primary" @click="showModal = true">+ Add a Ask</button>
-
+      <DeshboardLayout>
+        <div class="bg-dash-dark-2 py-4">
+          <div class="container-fluid">
+            <h2 class="h5 mb-0">Profile Information</h2>
+          </div>
+        </div>
+        <section class="pt-0 mt-4">
+          <div class="container-fluid">
+            <div class="row justify-content-center gy-4">
+              <div class="col-lg-4">
+                <!-- User block-->
+                <div class="card">
+                  <div class="card-body">
+                    <div class="text-center">
+                      <div class="position-relative d-inline-block">
+                        <img
+                          class="avatar avatar-lg mb-3"
+                          src="./../../assets/deshboard/img/avatar-1.jpg"
+                          alt="Richard Nevoreski"
+                        /><span class="avatar-badge bg-dash-color-1"
+                          ><i class="fa fa-close"></i
+                        ></span>
+                      </div>
+                      <h3 class="h3 mb-0">Richard Nevoreski</h3>
+                      <p class="text-sm fw-light">hazratbd90@gmail.com</p>
+                      <div
+                        class="d-inline-block py-1 px-4 rounded-pill bg-dash-dark-3 fw-light text-sm mb-4"
+                      >
+                        Client ID: 72047
+                      </div>
+                      <ul
+                        class="list-inline text-center mb-0 d-flex justify-content-between text-sm mb-0"
+                      >
+                        <li class="list-inline-item">
+                          <i class="fab fa-blogger-b me-2"></i>150
+                        </li>
+                        <li class="list-inline-item">
+                          <i class="fas fa-code-branch me-2"></i>340
+                        </li>
+                        <li class="list-inline-item">
+                          <i class="fab fa-gg me-2"></i>460
+                        </li>
+                      </ul>
                     </div>
-
+                  </div>
                 </div>
-                <section id="faq" class="faq">
-                    <div class="container">
-                        <div class="row gy-4">
-                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                                <div class="content px-xl-5">
-                                    <h3>
-                                        <span>Frequently Asked </span><strong>Questions</strong>
-                                    </h3>
-                                    <p>
-                                        If your problem or inquiry is not addressed in our Frequently
-                                        Asked Questions (FAQs) section, we encourage you to get in
-                                        touch with our dedicated support team. <router-link to="/contact">Contact
-                                            Us</router-link>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-                                <div class="faq-container">
-                                    <div class="faq-item" v-for="(item, index) in ask" :key="index" :class="{
-                                        'faq-active': item.id === this.activeAsk,
-                                    }">
-                                        <h3 class="d-flex justify-content-between">
-                                            <div>
-                                                <span class="num">{{ index }}.</span>
-                                                <span>{{ item.ask }}</span>
-                                            </div>
-                                            <div class="d-flex justify-content-end">
-                                                <div class="d-flex gap-2">
-
-                                                    <i @click="askdelete(item.id)" class="bi bi-trash"
-                                                        style="color: red;"></i>
-                                                    <i @click="askeditmodal(item.id)" class="bi bi-pen"
-                                                        style="color: rgb(10, 146, 101);"></i>
-                                                </div>
-
-                                            </div>
-                                        </h3>
-                                        <div class="faq-content">
-                                            <p>
-                                                {{ item.ans }}
-                                            </p>
-                                        </div>
-
-
-                                        <i class="faq-toggle bi bi-chevron-right" @click="toggleActiveAsk(item.id)"></i>
-                                    </div>
-                                    <!-- End Faq item-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <Modal :showModal="showModal" :modalWidth="modalWidth" :modalHeight="modalHeight" :position="modalPosition"
-                @close="showModal = false" :title="'Ask Make'">
-
-                <div>
-                    <form @submit.prevent="askCreate">
-
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Question</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                placeholder="What is your name?" v-model="askStore"></textarea>
-                        </div>
-                        <div class="form-group mb-2">
-                            <label for="exampleFormControlTextarea1">Answer</label>
-                            <textarea class="form-control" placeholder="My name is jon a" id="exampleFormControlTextarea1"
-                                rows="3" v-model="ans"></textarea>
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-grad">+ Create</button>
-
-                        </div>
-                    </form>
-                </div>
-                <!-- Your modal content goes here -->
-            </Modal>
-            <Modal :showModal="showeditModal" :modalWidth="modalWidth" :modalHeight="modalHeight" :position="modalPosition"
-                @close="showeditModal = false" :title="'Ask Update'">
-
-                <div>
-                    <form @submit.prevent="askEdit">
-
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Question</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                placeholder="What is your name?" v-model="askStore"></textarea>
-                        </div>
-                        <div class="form-group mb-2">
-                            <label for="exampleFormControlTextarea1">Answer</label>
-                            <textarea class="form-control" placeholder="My name is jon a" id="exampleFormControlTextarea1"
-                                rows="3" v-model="ans"></textarea>
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-grad">Update</button>
-
-                        </div>
-                    </form>
-                </div>
-                <!-- Your modal content goes here -->
-            </Modal>
-            <!-- End Faq Section -->
-        </DeshboardLayout>
-    </div>
-</template>
+              </div>
   
-<script>
-import axios from "axios";
-
-export default {
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row gy-3 align-items-center">
+                      <div class="col-md-6 col-12">
+                        <div class="col-lg-10">
+                          <div><b for="">First Name: </b><span>hazrat</span></div>
+                        </div>
+                        <div class="col-lg-10">
+                          <div>
+                            <b for="">Date of birth: </b><span>20/09/2001</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-10">
+                          <div><b for="">Password: </b><span>******</span></div>
+                        </div>
+                        <div class="col-lg-10">
+                          <div>
+                            <b for="">Mobile Number: </b
+                            ><span>+8801237482347</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-10">
+                          <div>
+                            <b for="">Communication Language: </b
+                            ><span>Einglish</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-10 mb-3" >
+                          <div><b for="">Country: </b><span>U.K</span></div>
+                        </div>
+                        <button
+                class="btn btn-primary"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#myModal"
+              >
+                Edit
+              </button>
+                      </div>
+                      <div class="col-md-6 col-12">
+                        <div class="card">
+                          <div class="card-body">
+                            <div class="row gy-3 r justify-content-center">
+                              <div class="">
+                                <div
+                                  class="card mb-0"
+                                  style="border: solid white 2px"
+                                >
+                                  <div class="card-body">
+                                    <div
+                                      class="d-flex align-items-end justify-content-between mb-2"
+                                    >
+                                      <div class="me-2">
+                                        <p
+                                          class="text-sm text-uppercase text-gray-600 lh-1 mb-0"
+                                        >
+                                          Proof of ID approved
+                                        </p>
+                                      </div>
+                                      <p
+                                        class="text-xxl lh-1 mb-0 text-dash-color-1"
+                                      >
+                                        Yes
+                                      </p>
+                                    </div>
+                                    <div
+                                      class="d-flex align-items-end justify-content-between mb-2"
+                                    >
+                                      <div class="me-2">
+                                        <p
+                                          class="text-sm text-uppercase text-gray-600 lh-1 mb-0"
+                                        >
+                                          Proof of Address approved
+                                        </p>
+                                      </div>
+                                      <p
+                                        class="text-xxl lh-1 mb-0 text-dash-color-1"
+                                      >
+                                        No
+                                      </p>
+                                    </div>
+                                    <div
+                                      class="d-flex align-items-end justify-content-between mb-2"
+                                    >
+                                      <div class="me-2">
+                                        <p
+                                          class="text-sm text-uppercase text-gray-600 lh-1 mb-0"
+                                        >
+                                          Economic Profile Details approved
+                                        </p>
+                                      </div>
+                                      <p
+                                        class="text-xxl lh-1 mb-0 text-dash-color-1"
+                                      >
+                                        Yes
+                                      </p>
+                                    </div>
+                                    <div class="progress" style="height: 3px">
+                                      <div
+                                        class="progress-bar bg-dash-color-1"
+                                        role="progressbar"
+                                        style="width: 30%"
+                                        aria-valuenow="30"
+                                        aria-valuemin="0"
+                                        aria-valuemax="100"
+                                      ></div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div
+                class="modal fade text-start"
+                id="myModal"
+                tabindex="-1"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="myModalLabel">Update Profile</h5>
+                      <button
+                        class="btn-close btn-close-white"
+                        type="button"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="mb-3">
+                          <label class="form-label" for="modalInputEmail1"
+                            >Date of birth</label
+                          >
+                          <input
+                            class="form-control"
+                            id="modalInputEmail1"
+                            type="date"
+                            aria-describedby="emailHelp"
+                          />
+                          
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="mobile" 
+                            >Mobile Number</label
+                          >
+                          <input
+                            class="form-control"
+                            id="mobile"
+                            type="text"
+                          
+                          />
+                          
+                        </div>
+                        <div class="form-check">
+                              <input class="form-check-input" id="defaultCheck1" type="checkbox" v-model="checkbox">
+                              <label class="form-check-label" for="defaultCheck1">I Need Change Password</label>
+                            </div>
+                            <div v-if="checkbox">
+  
+  
+                           
+                        <div class="mb-3">
+                          <label class="form-label" for="modalInputPassword1"
+                            >New Password</label
+                          >
+                          <input
+                            class="form-control"
+                            id="modalInputPassword1"
+                            type="password"
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="modalInputPassword1"
+                            >Confirm Password</label
+                          >
+                          <input
+                            class="form-control"
+                            id="modalInputPassword1"
+                            type="password"
+                          />
+                        </div>
+                            </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        class="btn btn-secondary"
+                        type="button"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button class="btn btn-primary" type="button">
+                        Save changes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      </DeshboardLayout>
+    </div>
+  </template>
+      
+    <script>
+  import { useAuthUserStore } from "../../store/user";
+  import { transactionStore } from "../../store/transaction";
+  
+  export default {
     data() {
-        return {
-            editId: "",
-            ask: "",
-            askStore: "",
-            ans: "",
-            activeAsk: "",
-            modalWidth: "col-11 col-md-6 bg-white rounded-4 top-0 ",
-            showModal: false,
-            showeditModal: false,
-            modalHeight: "auto",
-            modalPosition: "justify-content-center align-items-center", // Set the default position here, other options: top, right, bottom, left
-
-        };
+      return {
+        checkbox:'',
+        alluser: [],
+        userCount: "",
+        userChange: "",
+        transaction: [],
+      };
     },
-    methods: {
-        askdelete(id) {
-
-
-            this.$setLoading(true);
-
-            axios.delete(`api/ask.delete/${id}`)
-                .then((response) => {
-
-
-
-                    this.$notify({
-                        title: "message",
-                        text: response.data.message,
-                        type: "success",
-
-
-                    });
-                    this.ask = this.ask.filter((item) => item.id !== id);
-
-                })
-                .catch((error) => {
-                    this.$setLoading(false);
-                    this.$notify({
-                        title: "Error message",
-                        text: error.response.data.message,
-                        type: "error",
-                    });
-                });
-
-            this.$setLoading(false);
-
-        },
-        askeditmodal(id) {
-
-            const item = this.ask.find(item => item.id === id);
-
-
-            this.askStore = item.ask,
-                this.ans = item.ans
-            this.editId = id
-            this.showeditModal = true
-
-
-        },
-        askEdit() {
-
-            this.showeditModal = false
-            this.$setLoading(true);
-
-
-            const id = this.editId
-            const data = {
-                ask: this.askStore,
-                ans: this.ans,
-
-            }
-
-
-            axios.put(`api/ask.edit/${id}`, data)
-                .then((response) => {
-
-                    this.$notify({
-                        title: "message",
-                        text: response.data.message,
-                        type: "success",
-                    });
-                    const index = this.ask.findIndex(item => item.id === id);
-                    if (index !== -1) {
-
-                        this.ask[index].ask = this.askStore;
-                        this.ask[index].ans = this.ans;
-
-
-                        this.$set(this.ask, index, this.ask[index]);
-                    }
-                })
-                .catch((error) => {
-                    this.$setLoading(false);
-                    this.$notify({
-                        title: "Error message",
-                        text: error.response.data.message,
-                        type: "error",
-                    });
-                });
-
-            this.$setLoading(false);
-
-        },
-        askCreate() {
-            this.$setLoading(true);
-            this.showModal = false
-            const data = {
-                ask: this.askStore,
-                ans: this.ans,
-
-            }
-            axios
-                .post("/api/ask.store", data)
-                .then((response) => {
-
-
-
-                    this.$notify({
-                        title: "message",
-                        text: response.data.message,
-                        type: "success",
-                    });
-
-                    const dataArray = Array.isArray(response.data.ask) ? response.data.ask : [response.data.ask];
-
-                    // Adds the elements of dataArray to the end of the authTransaction array
-                    this.ask.unshift(...dataArray);
-
-                })
-                .catch((error) => {
-                    this.$setLoading(false);
-                    this.$notify({
-                        title: "Error message",
-                        text: error.response.data.message,
-                        type: "error",
-                    });
-                });
-
-            this.$setLoading(false);
-        },
-        toggleActiveAsk(itemId) {
-            if (this.activeAsk === itemId) {
-                // If the clicked item is already the active item, set it to null
-                this.activeAsk = null;
-            } else {
-                // Otherwise, set it to the clicked item's ID
-                this.activeAsk = itemId;
-            }
-        },
-
-        setup() { },
-        showAns() { },
-    },
-    created() {
-        axios
-            .get("http://127.0.0.1:8000/api/ask")
-            .then((response) => {
-                this.ask = response.data.ask;
-                console.log(this.ask);
-            })
-            .catch((error) => {
-                this.$notify({
-                    title: "Warning",
-                    text: error.response.data.message + ".Reload this page",
-                    type: "error",
-                });
-            });
-        this.$setLoading(false);
-    },
-};
-</script>
-
-<style scoped>
- @import "./../../assets/main.css";
-</style>
+  
+    // computed: {
+    //   filteredUsers() {
+    //     const oneMonthAgoUser = this.alluser.filter((item) => {
+    //       const itemDate = new Date(item.created_at);
+    //       const thirtyDaysAgo = new Date();
+    //       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  
+    //       return item.vip > 0 && itemDate < thirtyDaysAgo;
+    //     });
+    //     const lastMonthUser = this.alluser.filter((item) => {
+    //       const itemDate = new Date(item.created_at);
+    //       const thirtyDaysAgo = new Date();
+    //       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  
+    //       return item.vip > 0 && itemDate >= thirtyDaysAgo;
+    //     });
+  
+    //     return {
+    //       count: this.alluser
+    //         .filter((user) => user.vip > 0)
+    //         .length.toString()
+    //         .padStart(4, "0"),
+    //       change: (lastMonthUser.length / oneMonthAgoUser.length) * 100,
+    //     };
+    //   },
+    //   filterTrx() {
+    //     const oneMonthAgotransaction = this.transaction.filter((item) => {
+    //       const itemDate = new Date(item.created_at);
+    //       const thirtyDaysAgo = new Date();
+    //       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  
+    //       return itemDate < thirtyDaysAgo;
+    //     });
+    //     const lastMonthtransaction = this.transaction.filter((item) => {
+    //       const itemDate = new Date(item.created_at);
+    //       const thirtyDaysAgo = new Date();
+    //       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  
+    //       return itemDate >= thirtyDaysAgo;
+    //     });
+  
+    //     return {
+    //       count: this.transaction.length.toString().padStart(4, "0"),
+    //       change:
+    //         (lastMonthtransaction.length / oneMonthAgotransaction.length) * 100,
+    //     };
+    //   },
+    // },
+  
+    // async created() {
+    //   // auth user data +++++++++++++++++++++++++++++
+  
+    //   const userStore = useAuthUserStore();
+    //   const alluser = userStore.allUser;
+  
+    //   if (alluser) {
+    //     this.alluser = alluser;
+    //   } else {
+    //     // userStore.reSetAuthUser();
+    //     this.alluser = await userStore.getAllUser();
+    //   }
+    //   this.userCount = this.alluser.length.toString().padStart(4, "0");
+  
+    //   const oneMonthAgoUser = this.alluser.filter((item) => {
+    //     const itemDate = new Date(item.created_at); // Convert itemDate to a Date object
+    //     const thirtyDaysAgo = new Date();
+    //     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    //     return itemDate < thirtyDaysAgo;
+    //   });
+    //   const lastMonthUser = this.alluser.filter((item) => {
+    //     const itemDate = new Date(item.created_at); // Convert itemDate to a Date object
+    //     const thirtyDaysAgo = new Date();
+    //     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    //     return itemDate >= thirtyDaysAgo;
+    //   });
+    //   this.userChange = (lastMonthUser.length / oneMonthAgoUser.length) * 100;
+  
+    //   const getTransaction = transactionStore();
+  
+    //   // Try to get the data from the store
+    //   const transactionData = getTransaction.allTransaction;
+  
+    //   if (transactionData) {
+    //     this.transaction = transactionData;
+    //   } else {
+    //     // If data is not available, fetch it and set the component property
+    //     this.transaction = await getTransaction.allUserTransaction();
+    //   }
+  
+    //   this.$setLoading(false);
+    // },
+  };
+  </script>
+   
+  <style scoped>
+  @import "./../../assets/main.css";
+  </style>
