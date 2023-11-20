@@ -1,9 +1,58 @@
+
 <script>
-import { RouterLink, RouterView } from "vue-router";
-import { logout } from "../midleware/auth.js";
-import "./../assets/home.js";
-export default {};
+import isAuthenticated from "./../midleware/auth";
+import { logout } from "./../midleware/auth";
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      isAuthenticated: false,
+    };
+  },
+
+  created() {
+    if (isAuthenticated()) {
+      this.isAuthenticated = true;
+    }
+  },
+
+
+  methods: {
+  
+    logout() {
+      this.$setLoading(true);
+      logout();
+      axios
+        .post("api/auth/logout")
+        .then((response) => {
+          this.$setLoading(false);
+
+          this.$notify({
+            title: "message",
+            text: response.data.message,
+            type: "success",
+          });
+
+          // Change the authenticated value to false
+
+          this.$router.push("/login");
+        })
+        .catch((error) => {
+          this.$setLoading(false);
+          this.$notify({
+            title: "Error message",
+            text: error.response.data.message,
+            type: "error",
+          });
+        });
+      this.$setLoading(false);
+      
+    },
+  },
+};
 </script>
+
 <template>
   <body>
     <!-- Spinner Start -->
@@ -49,7 +98,7 @@ export default {};
               >More</a
             >
             <div class="dropdown-menu shadow-sm m-0">
-              <a href="feature.html" class="dropdown-item">Feature</a>
+              <div href="feature.html" @click="logout" class="dropdown-item">Logout</div>
               <a href="token.html" class="dropdown-item">Token Sale</a>
               <a href="faq.html" class="dropdown-item">FAQs</a>
               <a href="404.html" class="dropdown-item">404 Page</a>

@@ -51,20 +51,18 @@
 
                   <div class="card bg-glass">
                     <div class="card-body px-4 py-5 px-md-5">
+                      <div style="z-index: 444444444444"></div>
+
                       <h1 class="mb-4 mb-lg-4 text-center">log in</h1>
 
-                      <form
-                        class="justify-content-center"
-                        method="POST"
-                        action=""
-                      >
+                      <form class="justify-content-center" action="">
                         <!-- Email input -->
 
                         <div class="form-outline mb-4">
                           <input
                             name="email"
                             placeholder="Enter Your Email"
-                            value=""
+                            v-model="email"
                             type="email"
                             id="form3Example3"
                             class="form-control"
@@ -78,14 +76,31 @@
                         <!-- Password input -->
 
                         <div class="form-outline mb-4">
-                          <input
-                            name="password"
-                            placeholder="******"
-                            type="password"
-                            id="form3Example4"
-                            class="form-control"
-                            required
-                          />
+                          <div class="form-outline mb-2">
+                            <div style="position: relative">
+                              <input
+                                name="password"
+                                placeholder="******"
+                                v-model="password"
+                                :type="passwordFieldType"
+                                id="password"
+                                class="form-control"
+                                required
+                              />
+
+                              <i
+                                style="
+                                  position: absolute;
+                                  top: 7%;
+                                  right: 5%;
+                                  font-size: 25px;
+                                "
+                                class="bi"
+                                :class="icon"
+                                @click="togglePasswordVisibility"
+                              ></i>
+                            </div>
+                          </div>
 
                           <div
                             class="d-flex"
@@ -94,16 +109,15 @@
                             <label class="form-label" for="form3Example4"
                               >password</label
                             >
-
-                            <a
-                              href=""
+                            <router-link
+                              to="/forget"
                               style="
                                 color: cadetblue;
                                 cursor: pointer;
                                 text-decoration: underline;
                               "
-                              >forget password</a
-                            >
+                              >forget password
+                            </router-link>
                           </div>
                         </div>
 
@@ -118,7 +132,7 @@
                             id="form2Example33"
                             required
                           />
-                          <p><a href="">Read all team.</a>Uderested?</p>
+                          <p><RouterLink style="color: green;" to="/contact">Read all tarm.</RouterLink>Uderested?</p>
                         </div>
 
                         <!-- Submit button -->
@@ -127,17 +141,16 @@
                         >
                           <button
                             type="submit"
-                            class="btn btn-success d-block px-4 container-fluid mb-4"
+                            class="btn btn-outline-success d-block px-4 container-fluid mb-4"
+                            @click.prevent="login"
                           >
                             log in
                           </button>
                         </div>
                         <div>
-                          <span>Haven't any account /</span>
-                          <RouterLink to="/register">Sing Up</RouterLink>
+                          <label>Haven't any account? /<RouterLink style="color: green;" to="/register">Singup</RouterLink></label>
+
                         </div>
-                        <!-- Register buttons -->
-                        
                       </form>
                     </div>
                   </div>
@@ -156,82 +169,97 @@
   <!-- <template v-slot:bodytext ></template> -->
 </template>
 
+
+
+
+
 <script>
-// import axios from "axios";
-// import { login } from "../../midleware/auth.js";
-// import { useAuthUserStore } from "../../store/user";
+import axios from 'axios';
+import { login } from '../../midleware/auth.js';
+import { useAuthUserStore } from '../../store/user';
 
 // import { notify } from 'vue3-notify'
-// export default {
-//   data() {
-//     return {
-//       showicon: true,
-//       showPassword: false,
-//       email: "",
-//       password: "",
-//     };
-//   },
-//   computed: {
-//     passwordFieldType() {
-//       return this.showPassword ? "text" : "password";
-//     },
-//     icon() {
-//       return this.showicon ? "bi-eye-slash-fill" : "bi-eye-fill";
-//     },
-//   },
-//   created() {
-//     this.$setLoading(false);
-//   },
+export default {
+  
+  data() {
+    return {
+   
+      showicon: true,
+      showPassword: false,
+      email: "",
+      password: "",
+    };
+  },
+  computed: {
+    passwordFieldType() {
+      return this.showPassword ? "text" : "password";
+    },
+    icon() {
+      return this.showicon ? "bi-eye-slash-fill" : "bi-eye-fill";
+    },
+   
+  },
+  created(){
+    this.$setLoading(false);
+  },
 
-//   methods: {
-//     togglePasswordVisibility() {
-//       this.showPassword = !this.showPassword;
-//       this.showicon = !this.showicon;
-//     },
-//     showNotification() {
-//       this.$notify({
-//         title: "Important message",
-//         text: "Hello user!",
-//       });
-//     },
-//     login() {
-//       this.$setLoading(true);
-//       const data = {
-//         email: this.email,
-//         password: this.password,
-//       };
+  methods: {
+    togglePasswordVisibility() {
+      this.showPassword = !this.showPassword;
+      this.showicon = !this.showicon;
 
-//       axios
-//         .post("/api/auth/login", data)
-//         .then((response) => {
-//           console.log(response.data.user);
-//           login(response.data.authorisation.token);
-//           const userStore = useAuthUserStore();
+    },
+    showNotification() {
+      this.$notify({
+        title: "Important message",
+        text: "Hello user!",
+      });
+    },
+    login() {
+      this.$setLoading(true);
+        const data = {
+      email: this.email,
+      password: this.password
+    };
 
-//           const user = response.data.authUser;
-//           userStore.setAuthUser(user);
-//           this.$setLoading(false);
+      axios
+        .post("/api/auth/login",data)
+        .then((response) => {
+          console.log(response.data.user);
+          login(response.data.authorisation.token);
+          const userStore = useAuthUserStore();
 
-//           this.$router.push("/wallate");
-//           this.$notify({
-//             title: "message",
-//             text: "User succesfully login",
-//             type: "success",
-//           });
-//         })
-//         .catch((error) => {
-//           // Handle the error
-//           this.$setLoading(false);
-//           this.$notify({
-//             title: "Error message",
-//             text: error.response.data.message,
-//             type: "error",
-//           });
-//         });
-//     },
-//   },
-// };
+          const user =response.data.authUser;
+          userStore.setAuthUser(user);
+          // this.$router.push('/dashboard')
+    
+          if (response.data.user.role =='0') {
+            this.$router.push('/admin/dashboard')
+          } else {
+            this.$router.push('/dashboard')
+
+          }
+          this.$setLoading(false);
+          this.$notify({
+            title: "message",
+            text: 'User succesfully login',
+            type: "success",
+          });
+        })
+        .catch((error) => {
+          // Handle the error
+          this.$setLoading(false);
+          this.$notify({
+        title: "Error message",
+        text: error.response.data.message,
+        type:'error'
+      });
+        });
+    },
+  },
+};
 </script>
+
 <style scoped>
 @import "./../../assets/home.css";
 .background-radial-gradient {
@@ -270,14 +298,14 @@
 }
 
 .bg-glass {
-  background-color:rgba(255, 255, 255, 0.692) !important;
+  background-color: rgba(255, 255, 255, 0.692) !important;
   backdrop-filter: saturate(200%) blur(25px);
 }
-label{
+label {
   color: #000000;
 }
 
-span{
+span {
   color: #000000;
 }
 </style>

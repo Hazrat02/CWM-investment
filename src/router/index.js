@@ -113,8 +113,8 @@ const router = createRouter({
 
     // user Deshboard--------------------------------------------------
     {
-      path: '/deshboard',
-      name: 'deshboard',
+      path: '/dashboard',
+      name: 'dashboard',
 
       component:DeshboardView,
       meta:{
