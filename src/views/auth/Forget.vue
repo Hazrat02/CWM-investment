@@ -239,8 +239,8 @@ export default {
       const data = {
         type: "forget",
         email: this.email,
-        sub: "Cpaearn Forget code",
-        bodytext: "Your Cpaearn forget code is:",
+        sub: "CMW Forget code",
+        bodytext: "Your CWM forget code is:",
         footertext: "Do not share our code anyone.It is very importent",
         btn: "",
       };

@@ -98,10 +98,12 @@ export default {
               >More</a
             >
             <div class="dropdown-menu shadow-sm m-0">
-              <div href="feature.html" @click="logout" class="dropdown-item">Logout</div>
-              <a href="token.html" class="dropdown-item">Token Sale</a>
-              <a href="faq.html" class="dropdown-item">FAQs</a>
-              <a href="404.html" class="dropdown-item">404 Page</a>
+              <div v-if="isAuthenticated" href="feature.html" @click="logout" class="dropdown-item">Logout</div>
+              <router-link v-if="!isAuthenticated" class="dropdown-item" to="/login">Login</router-link>
+
+              <RouterLink v-if="isAuthenticated" to="/dashboard" class="dropdown-item">Dashboard</RouterLink>
+
+
             </div>
           </div>
           
@@ -163,6 +165,7 @@ export default {
                 type="text"
                 placeholder="Your email"
               />
+              
               <button
                 type="button"
                 class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2"

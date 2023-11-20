@@ -118,7 +118,7 @@ const router = createRouter({
 
       component:DeshboardView,
       meta:{
-        // requiresAuth:true,
+        requiresAuth:true,
       },
     },
     {
@@ -126,9 +126,9 @@ const router = createRouter({
       name: 'kyc',
 
       component:KycView,
-      // meta:{
-      //   requiresGuest:true,
-      // },
+      meta:{
+        requiresGuest:true,
+      },
     },
     {
       path: '/profile',
@@ -136,7 +136,7 @@ const router = createRouter({
 
       component:UserView,
       meta:{
-        // requiresAuth:true,
+        requiresAuth:true,
       },
     },
     {
@@ -145,7 +145,7 @@ const router = createRouter({
 
       component:EconomicView,
       meta:{
-        // requiresAuth:true,
+        requiresAuth:true,
       },
     },
     {
@@ -154,7 +154,7 @@ const router = createRouter({
 
       component:DepositView,
       meta:{
-        // requiresAuth:true,
+        requiresAuth:true,
       },
     },
     
@@ -164,7 +164,7 @@ const router = createRouter({
 
       component:WithdrawView,
       meta:{
-        // requiresAuth:true,
+        requiresAuth:true,
       },
     },
     {
@@ -173,7 +173,7 @@ const router = createRouter({
 
       component:TransactionView,
       meta:{
-        // requiresAuth:true,
+        requiresAuth:true,
       },
     },
     {
@@ -182,7 +182,7 @@ const router = createRouter({
 
       component:PaymentDetailsView,
       meta:{
-        // requiresAuth:true,
+        requiresAuth:true,
       },
     },
     {
@@ -191,7 +191,7 @@ const router = createRouter({
 
       component:AccountView,
       meta:{
-        // requiresAuth:true,
+        requiresAuth:true,
       },
     },
 
@@ -205,7 +205,7 @@ const router = createRouter({
 
       component:AdminDeshboardview,
       meta:{
-        // requiresAuth:true,
+        requiresAuth:true,
       },
     },
     {
@@ -214,7 +214,7 @@ const router = createRouter({
 
       component:UserManageview,
       meta:{
-        // requiresAuth:true,
+        requiresAuth:true,
       },
     },
     {
@@ -223,7 +223,7 @@ const router = createRouter({
 
       component:LeadsManageview,
       meta:{
-        // requiresAuth:true,
+        requiresAuth:true,
       },
     },
     {
@@ -232,7 +232,7 @@ const router = createRouter({
 
       component:OfferManageview,
       meta:{
-        // requiresAuth:true,
+        requiresAuth:true,
       },
     },
     {
@@ -241,7 +241,7 @@ const router = createRouter({
 
       component:PortfolioManageView,
       meta:{
-        // requiresAuth:true,
+        requiresAuth:true,
       },
     },
     {
@@ -250,7 +250,7 @@ const router = createRouter({
 
       component:AdminTransactionView,
       meta:{
-        // requiresAuth:true,
+        requiresAuth:true,
       },
     },
     
@@ -291,7 +291,7 @@ router.beforeEach((to, from, next) => {
       next('/');
     } else {
       
-      axios.defaults.baseURL='http://127.0.0.1:8000';
+      axios.defaults.baseURL='https://admin.capitalswealthmanagement.com/';
       axios.defaults.headers.common['Authorization']='bearer'+localStorage.getItem('token');
      
 

@@ -1,7 +1,55 @@
 <script>
-import "./../assets/home.js"
+import isAuthenticated from "./../midleware/auth";
+import { logout } from "./../midleware/auth";
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      isAuthenticated: false,
+    };
+  },
+
+  created() {
+    if (isAuthenticated()) {
+      this.isAuthenticated = true;
+    }
+  },
 
 
+  methods: {
+  
+    logout() {
+      this.$setLoading(true);
+      logout();
+      axios
+        .post("api/auth/logout")
+        .then((response) => {
+          this.$setLoading(false);
+
+          this.$notify({
+            title: "message",
+            text: response.data.message,
+            type: "success",
+          });
+
+          // Change the authenticated value to false
+
+          this.$router.push("/login");
+        })
+        .catch((error) => {
+          this.$setLoading(false);
+          this.$notify({
+            title: "Error message",
+            text: error.response.data.message,
+            type: "error",
+          });
+        });
+      this.$setLoading(false);
+      
+    },
+  },
+};
 </script>
 
 <template>
@@ -16,7 +64,9 @@ import "./../assets/home.js"
                     <p class="animated slideInDown">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu
                         diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo
                         magna dolore erat amet</p>
-                    <RouterLink to="/login" class="btn btn-primary py-3 px-4 animated slideInDown">Log In</RouterLink>
+
+                    <RouterLink v-if="!isAuthenticated" to="/login" class="btn btn-primary py-3 px-4 animated slideInDown">Log In</RouterLink>
+                    <RouterLink v-if="isAuthenticated" to="/dashboard" class="btn btn-primary py-3 px-4 animated slideInDown">Dashboard</RouterLink>
                 </div>
                 <div class="col-lg-6 animated fadeIn">
                     <img class="img-fluid animated pulse infinite" style="animation-duration: 3s;" src="./../assets/frontend/img/hero-1.png"

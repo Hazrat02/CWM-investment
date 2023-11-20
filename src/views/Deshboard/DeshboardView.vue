@@ -272,7 +272,11 @@ import './../../assets/base.js';
 //       transaction: [],
 //     };
 //   },
-
+//   methods:{
+//     reload(){
+//       window.location.reload(true);
+//     }
+//   },
 //   computed: {
 //     filteredUsers() {
 //       const oneMonthAgoUser = this.alluser.filter((item) => {
@@ -323,8 +327,8 @@ import './../../assets/base.js';
 //   },
 
 //   async created() {
-
-
+//     this.reload()
+//     // window.location.reload();
 //     // auth user data +++++++++++++++++++++++++++++
 
 //     const userStore = useAuthUserStore();

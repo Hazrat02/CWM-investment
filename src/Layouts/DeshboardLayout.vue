@@ -14,9 +14,25 @@ export default {
       isAuthenticated: false,
     };
   },
-  created() {
+  async created() {
     if (isAuthenticated()) {
       this.isAuthenticated = true;
+    }
+
+    const userStore = useAuthUserStore();
+    const authUser = userStore.authUser;
+
+    if (authUser) {
+      this.authUser = authUser;
+    } else {
+      // userStore.reSetAuthUser();
+      this.authUser = await userStore.reSetAuthUser();
+    }
+    if (this.authUser.role != '1') {
+      
+        
+
+          this.$router.push("/admin/dashboard");
     }
   },
   methods: {

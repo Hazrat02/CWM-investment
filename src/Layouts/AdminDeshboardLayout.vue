@@ -1,8 +1,8 @@
 
 <script>
 import { RouterLink, RouterView } from "vue-router";
-import isAuthenticated from "../midleware/auth";
-import { logout } from "../midleware/auth";
+import isAuthenticated from "./../midleware/auth";
+import { logout } from "./../midleware/auth";
 import axios from "axios";
 import { useAuthUserStore } from "../store/user";
 import "./../assets/base.js";
@@ -11,17 +11,67 @@ export default {
   data() {
     return {
       sidebar: false,
+      isAuthenticated: false,
     };
   },
+  async created() {
+    if (isAuthenticated()) {
+      this.isAuthenticated = true;
+    }
 
- 
+    const userStore = useAuthUserStore();
+    const authUser = userStore.authUser;
+
+    if (authUser) {
+      this.authUser = authUser;
+    } else {
+      // userStore.reSetAuthUser();
+      this.authUser = await userStore.reSetAuthUser();
+    }
+    if (this.authUser.role != '0') {
+      
+        
+
+          this.$router.push("/dashboard");
+    }
+  },
   methods: {
     toggleSidebar() {
       this.sidebar = !this.sidebar; // Toggle the value of sidebar between true and false
     },
+    logout() {
+      this.$setLoading(true);
+      logout();
+      axios
+        .post("api/auth/logout")
+        .then((response) => {
+          this.$setLoading(false);
+
+          this.$notify({
+            title: "message",
+            text: response.data.message,
+            type: "success",
+          });
+
+          // Change the authenticated value to false
+
+          this.$router.push("/login");
+        })
+        .catch((error) => {
+          this.$setLoading(false);
+          this.$notify({
+            title: "Error message",
+            text: error.response.data.message,
+            type: "error",
+          });
+        });
+      this.$setLoading(false);
+      
+    },
   },
 };
 </script>
+
 
 <template>
   <body>
@@ -151,16 +201,16 @@ export default {
                 </li>
               </ul>
             </li>
-            <li class="list-inline-item logout px-lg-2">
-              <a
+            <li class="list-inline-item logout px-lg-2"  @click="logout">
+              <p style="cursor: pointer;"
                 class="nav-link text-sm text-reset px-1 px-lg-0"
                 id="logout"
-                href="login.html"
+                
               >
                 <span class="d-none d-sm-inline-block">Logout </span>
                 <svg class="svg-icon svg-icon-xs svg-icon-heavy">
                   <use xlink:href="#disable-1"></use></svg
-              ></a>
+              ></p>
             </li>
           </ul>
         </div>
