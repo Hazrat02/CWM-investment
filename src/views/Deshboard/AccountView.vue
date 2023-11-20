@@ -17,12 +17,12 @@
                   <div class="d-flex align-items-center">
                     <img
                       class="avatar ms-3"
-                      src="./../../assets/deshboard/img/avatar-1.jpg"
+                      :src="authUser.profile"
                       alt="Tomas Hecktor"
                     />
                     <div class="ms-3">
-                      <h3 class="h5 mb-0">Tomas Hecktor</h3>
-                      <p class="text-sm fw-light mb-0">@tomhecktor</p>
+                      <h3 class="h5 mb-0">{{authUser.name}}</h3>
+                      <p class="text-sm fw-light mb-0">{{authUser.email}}</p>
                     </div>
                   </div>
                 </div>
@@ -30,7 +30,7 @@
                   <div
                     class="d-inline-block py-1 px-4 rounded-pill bg-dash-dark-3 fw-light text-sm"
                   >
-                    Wallet No:32535643
+                    Wallet No:{{authUser.wallet}}
                   </div>
                 </div>
                 <div class="col-lg-5">
@@ -42,7 +42,7 @@
                         <i class="fab fa-blogger-b me-2"></i>Currency:USD
                       </li>
                       <li class="list-inline-item">
-                        <i class="fas fa-code-branch me-2"></i>Balance:34355
+                        <i class="fas fa-code-branch me-2"></i>Balance:{{authUser.main_balance}}
                       </li>
                     </div>
                     <div class="col-lg-5">
@@ -66,6 +66,48 @@
     
   <script>
 import { RouterLink } from 'vue-router';
+
+import { useAuthUserStore } from "../../store/user";
+import isAuthenticated from "./../../midleware/auth";
+
+import axios from "axios";
+export default {
+  data() {
+    return {
+
+      authUser: [],
+      
+
+    };
+  },
+  methods: {
+    
+
+  },
+
+  async created() {
+
+    if (isAuthenticated() == true) {
+      // auth user data +++++++++++++++++++++++++++++
+
+      const userStore = useAuthUserStore();
+      const authUser = userStore.authUser;
+
+
+      if (authUser) {
+        this.authUser = authUser;
+      } else {
+        // userStore.reSetAuthUser();
+        this.authUser = await userStore.reSetAuthUser();
+      }
+
+    } else {
+      this.authUser = '';
+    }
+  
+    this.$setLoading(false);
+  },
+};
 
 </script>
 

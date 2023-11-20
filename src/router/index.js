@@ -291,7 +291,7 @@ router.beforeEach((to, from, next) => {
       next('/');
     } else {
       
-      axios.defaults.baseURL='https://admin.capitalswealthmanagement.com/';
+      axios.defaults.baseURL='http://127.0.0.1:8000/';
       axios.defaults.headers.common['Authorization']='bearer'+localStorage.getItem('token');
      
 

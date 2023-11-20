@@ -17,7 +17,7 @@
                   <div class="row align-items-end">
                     <div class="col-lg-5">
                       <p class="text-xl fw-light mb-0 text-dash-color-3">
-                        $7408
+                        ${{authUser.main_balance}}
                       </p>
                       <span class="d-block">Last In</span
                       ><small class="d-block"> 20-05-2023</small>
@@ -108,7 +108,7 @@
                             <!-- Stat item-->
                             <div class="d-flex"><i class="mt-3 fas fa-caret-up  text-success"></i>
                               <div class="ms-2">
-                                <p class="text-xl fw-normal mb-0">5.657</p>
+                                <p class="text-xl fw-normal mb-0">${{authUser.main_balance}}</p>
                                 <p class="text-uppercase text-sm fw-light mb-2">Wallet Account Balance</p>
                                 <div class="progress" style="height: 2px">
                                   <div class="progress-bar bg-dash-color-1" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
@@ -263,114 +263,76 @@
 import { useAuthUserStore } from "../../store/user";
 import { transactionStore } from "../../store/transaction";
 import './../../assets/base.js';
-// export default {
-//   data() {
-//     return {
-//       alluser: [],
-//       userCount: "",
-//       userChange: "",
-//       transaction: [],
-//     };
-//   },
-//   methods:{
-//     reload(){
-//       window.location.reload(true);
-//     }
-//   },
-//   computed: {
-//     filteredUsers() {
-//       const oneMonthAgoUser = this.alluser.filter((item) => {
-//         const itemDate = new Date(item.created_at);
-//         const thirtyDaysAgo = new Date();
-//         thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+export default {
+  data() {
+    return {
+      authUser: [],
+ 
+      transaction: [],
+    };
+  },
+  methods:{
 
-//         return item.vip > 0 && itemDate < thirtyDaysAgo;
-//       });
-//       const lastMonthUser = this.alluser.filter((item) => {
-//         const itemDate = new Date(item.created_at);
-//         const thirtyDaysAgo = new Date();
-//         thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  },
+  computed: {
+  
+    filterTrx() {
+      const oneMonthAgotransaction = this.transaction.filter((item) => {
+        const itemDate = new Date(item.created_at);
+        const thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
-//         return item.vip > 0 && itemDate >= thirtyDaysAgo;
-//       });
+        return itemDate < thirtyDaysAgo;
+      });
+      const lastMonthtransaction = this.transaction.filter((item) => {
+        const itemDate = new Date(item.created_at);
+        const thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
-//       return {
-//         count: this.alluser
-//           .filter((user) => user.vip > 0)
-//           .length.toString()
-//           .padStart(4, "0"),
-//         change: (lastMonthUser.length / oneMonthAgoUser.length) * 100,
-//       };
-//     },
-//     filterTrx() {
-//       const oneMonthAgotransaction = this.transaction.filter((item) => {
-//         const itemDate = new Date(item.created_at);
-//         const thirtyDaysAgo = new Date();
-//         thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+        return itemDate >= thirtyDaysAgo;
+      });
 
-//         return itemDate < thirtyDaysAgo;
-//       });
-//       const lastMonthtransaction = this.transaction.filter((item) => {
-//         const itemDate = new Date(item.created_at);
-//         const thirtyDaysAgo = new Date();
-//         thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+      return {
+        count: this.transaction.length.toString().padStart(4, "0"),
+        change:
+          (lastMonthtransaction.length / oneMonthAgotransaction.length) * 100,
+      };
+    },
+  },
 
-//         return itemDate >= thirtyDaysAgo;
-//       });
+  async created() {
 
-//       return {
-//         count: this.transaction.length.toString().padStart(4, "0"),
-//         change:
-//           (lastMonthtransaction.length / oneMonthAgotransaction.length) * 100,
-//       };
-//     },
-//   },
+   
+  
+   
+    const getTransaction = transactionStore();
 
-//   async created() {
-//     this.reload()
-//     // window.location.reload();
-//     // auth user data +++++++++++++++++++++++++++++
+    // Try to get the data from the store
+    const transactionData = getTransaction.allTransaction;
 
-//     const userStore = useAuthUserStore();
-//     const alluser = userStore.allUser;
+    if (transactionData) {
+      this.transaction = transactionData;
+    } else {
+      // If data is not available, fetch it and set the component property
+      this.transaction = await getTransaction.allUserTransaction();
+    }
 
-//     if (alluser) {
-//       this.alluser = alluser;
-//     } else {
-//       // userStore.reSetAuthUser();
-//       this.alluser = await userStore.getAllUser();
-//     }
-//     this.userCount = this.alluser.length.toString().padStart(4, "0");
+      const userStore = useAuthUserStore();
+      const authUser = userStore.authUser;
 
-//     const oneMonthAgoUser = this.alluser.filter((item) => {
-//       const itemDate = new Date(item.created_at); // Convert itemDate to a Date object
-//       const thirtyDaysAgo = new Date();
-//       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-//       return itemDate < thirtyDaysAgo;
-//     });
-//     const lastMonthUser = this.alluser.filter((item) => {
-//       const itemDate = new Date(item.created_at); // Convert itemDate to a Date object
-//       const thirtyDaysAgo = new Date();
-//       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-//       return itemDate >= thirtyDaysAgo;
-//     });
-//     this.userChange = (lastMonthUser.length / oneMonthAgoUser.length) * 100;
 
-//     const getTransaction = transactionStore();
+      if (authUser) {
+        this.authUser = authUser;
+        window.location.reload(true)
+      } else {
+        // userStore.reSetAuthUser();
+        this.authUser = await userStore.reSetAuthUser();
+      }
 
-//     // Try to get the data from the store
-//     const transactionData = getTransaction.allTransaction;
 
-//     if (transactionData) {
-//       this.transaction = transactionData;
-//     } else {
-//       // If data is not available, fetch it and set the component property
-//       this.transaction = await getTransaction.allUserTransaction();
-//     }
-
-//     this.$setLoading(false);
-//   },
-// };
+    this.$setLoading(false);
+  },
+};
 </script>
 
 <style scoped>
