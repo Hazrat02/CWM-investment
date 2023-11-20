@@ -17,18 +17,20 @@
                     <div class="position-relative d-inline-block">
                       <img
                         class="avatar avatar-lg mb-3"
-                        src="./../../assets/deshboard/img/avatar-1.jpg"
+                        :src="authUser.profile"
                         alt="Richard Nevoreski"
                       /><span class="avatar-badge bg-dash-color-1"
-                        ><i class="fa fa-close"></i
-                      ></span>
+                        ><i v-if="authUser.email_verified_at" class="fa fa-check"></i>
+                        <i else class="	fa fa-times"></i>
+                      
+                      </span>
                     </div>
-                    <h3 class="h3 mb-0">Richard Nevoreski</h3>
-                    <p class="text-sm fw-light">hazratbd90@gmail.com</p>
+                    <h3 class="h3 mb-0">{{authUser.name}}</h3>
+                    <p class="text-sm fw-light">{{authUser.gmail}}</p>
                     <div
                       class="d-inline-block py-1 px-4 rounded-pill bg-dash-dark-3 fw-light text-sm mb-4"
                     >
-                      Client ID: 72047
+                      Client ID: {{authUser.id}}
                     </div>
                     <ul
                       class="list-inline text-center mb-0 d-flex justify-content-between text-sm mb-0"
@@ -54,11 +56,11 @@
                   <div class="row gy-3 align-items-center">
                     <div class="col-md-6 col-12">
                       <div class="col-lg-10">
-                        <div><b for="">First Name: </b><span>hazrat</span></div>
+                        <div><b for="">Name: </b><span>{{authUser.name}}</span></div>
                       </div>
                       <div class="col-lg-10">
                         <div>
-                          <b for="">Date of birth: </b><span>20/09/2001</span>
+                          <b for="">Date of birth: </b><span>{{authUser.birth}}</span>
                         </div>
                       </div>
                       <div class="col-lg-10">
@@ -67,7 +69,7 @@
                       <div class="col-lg-10">
                         <div>
                           <b for="">Mobile Number: </b
-                          ><span>+8801237482347</span>
+                          ><span>{{authUser.Phone}}</span>
                         </div>
                       </div>
                       <div class="col-lg-10">
@@ -77,7 +79,7 @@
                         </div>
                       </div>
                       <div class="col-lg-10 mb-3" >
-                        <div><b for="">Country: </b><span>U.K</span></div>
+                        <div><b for="">Country: </b><span>{{authUser.country}}</span></div>
                       </div>
                       <button
               class="btn btn-primary"
@@ -191,26 +193,39 @@
                   <div class="modal-body">
                     <form>
                       <div class="mb-3">
-                        <label class="form-label" for="modalInputEmail1"
+                        <label class=" " for="modalInputEmail1"
                           >Date of birth</label
                         >
                         <input
                           class="form-control"
                           id="modalInputEmail1"
                           type="date"
+                          :value="authUser.birth"
                           aria-describedby="emailHelp"
                         />
                         
                       </div>
                       <div class="mb-3">
-                        <label class="form-label" for="mobile" 
+                        <label class=" " for="mobile" 
                           >Mobile Number</label
                         >
                         <input
                           class="form-control"
                           id="mobile"
                           type="text"
+                          :value="authUser.Phone"
+                        />
                         
+                      </div>
+                      <div class="mb-3">
+                        <label class="" for="profile" 
+                          >Profile</label
+                        >
+                        <input
+                          class="form-control"
+                          id="profile"
+                          type="file"
+                          
                         />
                         
                       </div>
@@ -223,7 +238,7 @@
 
                          
                       <div class="mb-3">
-                        <label class="form-label" for="modalInputPassword1"
+                        <label class=" " for="modalInputPassword1"
                           >New Password</label
                         >
                         <input
@@ -233,12 +248,12 @@
                         />
                       </div>
                       <div class="mb-3">
-                        <label class="form-label" for="modalInputPassword1"
+                        <label class=" " for="modalInputPassword2"
                           >Confirm Password</label
                         >
                         <input
                           class="form-control"
-                          id="modalInputPassword1"
+                          id="modalInputPassword2"
                           type="password"
                         />
                       </div>
@@ -265,114 +280,58 @@
 </template>
     
   <script>
-import { useAuthUserStore } from "../../store/user";
-import { transactionStore } from "../../store/transaction";
+import { RouterLink } from 'vue-router';
 
+import { useAuthUserStore } from "../../store/user";
+import isAuthenticated from "./../../midleware/auth";
+
+import axios from "axios";
 export default {
   data() {
     return {
+
+      authUser: [],
       checkbox:'',
-      alluser: [],
-      userCount: "",
-      userChange: "",
-      transaction: [],
+      
+
     };
   },
+  methods: {
+    
 
-  // computed: {
-  //   filteredUsers() {
-  //     const oneMonthAgoUser = this.alluser.filter((item) => {
-  //       const itemDate = new Date(item.created_at);
-  //       const thirtyDaysAgo = new Date();
-  //       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  },
 
-  //       return item.vip > 0 && itemDate < thirtyDaysAgo;
-  //     });
-  //     const lastMonthUser = this.alluser.filter((item) => {
-  //       const itemDate = new Date(item.created_at);
-  //       const thirtyDaysAgo = new Date();
-  //       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  async created() {
 
-  //       return item.vip > 0 && itemDate >= thirtyDaysAgo;
-  //     });
+    if (isAuthenticated() == true) {
+      // auth user data +++++++++++++++++++++++++++++
 
-  //     return {
-  //       count: this.alluser
-  //         .filter((user) => user.vip > 0)
-  //         .length.toString()
-  //         .padStart(4, "0"),
-  //       change: (lastMonthUser.length / oneMonthAgoUser.length) * 100,
-  //     };
-  //   },
-  //   filterTrx() {
-  //     const oneMonthAgotransaction = this.transaction.filter((item) => {
-  //       const itemDate = new Date(item.created_at);
-  //       const thirtyDaysAgo = new Date();
-  //       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+      const userStore = useAuthUserStore();
+      const authUser = userStore.authUser;
 
-  //       return itemDate < thirtyDaysAgo;
-  //     });
-  //     const lastMonthtransaction = this.transaction.filter((item) => {
-  //       const itemDate = new Date(item.created_at);
-  //       const thirtyDaysAgo = new Date();
-  //       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
-  //       return itemDate >= thirtyDaysAgo;
-  //     });
+      if (authUser) {
+        this.authUser = authUser;
+      } else {
+        // userStore.reSetAuthUser();
+        this.authUser = await userStore.reSetAuthUser();
+      }
 
-  //     return {
-  //       count: this.transaction.length.toString().padStart(4, "0"),
-  //       change:
-  //         (lastMonthtransaction.length / oneMonthAgotransaction.length) * 100,
-  //     };
-  //   },
-  // },
-
-  // async created() {
-  //   // auth user data +++++++++++++++++++++++++++++
-
-  //   const userStore = useAuthUserStore();
-  //   const alluser = userStore.allUser;
-
-  //   if (alluser) {
-  //     this.alluser = alluser;
-  //   } else {
-  //     // userStore.reSetAuthUser();
-  //     this.alluser = await userStore.getAllUser();
-  //   }
-  //   this.userCount = this.alluser.length.toString().padStart(4, "0");
-
-  //   const oneMonthAgoUser = this.alluser.filter((item) => {
-  //     const itemDate = new Date(item.created_at); // Convert itemDate to a Date object
-  //     const thirtyDaysAgo = new Date();
-  //     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-  //     return itemDate < thirtyDaysAgo;
-  //   });
-  //   const lastMonthUser = this.alluser.filter((item) => {
-  //     const itemDate = new Date(item.created_at); // Convert itemDate to a Date object
-  //     const thirtyDaysAgo = new Date();
-  //     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-  //     return itemDate >= thirtyDaysAgo;
-  //   });
-  //   this.userChange = (lastMonthUser.length / oneMonthAgoUser.length) * 100;
-
-  //   const getTransaction = transactionStore();
-
-  //   // Try to get the data from the store
-  //   const transactionData = getTransaction.allTransaction;
-
-  //   if (transactionData) {
-  //     this.transaction = transactionData;
-  //   } else {
-  //     // If data is not available, fetch it and set the component property
-  //     this.transaction = await getTransaction.allUserTransaction();
-  //   }
-
-  //   this.$setLoading(false);
-  // },
+    } else {
+      this.authUser = '';
+    }
+  
+    this.$setLoading(false);
+  },
 };
+
+
 </script>
  
 <style scoped>
 @import "./../../assets/main.css";
+label{
+    font-weight: 500;
+    color: rgb(230, 234, 238);
+}
 </style>

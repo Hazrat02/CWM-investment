@@ -127,7 +127,7 @@ const router = createRouter({
 
       component:KycView,
       meta:{
-        requiresGuest:true,
+        requiresAuth:true,
       },
     },
     {
