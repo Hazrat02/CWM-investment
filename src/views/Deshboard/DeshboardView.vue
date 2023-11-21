@@ -276,28 +276,28 @@ export default {
   },
   computed: {
   
-    filterTrx() {
-      const oneMonthAgotransaction = this.transaction.filter((item) => {
-        const itemDate = new Date(item.created_at);
-        const thirtyDaysAgo = new Date();
-        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    // filterTrx() {
+    //   const oneMonthAgotransaction = this.transaction.filter((item) => {
+    //     const itemDate = new Date(item.created_at);
+    //     const thirtyDaysAgo = new Date();
+    //     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
-        return itemDate < thirtyDaysAgo;
-      });
-      const lastMonthtransaction = this.transaction.filter((item) => {
-        const itemDate = new Date(item.created_at);
-        const thirtyDaysAgo = new Date();
-        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    //     return itemDate < thirtyDaysAgo;
+    //   });
+    //   const lastMonthtransaction = this.transaction.filter((item) => {
+    //     const itemDate = new Date(item.created_at);
+    //     const thirtyDaysAgo = new Date();
+    //     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
-        return itemDate >= thirtyDaysAgo;
-      });
+    //     return itemDate >= thirtyDaysAgo;
+    //   });
 
-      return {
-        count: this.transaction.length.toString().padStart(4, "0"),
-        change:
-          (lastMonthtransaction.length / oneMonthAgotransaction.length) * 100,
-      };
-    },
+    //   return {
+    //     count: this.transaction.length.toString().padStart(4, "0"),
+    //     change:
+    //       (lastMonthtransaction.length / oneMonthAgotransaction.length) * 100,
+    //   };
+    // },
   },
 
   async created() {
@@ -305,17 +305,17 @@ export default {
    
   
    
-    const getTransaction = transactionStore();
+    // const getTransaction = transactionStore();
 
-    // Try to get the data from the store
-    const transactionData = getTransaction.allTransaction;
+    // // Try to get the data from the store
+    // const transactionData = getTransaction.allTransaction;
 
-    if (transactionData) {
-      this.transaction = transactionData;
-    } else {
-      // If data is not available, fetch it and set the component property
-      this.transaction = await getTransaction.allUserTransaction();
-    }
+    // if (transactionData) {
+    //   this.transaction = transactionData;
+    // } else {
+    //   // If data is not available, fetch it and set the component property
+    //   this.transaction = await getTransaction.allUserTransaction();
+    // }
 
       const userStore = useAuthUserStore();
       const authUser = userStore.authUser;

@@ -115,11 +115,11 @@
                           v-model="method" required
                         >
                           <option selected disabled>Select</option>
-                          <option value="1">Bitcoin</option>
-                          <option value="2">BNB</option>
-                          <option value="3">Lite Coin</option>
-                          <option value="3">Trust Wallet</option>
-                          <option value="3">Bit Pay</option>
+                          <option value="btc">Bitcoin</option>
+                          <option value="bnb">BNB</option>
+                          <option value="ltc">Lite Coin</option>
+                          <option value="Trust Wallet">Trust Wallet</option>
+                          <option value="Bit Pay">Bit Pay</option>
                         </select>
                       </div>
                       <div class="">
@@ -171,6 +171,7 @@ export default {
         .then((response) => {
           this.$setLoading(false);
           // transactionStore===================================
+          this.$router.push('/transaction')
 
           this.$notify({
             title: "message",
