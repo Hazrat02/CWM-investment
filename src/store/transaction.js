@@ -24,6 +24,8 @@ export const transactionStore = defineStore("transaction", {
         const response = await axios.get(
           "/api/transaction"
         );
+  
+
         this.setTransaction(response.data);
         return response.data; // Return the fetched data
       } catch (error) {

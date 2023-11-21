@@ -53,6 +53,24 @@ export const useAuthUserStore = defineStore('authUser', {
    
       return data;
     },
+
+    deleteUser(id) {
+      
+      this.allUser = this.allUser.filter((item) => item.id !== id);
+
+
+      return this.allUser
+      
+    },
+
+
+
+
+
+
+
+
+
     clearAuthUser() {
       this.user = null;
       this.saveUserToLocalStorage(null);
