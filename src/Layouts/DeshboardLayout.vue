@@ -12,6 +12,7 @@ export default {
     return {
       sidebar: false,
       isAuthenticated: false,
+      authUser:[]
     };
   },
   async created() {
@@ -69,6 +70,7 @@ export default {
       
     },
   },
+
 };
 </script>
 
@@ -228,11 +230,11 @@ export default {
         <div class="sidebar-header d-flex align-items-center p-4">
           <img
             class="avatar shadow-0 img-fluid rounded-circle"
-            src="./../assets/deshboard/img/avatar-6.jpg"
+            :src="authUser.profile"
             alt="..."
           />
           <div class="ms-3 title">
-            <h1 class="h5 mb-1">Mark Stephen</h1>
+            <h1 class="h5 mb-1">{{authUser.name}}</h1>
             <p class="text-sm text-gray-700 mb-0 lh-1">Investor</p>
           </div>
         </div>
