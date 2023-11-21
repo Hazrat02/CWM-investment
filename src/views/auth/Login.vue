@@ -132,7 +132,11 @@
                             id="form2Example33"
                             required
                           />
-                          <p><RouterLink style="color: green;" to="/contact">Read all tarm.</RouterLink>Uderested?</p>
+                          <p>
+                            <RouterLink style="color: green" to="/contact"
+                              >Read all tarm.</RouterLink
+                            >Uderested?
+                          </p>
                         </div>
 
                         <!-- Submit button -->
@@ -148,8 +152,13 @@
                           </button>
                         </div>
                         <div>
-                          <label>Haven't any account? /<RouterLink style="color: green;" to="/register">Singup</RouterLink></label>
-
+                          <label
+                            >Haven't any account? /<RouterLink
+                              style="color: green"
+                              to="/register"
+                              >Singup</RouterLink
+                            ></label
+                          >
                         </div>
                       </form>
                     </div>
@@ -174,16 +183,14 @@
 
 
 <script>
-import axios from 'axios';
-import { login } from '../../midleware/auth.js';
-import { useAuthUserStore } from '../../store/user';
+import axios from "axios";
+import { login } from "../../midleware/auth.js";
+import { useAuthUserStore } from "../../store/user";
 
 // import { notify } from 'vue3-notify'
 export default {
-  
   data() {
     return {
-   
       showicon: true,
       showPassword: false,
       email: "",
@@ -197,9 +204,8 @@ export default {
     icon() {
       return this.showicon ? "bi-eye-slash-fill" : "bi-eye-fill";
     },
-   
   },
-  created(){
+  created() {
     this.$setLoading(false);
   },
 
@@ -207,7 +213,6 @@ export default {
     togglePasswordVisibility() {
       this.showPassword = !this.showPassword;
       this.showicon = !this.showicon;
-
     },
     showNotification() {
       this.$notify({
@@ -215,34 +220,32 @@ export default {
         text: "Hello user!",
       });
     },
-    login() {
+  login() {
       this.$setLoading(true);
-        const data = {
-      email: this.email,
-      password: this.password
-    };
+      const data = {
+        email: this.email,
+        password: this.password,
+      };
 
-      axios
-        .post("/api/auth/login",data)
+    axios
+        .post("/api/auth/login", data)
         .then((response) => {
-          console.log(response.data.user);
           login(response.data.authorisation.token);
+
           const userStore = useAuthUserStore();
 
-          const user =response.data.authUser;
-          userStore.setAuthUser(user);
-          // this.$router.push('/dashboard')
-    
-          if (response.data.user.role =='0') {
-            this.$router.push('/admin/dashboard')
+          userStore.setAuthUser(response.data.user);
+          if (response.data.user.role == "0") {
+            this.$router.push("/admin/dashboard");
           } else {
-            this.$router.push('/dashboard')
-
+            this.$router.push("/dashboard");
           }
+
+          
           this.$setLoading(false);
           this.$notify({
             title: "message",
-            text: 'User succesfully login',
+            text: "User succesfully login",
             type: "success",
           });
         })
@@ -250,11 +253,13 @@ export default {
           // Handle the error
           this.$setLoading(false);
           this.$notify({
-        title: "Error message",
-        text: error.response.data.message,
-        type:'error'
-      });
+            title: "Error message",
+            text: error.response.data.message,
+            type: "error",
+          });
         });
+
+       
     },
   },
 };

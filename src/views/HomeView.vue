@@ -2,7 +2,7 @@
 import isAuthenticated from "./../midleware/auth";
 import { logout } from "./../midleware/auth";
 import axios from "axios";
-
+import { useAuthUserStore } from "./../store/user"
 export default {
   data() {
     return {
@@ -10,9 +10,20 @@ export default {
     };
   },
 
-  created() {
+ async created() {
     if (isAuthenticated()) {
       this.isAuthenticated = true;
+
+      const userStore = useAuthUserStore();
+      const authUser = userStore.authUser;
+
+
+      if (authUser) {
+        this.authUser = authUser;
+      } else {
+        // userStore.reSetAuthUser();
+        this.authUser = await userStore.reSetAuthUser();
+      }
     }
   },
 
