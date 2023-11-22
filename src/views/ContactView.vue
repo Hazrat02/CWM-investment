@@ -1,11 +1,24 @@
 
-
 <script>
-import "./../assets/home.js"
+
+export default {
+  data() {
+    return {
+    };
+  },
+
+ async created() {
+   
+    this.$setLoading(false);
+  },
 
 
+  methods: {
+  
+   
+  },
+};
 </script>
-
 <template>
   <div>
     <HomeLayout>

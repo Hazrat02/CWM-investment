@@ -25,6 +25,7 @@ export default {
         this.authUser = await userStore.reSetAuthUser();
       }
     }
+    this.$setLoading(false);
   },
 
 

@@ -15,11 +15,10 @@ export default {
     if (isAuthenticated()) {
       this.isAuthenticated = true;
     }
+
   },
 
-
   methods: {
-  
     logout() {
       this.$setLoading(true);
       logout();
@@ -47,7 +46,6 @@ export default {
           });
         });
       this.$setLoading(false);
-      
     },
   },
 };
@@ -56,12 +54,17 @@ export default {
 <template>
   <body>
     <!-- Spinner Start -->
-    <!-- <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div v-if="this.$isLoading()" id="spinner"
+        class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center" style="background-color: rgba(100, 87, 87, 0.692)">
         <div class="spinner-grow text-primary" role="status"></div>
-    </div> -->
+    </div>
     <!-- Spinner End -->
-
+    <!-- <div v-if="this.$isLoading()" id="preloader">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div> -->
     <!-- Navbar Start -->
     <nav
       class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5"
@@ -88,8 +91,12 @@ export default {
         <div class="navbar-nav ms-auto py-4 py-lg-0">
           <RouterLink to="/" class="nav-item nav-link active">Home</RouterLink>
           <RouterLink to="/about" class="nav-item nav-link">About</RouterLink>
-          <RouterLink to="/servics" class="nav-item nav-link">Service</RouterLink>
-          <RouterLink to="/contact"  class="nav-item nav-link">Contact</RouterLink>
+          <RouterLink to="/servics" class="nav-item nav-link"
+            >Service</RouterLink
+          >
+          <RouterLink to="/contact" class="nav-item nav-link"
+            >Contact</RouterLink
+          >
           <div class="nav-item dropdown">
             <a
               href="#"
@@ -98,15 +105,29 @@ export default {
               >More</a
             >
             <div class="dropdown-menu shadow-sm m-0">
-              <div v-if="isAuthenticated" href="feature.html" @click="logout" class="dropdown-item">Logout</div>
-              <router-link v-if="!isAuthenticated" class="dropdown-item" to="/login">Login</router-link>
+              <div
+                v-if="isAuthenticated"
+                href="feature.html"
+                @click="logout"
+                class="dropdown-item"
+              >
+                Logout
+              </div>
+              <router-link
+                v-if="!isAuthenticated"
+                class="dropdown-item"
+                to="/login"
+                >Login</router-link
+              >
 
-              <RouterLink v-if="isAuthenticated" to="/dashboard" class="dropdown-item">Dashboard</RouterLink>
-
-
+              <RouterLink
+                v-if="isAuthenticated"
+                to="/dashboard"
+                class="dropdown-item"
+                >Dashboard</RouterLink
+              >
             </div>
           </div>
-          
         </div>
         <div class="h-100 d-lg-inline-flex align-items-center d-none">
           <a
@@ -165,7 +186,7 @@ export default {
                 type="text"
                 placeholder="Your email"
               />
-              
+
               <button
                 type="button"
                 class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2"
