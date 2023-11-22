@@ -34,9 +34,9 @@ export default {
                     <h1 class="display-4 mb-3 animated slideInDown">About Us</h1>
                     <nav aria-label="breadcrumb animated slideInDown">
                         <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">About Us</li>
+                            <li class="breadcrumb-item"><RouterLink to="/">Home</RouterLink></li>
+
+                            <li class="breadcrumb-item " aria-current="page">About Us</li>
                         </ol>
                     </nav>
                 </div>
@@ -49,42 +49,90 @@ export default {
     </div>
     <!-- Header End -->
 
-
-    <!-- About Start -->
-    <div class="container-xxl py-5">
+ <!-- About Start -->
+ <div class="container-xxl py-5">
         <div class="container">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <img class="img-fluid" src="./../assets/frontend/img/about.png" alt="">
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="h-100">
-                        <h1 class="display-6">About Us</h1>
-                        <p class="text-primary fs-5 mb-4">The Most Trusted Cryptocurrency Platform</p>
-                        <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos.
-                            Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
-                        </p>
-                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet
-                            diam et eos. Clita erat ipsum et lorem et sit.</p>
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"></i>
-                            <span>Tempor erat elitr rebum at clita</span>
-                        </div>
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"></i>
-                            <span>Tempor erat elitr rebum at clita</span>
-                        </div>
-                        <div class="d-flex align-items-center mb-4">
-                            <i class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"></i>
-                            <span>Tempor erat elitr rebum at clita</span>
-                        </div>
-                        <a class="btn btn-primary py-3 px-4" href="">Read More</a>
-                    </div>
-                </div>
+          <div class="row g-5 align-items-center">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+              <img
+                class="img-fluid"
+                src="./../assets/frontend/img/about.png"
+                alt=""
+              />
             </div>
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+              <div class="h-100">
+                <h1 class="display-6">About Us</h1>
+                <p class="text-primary fs-5 mb-4">
+                  The Most Trusted Cryptocurrency Platform
+                </p>
+                <p>
+                  Research backed data-driven investment strategies. We choose
+                  the right asset mix for your risk profile in the all market
+                  conditions. We add incremental alpha using dynamic allocation
+                  to equity factor models.
+                </p>
+
+                <div class="d-flex align-items-center mb-2">
+                  <i
+                    class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"
+                  ></i>
+                  <span
+                    >Factor Investing - We explain the market movement using
+                    quantitative equity factor models.</span
+                  >
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                  <i
+                    class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"
+                  ></i>
+                  <span
+                    >Regime Modelling - Markets do not stay the same. Our regime
+                    models forecast the market cycle.
+                  </span>
+                </div>
+                <div class="d-flex align-items-center mb-4">
+                  <i
+                    class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"
+                  ></i>
+                  <span
+                    >Momentum Investing - Momentum is the stringest factor in
+                    economics and an important part of our philosophy</span
+                  >
+                </div>
+                <div class="d-flex align-items-center mb-4">
+                  <i
+                    class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"
+                  ></i>
+                  <span
+                    >Risk Modelling Risk Management is at the core of our
+                    investing. We have a multi-level approach.
+                  </span>
+                </div>
+                <div class="d-flex align-items-center mb-4">
+                  <i
+                    class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"
+                  ></i>
+                  <span
+                    >Asset Allocation - We choose the best mix of investment
+                    assets for any market condition.</span
+                  >
+                </div>
+                <div class="d-flex align-items-center mb-4">
+                  <i
+                    class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"
+                  ></i>
+                  <span
+                    >Artificial Intelligence - We use machine learning models to
+                    forecast risk and reward in the market
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-    <!-- About End -->
+      </div>
+      <!-- About End -->
 
 
     </HomeLayout>

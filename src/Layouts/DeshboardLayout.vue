@@ -82,6 +82,7 @@ export default {
 
 <template>
   <body>
+    
     <header class="header">
       <nav
         class="navbar navbar-expand-lg py-3 bg-dash-dark-2 border-bottom border-dash-dark-1 z-index-10"
@@ -128,18 +129,18 @@ export default {
           class="container-fluid d-flex align-items-center justify-content-between py-1"
         >
           <div class="navbar-header d-flex align-items-center">
-            <a class="navbar-brand text-uppercase text-reset" href="index.html">
+            <Routerlink to="/" class="navbar-brand text-uppercase text-reset" href="index.html">
               <div class="brand-text brand-big">
                 <img
-                  style="width: 100px; height: 50px"
-                  src="./../assets/deshboard/img/logo.png"
+                  style="width: 140px; "
+                  src="./../assets/deshboard/img/logo4.png"
                   alt=""
                 />
               </div>
               <div class="brand-text brand-sm">
                 <strong class="text-primary">C</strong><strong>W</strong
                 ><strong>M</strong>
-              </div></a
+              </div></Routerlink
             >
             <button
               class="sidebar-toggle"

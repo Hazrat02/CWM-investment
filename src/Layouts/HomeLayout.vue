@@ -73,9 +73,9 @@ export default {
         <h2 class="m-0 text-primary">
           <img
             class="img-fluid me-2"
-            src="./../assets/deshboard/img/logo.png"
+            src="./../assets/deshboard/img/logo3.png"
             alt=""
-            style="width: 120px"
+            style="width: 140px"
           />
         </h2>
       </RouterLink>
@@ -89,15 +89,23 @@ export default {
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-4 py-lg-0">
-          <RouterLink to="/" class="nav-item nav-link active">Home</RouterLink>
-          <RouterLink to="/about" class="nav-item nav-link">About</RouterLink>
-          <RouterLink to="/servics" class="nav-item nav-link"
+          <RouterLink to="/" class="nav-item nav-link  " :class="{
+              active: this.$route.path === '/',
+            }">Home</RouterLink>
+          <RouterLink to="/about" class="nav-item nav-link" :class="{
+              active: this.$route.path === '/about',
+            }">About</RouterLink>
+          <RouterLink :class="{
+              active: this.$route.path === '/servics',
+            }" to="/servics" class="nav-item nav-link"
             >Service</RouterLink
           >
-          <RouterLink to="/contact" class="nav-item nav-link"
+          <RouterLink to="/contact" :class="{
+              active: this.$route.path === '/contact',
+            }" class="nav-item nav-link"
             >Contact</RouterLink
           >
-          <div class="nav-item dropdown">
+          <!-- <div class="nav-item dropdown">
             <a
               href="#"
               class="nav-link dropdown-toggle"
@@ -127,24 +135,21 @@ export default {
                 >Dashboard</RouterLink
               >
             </div>
-          </div>
+          </div> -->
         </div>
-        <div class="h-100 d-lg-inline-flex align-items-center d-none">
-          <a
-            class="btn btn-square rounded-circle bg-light text-primary me-2"
-            href=""
-            ><i class="fab fa-facebook-f"></i
-          ></a>
-          <a
-            class="btn btn-square rounded-circle bg-light text-primary me-2"
-            href=""
-            ><i class="fab fa-twitter"></i
-          ></a>
-          <a
-            class="btn btn-square rounded-circle bg-light text-primary me-0"
-            href=""
-            ><i class="fab fa-linkedin-in"></i
-          ></a>
+        <div class="nav-item nav-link">
+          <RouterLink
+                v-if="!isAuthenticated"
+                to="/login"
+                class=" btn-dark py-3 px-4 animated slideInDown "
+                >LOGIN</RouterLink
+              >
+              <RouterLink
+                v-if="isAuthenticated"
+                to="/dashboard"
+                class=" btn-dark py-3 px-4 animated slideInDown"
+                >Dashboard</RouterLink
+              >
         </div>
       </div>
     </nav>
@@ -156,7 +161,7 @@ export default {
 
     <!-- Footer Start -->
     <div
-      class="container-fluid bg-light footer mt-5 pt-5 wow fadeIn"
+      class="container-fluid bg-light footer pt-5 wow fadeIn"
       data-wow-delay="0.1s"
     >
       <div class="container py-5">
@@ -165,36 +170,16 @@ export default {
             <h1 class="text-primary mb-4">
               <img
                 class="img-fluid me-2"
-                src="./../assets/frontend/img/icon-1.png"
+                src="./../assets/deshboard/img/logo3.png"
                 alt=""
-                style="width: 45px"
-              />CryptoCoin
+                style="width: 160px"
+              />
             </h1>
             <span
-              >Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita
-              erat ipsum et lorem et sit, sed stet lorem sit clita. Diam dolor
-              diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et
-              lorem et sit.</span
+              >Our Portfolio Managers and Research Analysts Integrate ESG analysis into our investment process, where available, by focusing on companies with sustainable business models and evaluating ESG-related risks as part of the proprietary research recommendations we use throughout the firm.</span
             >
           </div>
-          <div class="col-md-6">
-            <h5 class="mb-4">Newsletter</h5>
-            <p>Clita erat ipsum et lorem et sit, sed stet lorem sit clita.</p>
-            <div class="position-relative">
-              <input
-                class="form-control bg-transparent w-100 py-3 ps-4 pe-5"
-                type="text"
-                placeholder="Your email"
-              />
-
-              <button
-                type="button"
-                class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2"
-              >
-                SignUp
-              </button>
-            </div>
-          </div>
+          
           <div class="col-lg-3 col-md-6">
             <h5 class="mb-4">Get In Touch</h5>
             <p>
@@ -203,37 +188,15 @@ export default {
             <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
             <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
           </div>
-          <div class="col-lg-3 col-md-6">
-            <h5 class="mb-4">Our Services</h5>
-            <a class="btn btn-link" href="">Currency Wallet</a>
-            <a class="btn btn-link" href="">Currency Transaction</a>
-            <a class="btn btn-link" href="">Bitcoin Investment</a>
-            <a class="btn btn-link" href="">Token Sale</a>
-          </div>
+         
           <div class="col-lg-3 col-md-6">
             <h5 class="mb-4">Quick Links</h5>
-            <a class="btn btn-link" href="">About Us</a>
-            <a class="btn btn-link" href="">Contact Us</a>
-            <a class="btn btn-link" href="">Our Services</a>
-            <a class="btn btn-link" href="">Terms & Condition</a>
+            <RouterLink to="/about" class="btn btn-link" >About Us</RouterLink>
+            <RouterLink to="/contact" class="btn btn-link" >Contact Us</RouterLink>
+            <RouterLink to="/servics" class="btn btn-link" >Our Services</RouterLink>
+            <RouterLink to="/contact" class="btn btn-link" >Terms & Condition</RouterLink>
           </div>
-          <div class="col-lg-3 col-md-6">
-            <h5 class="mb-4">Follow Us</h5>
-            <div class="d-flex">
-              <a class="btn btn-square rounded-circle me-1" href=""
-                ><i class="fab fa-twitter"></i
-              ></a>
-              <a class="btn btn-square rounded-circle me-1" href=""
-                ><i class="fab fa-facebook-f"></i
-              ></a>
-              <a class="btn btn-square rounded-circle me-1" href=""
-                ><i class="fab fa-youtube"></i
-              ></a>
-              <a class="btn btn-square rounded-circle me-1" href=""
-                ><i class="fab fa-linkedin-in"></i
-              ></a>
-            </div>
-          </div>
+          
         </div>
       </div>
       <div class="container-fluid copyright">
@@ -244,9 +207,7 @@ export default {
             </div>
             <div class="col-md-6 text-center text-md-end">
               <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-              Designed By
-              <a href="https://htmlcodex.com">HTML Codex</a> Distributed By
-              <a href="https://themewagon.com">ThemeWagon</a>
+             
             </div>
           </div>
         </div>
@@ -255,11 +216,11 @@ export default {
     <!-- Footer End -->
 
     <!-- Back to Top -->
-    <a
-      href="#"
+    <!-- <a
+      
       class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"
       ><i class="bi bi-arrow-up"></i
-    ></a>
+    ></a> -->
   </body>
 </template>
 <style scoped>

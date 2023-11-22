@@ -2,7 +2,7 @@
 import isAuthenticated from "./../midleware/auth";
 import { logout } from "./../midleware/auth";
 import axios from "axios";
-import { useAuthUserStore } from "./../store/user"
+import { useAuthUserStore } from "./../store/user";
 export default {
   data() {
     return {
@@ -10,13 +10,12 @@ export default {
     };
   },
 
- async created() {
+  async created() {
     if (isAuthenticated()) {
       this.isAuthenticated = true;
 
       const userStore = useAuthUserStore();
       const authUser = userStore.authUser;
-
 
       if (authUser) {
         this.authUser = authUser;
@@ -28,9 +27,7 @@ export default {
     this.$setLoading(false);
   },
 
-
   methods: {
-  
     logout() {
       this.$setLoading(true);
       logout();
@@ -58,7 +55,6 @@ export default {
           });
         });
       this.$setLoading(false);
-      
     },
   },
 };
@@ -67,420 +63,532 @@ export default {
 <template>
   <div>
     <HomeLayout>
-        <!-- Header Start -->
-    <div class="container-fluid hero-header bg-light py-5 mb-5">
+      <!-- Header Start -->
+      <div class="container-fluid hero-header bg-light py-5 mb-5">
         <div class="container py-5">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-6">
-                    <h1 class="display-4 mb-3 animated slideInDown">Make Better Life With Trusted CryptoCoin</h1>
-                    <p class="animated slideInDown">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu
-                        diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo
-                        magna dolore erat amet</p>
+          <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+              <h1 class="mb-3 animated slideInDown">
+                Your trust is our guide. Building and Preserving Wealth Since
+                1989
+              </h1>
+              <p class="animated slideInDown">
+                Our Portfolio Managers and Research Analysts Integrate ESG
+                analysis into our investment process, where available, by
+                focusing on companies with sustainable business models and
+                evaluating ESG-related risks as part of the proprietary research
+                recommendations we use throughout the firm.
+              </p>
 
-                    <RouterLink v-if="!isAuthenticated" to="/login" class="btn btn-primary py-3 px-4 animated slideInDown">Log In</RouterLink>
-                    <RouterLink v-if="isAuthenticated" to="/dashboard" class="btn btn-primary py-3 px-4 animated slideInDown">Dashboard</RouterLink>
-                </div>
-                <div class="col-lg-6 animated fadeIn">
-                    <img class="img-fluid animated pulse infinite" style="animation-duration: 3s;" src="./../assets/frontend/img/hero-1.png"
-                        alt="">
-                </div>
+              <RouterLink
+                v-if="!isAuthenticated"
+                to="/login"
+                class="btn btn-primary py-3 px-4 animated slideInDown"
+                >LOGIN</RouterLink
+              >
+              <RouterLink
+                v-if="isAuthenticated"
+                to="/dashboard"
+                class="btn btn-primary py-3 px-4 animated slideInDown"
+                >Dashboard</RouterLink
+              >
             </div>
+            <div class="col-lg-6 animated fadeIn">
+              <img
+                class="img-fluid animated pulse infinite"
+                style="animation-duration: 3s"
+                src="./../assets/frontend/img/hero-1.png"
+                alt=""
+              />
+            </div>
+          </div>
         </div>
-    </div>
-    <!-- Header End -->
+      </div>
+      <!-- Header End -->
 
-
-    <!-- About Start -->
-    <div class="container-xxl py-5">
+      <!-- About Start -->
+      <div class="container-xxl py-5">
         <div class="container">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <img class="img-fluid" src="./../assets/frontend/img/about.png" alt="">
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="h-100">
-                        <h1 class="display-6">About Us</h1>
-                        <p class="text-primary fs-5 mb-4">The Most Trusted Cryptocurrency Platform</p>
-                        <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos.
-                            Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
-                        </p>
-                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet
-                            diam et eos. Clita erat ipsum et lorem et sit.</p>
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"></i>
-                            <span>Tempor erat elitr rebum at clita</span>
-                        </div>
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"></i>
-                            <span>Tempor erat elitr rebum at clita</span>
-                        </div>
-                        <div class="d-flex align-items-center mb-4">
-                            <i class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"></i>
-                            <span>Tempor erat elitr rebum at clita</span>
-                        </div>
-                        <a class="btn btn-primary py-3 px-4" href="">Read More</a>
-                    </div>
-                </div>
+          <div class="row g-5 align-items-center">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+              <img
+                class="img-fluid"
+                src="./../assets/frontend/img/about.png"
+                alt=""
+              />
             </div>
-        </div>
-    </div>
-    <!-- About End -->
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+              <div class="h-100">
+                <h1 class="display-6">About Us</h1>
+                <p class="text-primary fs-5 mb-4">
+                  The Most Trusted Cryptocurrency Platform
+                </p>
+                <p>
+                  Research backed data-driven investment strategies. We choose
+                  the right asset mix for your risk profile in the all market
+                  conditions. We add incremental alpha using dynamic allocation
+                  to equity factor models.
+                </p>
 
-
-    <!-- Facts Start -->
-    <div class="container-xxl bg-light py-5 my-5">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-4 col-md-6 text-center wow fadeIn" data-wow-delay="0.1s">
-                    <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-9.png" alt="">
-                    <h1 class="display-4" data-toggle="counter-up">123456</h1>
-                    <p class="fs-5 text-primary mb-0">Today Transactions</p>
+                <div class="d-flex align-items-center mb-2">
+                  <i
+                    class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"
+                  ></i>
+                  <span
+                    >Factor Investing - We explain the market movement using
+                    quantitative equity factor models.</span
+                  >
                 </div>
-                <div class="col-lg-4 col-md-6 text-center wow fadeIn" data-wow-delay="0.3s">
-                    <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-10.png" alt="">
-                    <h1 class="display-4" data-toggle="counter-up">123456</h1>
-                    <p class="fs-5 text-primary mb-0">Monthly Transactions</p>
+                <div class="d-flex align-items-center mb-2">
+                  <i
+                    class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"
+                  ></i>
+                  <span
+                    >Regime Modelling - Markets do not stay the same. Our regime
+                    models forecast the market cycle.
+                  </span>
                 </div>
-                <div class="col-lg-4 col-md-6 text-center wow fadeIn" data-wow-delay="0.5s">
-                    <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-2.png" alt="">
-                    <h1 class="display-4" data-toggle="counter-up">123456</h1>
-                    <p class="fs-5 text-primary mb-0">Total Transactions</p>
+                <div class="d-flex align-items-center mb-4">
+                  <i
+                    class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"
+                  ></i>
+                  <span
+                    >Momentum Investing - Momentum is the stringest factor in
+                    economics and an important part of our philosophy</span
+                  >
                 </div>
+                <div class="d-flex align-items-center mb-4">
+                  <i
+                    class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"
+                  ></i>
+                  <span
+                    >Risk Modelling Risk Management is at the core of our
+                    investing. We have a multi-level approach.
+                  </span>
+                </div>
+                <div class="d-flex align-items-center mb-4">
+                  <i
+                    class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"
+                  ></i>
+                  <span
+                    >Asset Allocation - We choose the best mix of investment
+                    assets for any market condition.</span
+                  >
+                </div>
+                <div class="d-flex align-items-center mb-4">
+                  <i
+                    class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"
+                  ></i>
+                  <span
+                    >Artificial Intelligence - We use machine learning models to
+                    forecast risk and reward in the market
+                  </span>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    <!-- Facts End -->
+      </div>
+      <!-- About End -->
 
 
-    <!-- Features Start -->
-    <div class="container-xxl py-5">
+      <!-- Features Start -->
+      <div class="container-xxl py-5">
         <div class="container">
-            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <h1 class="display-6">Why Us!</h1>
-                <p class="text-primary fs-5 mb-5">The Best In The crypto Industry</p>
+          <div
+            class="text-center mx-auto wow fadeInUp"
+            data-wow-delay="0.1s"
+            style="max-width: 500px"
+          >
+            <h1 class="display-6">Why Us!</h1>
+            <p class="text-primary fs-5 mb-5">
+                The best in Investment Industry            </p>
+          </div>
+          <div class="row g-5">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+              <div class="d-flex align-items-start">
+                <img
+                  class="img-fluid flex-shrink-0"
+                  src="./../assets/frontend/img/icon-7.png"
+                  alt=""
+                />
+                <div class="ps-4">
+                  <h5 class="mb-3">Easy To Start</h5>
+                  <span
+                    >Our expert wealth manager shall assist you with a quick and easy process for opening your account in the most efficient manner.
+</span
+                  >
+                </div>
+              </div>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="d-flex align-items-start">
-                        <img class="img-fluid flex-shrink-0" src="./../assets/frontend/img/icon-7.png" alt="">
-                        <div class="ps-4">
-                            <h5 class="mb-3">Easy To Start</h5>
-                            <span>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit
-                                clita duo justo</span>
-                        </div>
-                    </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+              <div class="d-flex align-items-start">
+                <img
+                  class="img-fluid flex-shrink-0"
+                  src="./../assets/frontend/img/icon-6.png"
+                  alt=""
+                />
+                <div class="ps-4">
+                  <h5 class="mb-3">Safe & Secure</h5>
+                  <span
+                    >Our clients have their independent & secure portfolio accounts with secure digital vaults which is directly insured by Lloyd Bank of United Kingdom.
+</span
+                  >
                 </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="d-flex align-items-start">
-                        <img class="img-fluid flex-shrink-0" src="./../assets/frontend/img/icon-6.png" alt="">
-                        <div class="ps-4">
-                            <h5 class="mb-3">Safe & Secure</h5>
-                            <span>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit
-                                clita duo justo</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="d-flex align-items-start">
-                        <img class="img-fluid flex-shrink-0" src="./../assets/frontend/img/icon-5.png" alt="">
-                        <div class="ps-4">
-                            <h5 class="mb-3">Affordable Plans</h5>
-                            <span>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit
-                                clita duo justo</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="d-flex align-items-start">
-                        <img class="img-fluid flex-shrink-0" src="./../assets/frontend/img/icon-4.png" alt="">
-                        <div class="ps-4">
-                            <h5 class="mb-3">Secure Storage</h5>
-                            <span>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit
-                                clita duo justo</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="d-flex align-items-start">
-                        <img class="img-fluid flex-shrink-0" src="./../assets/frontend/img/icon-3.png" alt="">
-                        <div class="ps-4">
-                            <h5 class="mb-3">Protected By Insurance</h5>
-                            <span>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit
-                                clita duo justo</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="d-flex align-items-start">
-                        <img class="img-fluid flex-shrink-0" src="./../assets/frontend/img/icon-8.png" alt="">
-                        <div class="ps-4">
-                            <h5 class="mb-3">24/7 Support</h5>
-                            <span>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit
-                                clita duo justo</span>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+              <div class="d-flex align-items-start">
+                <img
+                  class="img-fluid flex-shrink-0"
+                  src="./../assets/frontend/img/icon-5.png"
+                  alt=""
+                />
+                <div class="ps-4">
+                  <h5 class="mb-3">Affordable Plans</h5>
+                  <span
+                    >We understand that not all our clients have the same financial diversification. We have basic Investment Plans starting from just $5000USD. Our wealth managers shall assist you time and when you wish to diversify and increase your portfolio with us.
+</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+              <div class="d-flex align-items-start">
+                <img
+                  class="img-fluid flex-shrink-0"
+                  src="./../assets/frontend/img/icon-4.png"
+                  alt=""
+                />
+                <div class="ps-4">
+                  <h5 class="mb-3">Secure Storage</h5>
+                  <span
+                    >For our luxury investment clients, we offer access to direct SWISS Digital Vault facility accessible only by our client’s preregistered biometrics</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+              <div class="d-flex align-items-start">
+                <img
+                  class="img-fluid flex-shrink-0"
+                  src="./../assets/frontend/img/icon-3.png"
+                  alt=""
+                />
+                <div class="ps-4">
+                  <h5 class="mb-3">Protected By Insurance</h5>
+                  <span
+                    >All the assets of the company, with its portfolio of our invested client is directly secured by Lloyd Bank of United Kingdom.
+</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+              <div class="d-flex align-items-start">
+                <img
+                  class="img-fluid flex-shrink-0"
+                  src="./../assets/frontend/img/icon-8.png"
+                  alt=""
+                />
+                <div class="ps-4">
+                  <h5 class="mb-3">24/7 Support</h5>
+                  <span
+                    >Through our designated virtual offices across the globe, we are able to cater our investor clients 24*7 for any assistance that may be required.
+</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-    <!-- Features End -->
+      </div>
+      <!-- Features End -->
 
-
-    <!-- Service Start -->
-    <div class="container-xxl bg-light py-5 my-5">
+      <!-- Service Start -->
+      <div class="container-xxl bg-light py-5 my-5">
         <div class="container py-5">
-            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <h1 class="display-6">Services</h1>
-                <p class="text-primary fs-5 mb-5">Buy, Sell And Exchange Cryptocurrency</p>
+          <div
+            class="text-center mx-auto wow fadeInUp"
+            data-wow-delay="0.1s"
+            style="max-width: 500px"
+          >
+            <h1 class="display-6">Services</h1>
+            <p class="text-primary fs-5 mb-5">
+              Buy, Sell And Exchange Cryptocurrency
+            </p>
+          </div>
+          <div class="row g-4">
+            
+            
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+              <div class="service-item bg-ligh p-5">
+                <img
+                  class="img-fluid mb-4"
+                  src="./../assets/frontend/img/icon-5.png"
+                  alt=""
+                />
+                <h5 class="mb-3">Currency Exchange</h5>
+                <p>
+                    For clients who wish to BUY/SELL Crypto with our platform can enjoy the best and most minimal exchange rates in the market.
+
+                </p>
+              </div>
             </div>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item bg-white p-5">
-                        <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-7.png" alt="">
-                        <h5 class="mb-3">Currency Wallet</h5>
-                        <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo
-                            justo</p>
-                        <a href="">Read More <i class="fa fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item bg-white p-5">
-                        <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-3.png" alt="">
-                        <h5 class="mb-3">Currency Transaction</h5>
-                        <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo
-                            justo</p>
-                        <a href="">Read More <i class="fa fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item bg-white p-5">
-                        <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-9.png" alt="">
-                        <h5 class="mb-3">Bitcoin Investment</h5>
-                        <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo
-                            justo</p>
-                        <a href="">Read More <i class="fa fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item bg-white p-5">
-                        <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-5.png" alt="">
-                        <h5 class="mb-3">Currency Exchange</h5>
-                        <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo
-                            justo</p>
-                        <a href="">Read More <i class="fa fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item bg-white p-5">
-                        <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-2.png" alt="">
-                        <h5 class="mb-3">Bitcoin Escrow</h5>
-                        <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo
-                            justo</p>
-                        <a href="">Read More <i class="fa fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item bg-white p-5">
-                        <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-8.png" alt="">
-                        <h5 class="mb-3">Token Sale</h5>
-                        <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo
-                            justo</p>
-                        <a href="">Read More <i class="fa fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
+           
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+              <div class="service-item bg-white p-5">
+                <img
+                  class="img-fluid mb-4"
+                  src="./../assets/frontend/img/icon-8.png"
+                  alt=""
+                />
+                <h5 class="mb-3">Crypto Escrow Services</h5>
+                <p>
+                    For our High Net Worth Corporate Clients we offer Crypto Escrow Services for safe & secure entity transactions.
+
+                </p>
+              </div>
             </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+              <div class="service-item bg-white p-5">
+                <img
+                  class="img-fluid mb-4"
+                  src="./../assets/frontend/img/icon-3.png"
+                  alt=""
+                />
+                <h5 class="mb-3">Currency Transaction</h5>
+                <p>
+                    With ZERO transfer rates policy, CWM is the best investment platform for clients without any transactional deductions.
+
+                </p>
+              </div>
+              
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+              <div class="service-item bg-white p-5">
+                <img
+                  class="img-fluid mb-4"
+                  src="./../assets/frontend/img/icon-7.png"
+                  alt=""
+                />
+                <h5 class="mb-3">Currency Wallet</h5>
+                <p>
+                To facilitate our investor clients with the ease of transfer our company has embraced Crypto Wallet Transfers as the most efficient, discreet & safest form of exchange and transfer for all deposits & withdrawals which will be directly linked with their respective crypto wallets.
+
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+              <div class="service-item bg-white p-5">
+                <img
+                  class="img-fluid mb-4"
+                  src="./../assets/frontend/img/icon-9.png"
+                  alt=""
+                />
+                <h5 class="mb-3">Portfolio Investment</h5>
+                <p>
+                    Our expert advisors provide personalized investment diversification structure for our clients who wish to invest in Crypto Currency, Gold & Silver ETF, Forex Currency Trading, Commodities Trading etc.
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+              <div class="service-item bg-white p-5">
+                <img
+                  class="img-fluid mb-4"
+                  src="./../assets/frontend/img/icon-2.png"
+                  alt=""
+                />
+                <h5 class="mb-3">Luxury Auction Investment</h5>
+                <p>
+                    As per the Knight Frank Index, our company diversify client’s investments across various luxury segments for maximum return on investments.
+
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-    <!-- Service End -->
+      </div>
+      <!-- Service End -->
 
-
-
-
-    <!-- Token Sale Start -->
-    <div class="container-xxl bg-light py-5 my-5">
-        <div class="container py-5">
-            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <h1 class="display-6">Token Sale</h1>
-                <p class="text-primary fs-5 mb-5">Token Sale Countdown</p>
-            </div>
-            <div class="row g-3">
-                <div class="col-6 col-md-3 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="bg-white text-center p-3">
-                        <h1 class="mb-0">0</h1>
-                        <span class="text-primary fs-5">Days</span>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="bg-white text-center p-3">
-                        <h1 class="mb-0">0</h1>
-                        <span class="text-primary fs-5">Hours</span>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="bg-white text-center p-3">
-                        <h1 class="mb-0">0</h1>
-                        <span class="text-primary fs-5">Minutes</span>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 wow fadeIn" data-wow-delay="0.7s">
-                    <div class="bg-white text-center p-3">
-                        <h1 class="mb-0">0</h1>
-                        <span class="text-primary fs-5">Seconds</span>
-                    </div>
-                </div>
-                <div class="col-12 text-center py-4">
-                    <a class="btn btn-primary py-3 px-4" href="">Buy Token</a>
-                </div>
-                <div class="col-12 text-center">
-                    <img class="img-fluid m-1" src="./../assets/frontend/img/payment-1.png" alt="" style="width: 50px;">
-                    <img class="img-fluid m-1" src="./../assets/frontend/img/payment-2.png" alt="" style="width: 50px;">
-                    <img class="img-fluid m-1" src="./../assets/frontend/img/payment-3.png" alt="" style="width: 50px;">
-                    <img class="img-fluid m-1" src="./../assets/frontend/img/payment-4.png" alt="" style="width: 50px;">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Token Sale Start -->
-
-
-    <!-- FAQs Start -->
-    <div class="container-xxl py-5">
+      <!-- FAQs Start -->
+      <div class="container-xxl py-5">
         <div class="container">
-            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <h1 class="display-6">FAQs</h1>
-                <p class="text-primary fs-5 mb-5">Frequently Asked Questions</p>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="accordion" id="accordionExample">
-                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.1s">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    How to build a website?
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna
-                                    diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.2s">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    How long will it take to get a new website?
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna
-                                    diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.3s">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Do you only create HTML websites?
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna
-                                    diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.4s">
-                            <h2 class="accordion-header" id="headingFour">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                                    Will my website be mobile-friendly?
-                                </button>
-                            </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna
-                                    diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.5s">
-                            <h2 class="accordion-header" id="headingFive">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    Will you maintain my site for me?
-                                </button>
-                            </h2>
-                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna
-                                    diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.6s">
-                            <h2 class="accordion-header" id="headingSix">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                    I’m on a strict budget. Do you have any low cost options?
-                                </button>
-                            </h2>
-                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna
-                                    diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.7s">
-                            <h2 class="accordion-header" id="headingSeven">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                    Will you maintain my site for me?
-                                </button>
-                            </h2>
-                            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna
-                                    diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.8s">
-                            <h2 class="accordion-header" id="headingEight">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                                    I’m on a strict budget. Do you have any low cost options?
-                                </button>
-                            </h2>
-                            <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna
-                                    diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
-                                </div>
-                            </div>
-                        </div>
+          <div
+            class="text-center mx-auto wow fadeInUp"
+            data-wow-delay="0.1s"
+            style="max-width: 500px"
+          >
+            <h1 class="display-6">FAQs</h1>
+            <p class="text-primary fs-5 mb-5">Frequently Asked Questions</p>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <div class="accordion" id="accordionExample">
+                <div class="accordion-item wow fadeInUp" data-wow-delay="0.1s">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button
+                      class="accordion-button"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne"
+                      aria-expanded="true"
+                      aria-controls="collapseOne"
+                    >
+                    What is the minimum investment as an investor client can I start with?
+
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseOne"
+                    class="accordion-collapse collapse show"
+                    aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                        A – Minimum Investment starts from $5000USD only, however to access higher return on investments we request our clients to co-ordinate with the assigned wealth manager.
+
                     </div>
+                  </div>
                 </div>
+                <div class="accordion-item wow fadeInUp" data-wow-delay="0.2s">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo"
+                      aria-expanded="false"
+                      aria-controls="collapseTwo"
+                    >
+                    What kind of return on investments can I as an investor expect?
+
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseTwo"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                        A – For our retail investors the return on investments is as lucrative as 5% month on month. However, the return on investments may vary for investments 15% - 20% or even higher depending on the nature of diversification.
+
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item wow fadeInUp" data-wow-delay="0.3s">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree"
+                      aria-expanded="false"
+                      aria-controls="collapseThree"
+                    >
+                    How safe is my investment as an investor client?
+
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseThree"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                        A – Each Investor has exclusive access to his privatized personal digital locker account which only client has the exclusive access to and the personal digital locker is directly linked with the investor’s crypto wallet for smart and efficient deposit & withdrawals. 
+
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item wow fadeInUp" data-wow-delay="0.4s">
+                  <h2 class="accordion-header" id="headingFour">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseFour"
+                      aria-expanded="true"
+                      aria-controls="collapseFour"
+                    >
+                    What sectors are the investment portfolios diversified across?
+
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseFour"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingFour"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                        A – Generalizing portfolio diversification can be always tricky. Our wealth managers, based on the risk to return ratio; best optimize advise our clients to diversify across some mentionable sectors such as Forex, Crypto, Gold & Silver Exchange Trade Fund, Luxury Auction Investments, Real Estate Investment Trust etc.
+
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item wow fadeInUp" data-wow-delay="0.5s">
+                  <h2 class="accordion-header" id="headingFive">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseFive"
+                      aria-expanded="false"
+                      aria-controls="collapseFive"
+                    >
+                      Will you maintain my site for me?
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseFive"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingFive"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam
+                      sed sed magna et magna diam aliquyam amet dolore ipsum
+                      erat duo. Sit rebum magna duo labore no diam.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item wow fadeInUp" data-wow-delay="0.6s">
+                  <h2 class="accordion-header" id="headingSix">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseSix"
+                      aria-expanded="false"
+                      aria-controls="collapseSix"
+                    >
+                    As an Investor client, is there any LOCK – IN Period from the time of investment?
+
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseSix"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingSix"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                    A – No, as a strict company policy, we do not have any LOCK- IN Period for the portfolios set by our investor clients. The client has the freedom to forfeit his investment with the company anytime during the tenure of his investment.
+
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    <!-- FAQs Start -->
-
-
+      </div>
+      <!-- FAQs Start -->
     </HomeLayout>
   </div>
 </template>

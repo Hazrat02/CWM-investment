@@ -32,9 +32,9 @@ export default {
                     <h1 class="display-4 mb-3 animated slideInDown">Services</h1>
                     <nav aria-label="breadcrumb animated slideInDown">
                         <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Services</li>
+                            <li class="breadcrumb-item"><RouterLink to="/">Home</RouterLink></li>
+                            
+                            <li class="breadcrumb-item" aria-current="page">Services</li>
                         </ol>
                     </nav>
                 </div>
@@ -56,61 +56,95 @@ export default {
                 <p class="text-primary fs-5 mb-5">Buy, Sell And Exchange Cryptocurrency</p>
             </div>
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item bg-light p-5">
-                        <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-7.png" alt="">
-                        <h5 class="mb-3">Currency Wallet</h5>
-                        <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo
-                            justo</p>
-                        <a href="">Read More <i class="fa fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item bg-light p-5">
-                        <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-3.png" alt="">
-                        <h5 class="mb-3">Currency Transaction</h5>
-                        <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo
-                            justo</p>
-                        <a href="">Read More <i class="fa fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item bg-light p-5">
-                        <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-9.png" alt="">
-                        <h5 class="mb-3">Bitcoin Investment</h5>
-                        <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo
-                            justo</p>
-                        <a href="">Read More <i class="fa fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item bg-light p-5">
-                        <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-5.png" alt="">
-                        <h5 class="mb-3">Currency Exchange</h5>
-                        <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo
-                            justo</p>
-                        <a href="">Read More <i class="fa fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item bg-light p-5">
-                        <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-2.png" alt="">
-                        <h5 class="mb-3">Bitcoin Escrow</h5>
-                        <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo
-                            justo</p>
-                        <a href="">Read More <i class="fa fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item bg-light p-5">
-                        <img class="img-fluid mb-4" src="./../assets/frontend/img/icon-8.png" alt="">
-                        <h5 class="mb-3">Token Sale</h5>
-                        <p>Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo
-                            justo</p>
-                        <a href="">Read More <i class="fa fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
+            
+            
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+              <div class="service-item bg-light p-5">
+                <img
+                  class="img-fluid mb-4"
+                  src="./../assets/frontend/img/icon-5.png"
+                  alt=""
+                />
+                <h5 class="mb-3">Currency Exchange</h5>
+                <p>
+                    For clients who wish to BUY/SELL Crypto with our platform can enjoy the best and most minimal exchange rates in the market.
+
+                </p>
+              </div>
             </div>
+           
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+              <div class="service-item bg-light p-5">
+                <img
+                  class="img-fluid mb-4"
+                  src="./../assets/frontend/img/icon-8.png"
+                  alt=""
+                />
+                <h5 class="mb-3">Crypto Escrow Services</h5>
+                <p>
+                    For our High Net Worth Corporate Clients we offer Crypto Escrow Services for safe & secure entity transactions.
+
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+              <div class="service-item bg-light p-5">
+                <img
+                  class="img-fluid mb-4"
+                  src="./../assets/frontend/img/icon-3.png"
+                  alt=""
+                />
+                <h5 class="mb-3">Currency Transaction</h5>
+                <p>
+                    With ZERO transfer rates policy, CWM is the best investment platform for clients without any transactional deductions.
+
+                </p>
+              </div>
+              
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+              <div class="service-item bg-light p-5">
+                <img
+                  class="img-fluid mb-4"
+                  src="./../assets/frontend/img/icon-7.png"
+                  alt=""
+                />
+                <h5 class="mb-3">Currency Wallet</h5>
+                <p>
+                To facilitate our investor clients with the ease of transfer our company has embraced Crypto Wallet Transfers as the most efficient, discreet & safest form of exchange and transfer for all deposits & withdrawals which will be directly linked with their respective crypto wallets.
+
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+              <div class="service-item bg-light p-5">
+                <img
+                  class="img-fluid mb-4"
+                  src="./../assets/frontend/img/icon-9.png"
+                  alt=""
+                />
+                <h5 class="mb-3">Portfolio Investment</h5>
+                <p>
+                    Our expert advisors provide personalized investment diversification structure for our clients who wish to invest in Crypto Currency, Gold & Silver ETF, Forex Currency Trading, Commodities Trading etc.
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+              <div class="service-item bg-light p-5">
+                <img
+                  class="img-fluid mb-4"
+                  src="./../assets/frontend/img/icon-2.png"
+                  alt=""
+                />
+                <h5 class="mb-3">Luxury Auction Investment</h5>
+                <p>
+                    As per the Knight Frank Index, our company diversify client’s investments across various luxury segments for maximum return on investments.
+
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
     <!-- Service End -->
