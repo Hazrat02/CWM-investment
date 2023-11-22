@@ -21,10 +21,10 @@
                         alt="Richard Nevoreski"
                       /><span class="avatar-badge bg-dash-color-1"
                         ><i
-                          v-if="authUser.email_verified_at"
+                          v-if="authUser.id_kyc == 'Yes' ||authUser.ad_kyc == 'Yes' ||authUser.ec_kyc == 'Yes' "
                           class="fa fa-check"
                         ></i>
-                        <i else class="fa fa-times"></i>
+                        <i v-else class="fa fa-times"></i>
                       </span>
                     </div>
                     <h3 class="h3 mb-0">{{ authUser.name }}</h3>
@@ -121,7 +121,7 @@
                                     <p
                                       class="text-xxl lh-1 mb-0 text-dash-color-1"
                                     >
-                                      Yes
+                                    {{authUser.id_kyc}}
                                     </p>
                                   </div>
                                   <div
@@ -137,7 +137,7 @@
                                     <p
                                       class="text-xxl lh-1 mb-0 text-dash-color-1"
                                     >
-                                      No
+                                    {{authUser.ad_kyc}}
                                     </p>
                                   </div>
                                   <div
@@ -153,7 +153,7 @@
                                     <p
                                       class="text-xxl lh-1 mb-0 text-dash-color-1"
                                     >
-                                      Yes
+                                    {{authUser.ec_kyc}}
                                     </p>
                                   </div>
                                   <div class="progress" style="height: 3px">

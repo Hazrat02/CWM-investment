@@ -68,7 +68,7 @@
                             class="form-control"
                             required
                           />
-                          <label class="form-label" for="form3Example3"
+                          <label class="d-flex" for="form3Example3"
                             >Email address</label
                           >
                         </div>

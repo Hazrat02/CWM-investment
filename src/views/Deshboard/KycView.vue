@@ -15,7 +15,8 @@
                   <h3 class="h4 mb-0">I want to upload</h3>
                 </div>
                 <div class="card-body pt-0">
-                  <form class="row g-3 align-items-center ">
+                  <form class="row g-3 align-items-center " enctype="multipart/form-data"
+                        @submit.prevent="kyc">
                     <div class="col-lg-8">
                       <label class="visually-hidden" for="inlineFormSelectPref"
                         >Preference</label
@@ -44,52 +45,28 @@
                             v-model="selectIdValue"
                           >
                             <option selected disabled>Select</option>
-                            <option value="passport">Passport</option>
+                            <option value="id">Passport</option>
                             <option value="id">
                               Nationality Identity Card
                             </option>
-                            <option value="driving">Driving Licence</option>
-                            <option value="other">Other</option>
+                            <option value="id">Driving Licence</option>
+                            <option value="id">Other</option>
                           </select>
                         </div>
                       </div>
 
-                      <div v-if="selectIdValue == 'passport'">
+                      
+                      <div v-if="selectIdValue == 'id' && selectValue == 'id'">
                         <div class="col-lg-8">
                           <label class="" for="Front">Front Side</label>
-                          <input class="form-control" id="Front" type="file" />
-                        </div>
-                      </div>
-                      <div v-if="selectIdValue == 'id'">
-                        <div class="col-lg-8">
-                          <label class="" for="Front">Front Side</label>
-                          <input class="form-control" id="Front" type="file" />
+                          <input class="form-control" id="Front" type="file"  @change="frontimage" />
                         </div>
                         <div class="col-lg-8">
                           <label class="" for="Front">Back Side</label>
-                          <input class="form-control" id="back" type="file" />
+                          <input class="form-control" id="back" type="file"  @change="backimage"/>
                         </div>
                       </div>
-                      <div v-if="selectIdValue == 'driving'">
-                        <div class="col-lg-8">
-                          <label class="" for="Front">Front Side</label>
-                          <input class="form-control" id="Front" type="file" />
-                        </div>
-                        <div class="col-lg-8">
-                          <label class="" for="Front">Back Side</label>
-                          <input class="form-control" id="back" type="file" />
-                        </div>
-                      </div>
-                      <div v-if="selectIdValue == 'other'">
-                        <div class="col-lg-8">
-                          <label class="" for="Front">Front Side</label>
-                          <input class="form-control" id="Front" type="file" />
-                        </div>
-                        <div class="col-lg-8">
-                          <label class="" for="Front">Back Side</label>
-                          <input class="form-control" id="back" type="file" />
-                        </div>
-                      </div>
+                      
                     </div>
 
                     <!-- address -->
@@ -446,20 +423,15 @@
    
                       <div class="col-lg-8">
                         <label class="" for="file">File</label>
-                        <input class="form-control" id="file" type="file" />
+                        <input class="form-control" id="file" type="file"  @change="fileimage"/>
                       </div>
                     </div>
-                    <div v-if="selectValue == 'other'"> <div class="col-lg-8">
+                    <div v-if="selectValue == 'other' || selectValue == 'selfie' "> <div class="col-lg-8">
                         <label class="" for="file">File</label>
-                        <input class="form-control" id="file" type="file" />
+                        <input class="form-control" id="file" type="file"  @change="fileimage" />
                       </div>
                     </div>
-                    <div v-if="selectValue == 'selfie'">
-                      <div class="col-lg-8">
-                        <label class="" for="file">File</label>
-                        <input class="form-control" id="file" type="file" />
-                      </div>
-                    </div>
+                    
                     <div class="col-lg">
                       <button class="btn btn-primary" type="submit">
                         Submit
@@ -480,7 +452,7 @@
                       Proof of ID approved
                     </p>
                   </div>
-                  <p class="text-dash-color-1">Yes</p>
+                  <p class="text-dash-color-1">{{authUser.id_kyc}}</p>
                 </div>
                 <div
                   class="d-flex align-items-end justify-content-between mb-2"
@@ -490,7 +462,7 @@
                       Proof of Address approved
                     </p>
                   </div>
-                  <p class="text-dash-color-1">No</p>
+                  <p class="text-dash-color-1">{{authUser.ad_kyc}}</p>
                 </div>
                 <div
                   class="d-flex align-items-end justify-content-between mb-2"
@@ -500,7 +472,7 @@
                       Economic Profile Details approved
                     </p>
                   </div>
-                  <p class="lh-1 mb-0 text-dash-color-1">Yes</p>
+                  <p class="lh-1 mb-0 text-dash-color-1">{{authUser.ec_kyc}}</p>
                 </div>
               </div>
             </div>
@@ -514,17 +486,21 @@
   <script>
 import { useAuthUserStore } from "../../store/user";
 import { transactionStore } from "../../store/transaction";
+import axios from 'axios';
 
 export default {
   data() {
     return {
-      alluser: [],
+      authUser: [],
       country: "Select",
-      userCount: "",
-      userChange: "",
-      transaction: [],
+    
       selectValue: "Select",
       selectIdValue: "Select",
+      front: "",
+      back: "",
+      file: "",
+      
+
     };
   },
 
@@ -571,48 +547,80 @@ export default {
     // },
   },
 
-  // async created() {
-  //   // auth user data +++++++++++++++++++++++++++++
+  methods: {
+    frontimage(event) {
+      this.front = event.target.files[0];
+    },
+    backimage(event) {
+      this.back = event.target.files[0];
+    },
+    fileimage(event) {
+      this.file = event.target.files[0];
+    },
 
-  //   const userStore = useAuthUserStore();
-  //   const alluser = userStore.allUser;
+    kyc() {
+      this.$setLoading(true);
 
-  //   if (alluser) {
-  //     this.alluser = alluser;
-  //   } else {
-  //     // userStore.reSetAuthUser();
-  //     this.alluser = await userStore.getAllUser();
-  //   }
-  //   this.userCount = this.alluser.length.toString().padStart(4, "0");
+     
+        const formData = new FormData(); // Create a FormData object
+        formData.append("front", this.front);
+        formData.append("type", this.selectValue);
+        formData.append("back", this.back);
+        formData.append("file", this.file);
+        formData.append("country", this.country);
+        formData.append("city", this.city);
+        formData.append("address", this.address);
+        formData.append("postel", this.postel);
+        axios
+          .post("/api/kyc", formData, {
+            headers: {
+              "Content-Type": "multipart/form-data", // Set content type for file upload
+            },
+          })
+          .then((response) => {
+            this.front='';
+            this.back='';
+            this.file ='';
+            this.city = ''
+            this.address =''
+            this.posel = ''
+            this.$notify({
+              title: "message",
+              text: response.data.message,
+              type: "success",
+            });
+          })
+          .catch((error) => {
+            this.$setLoading(false);
+            this.$notify({
+              title: "Error message",
+              text: error.response.data.message,
+              type: "error",
+            });
 
-  //   const oneMonthAgoUser = this.alluser.filter((item) => {
-  //     const itemDate = new Date(item.created_at); // Convert itemDate to a Date object
-  //     const thirtyDaysAgo = new Date();
-  //     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-  //     return itemDate < thirtyDaysAgo;
-  //   });
-  //   const lastMonthUser = this.alluser.filter((item) => {
-  //     const itemDate = new Date(item.created_at); // Convert itemDate to a Date object
-  //     const thirtyDaysAgo = new Date();
-  //     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-  //     return itemDate >= thirtyDaysAgo;
-  //   });
-  //   this.userChange = (lastMonthUser.length / oneMonthAgoUser.length) * 100;
+            console.log(error.response.data.message);
+          });
+     
+      
+      this.$setLoading(false);
+    },
+  },
 
-  //   const getTransaction = transactionStore();
+  async created() {
+    
+    const userStore = useAuthUserStore();
+      const authUser = userStore.authUser;
 
-  //   // Try to get the data from the store
-  //   const transactionData = getTransaction.allTransaction;
+      if (authUser) {
+        this.authUser = authUser;
+      } else {
+        // userStore.reSetAuthUser();
+        this.authUser = await userStore.reSetAuthUser();
+      }
+   
 
-  //   if (transactionData) {
-  //     this.transaction = transactionData;
-  //   } else {
-  //     // If data is not available, fetch it and set the component property
-  //     this.transaction = await getTransaction.allUserTransaction();
-  //   }
-
-  //   this.$setLoading(false);
-  // },
+    this.$setLoading(false);
+  },
 };
 </script>
 
