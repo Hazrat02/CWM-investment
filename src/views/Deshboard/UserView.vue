@@ -28,7 +28,7 @@
                       </span>
                     </div>
                     <h3 class="h3 mb-0">{{ authUser.name }}</h3>
-                    <p class="text-sm fw-light">{{ authUser.gmail }}</p>
+                    <p class="text-sm fw-light">{{ authUser.email }}</p>
                     <div
                       class="d-inline-block py-1 px-4 rounded-pill bg-dash-dark-3 fw-light text-sm mb-4"
                     >

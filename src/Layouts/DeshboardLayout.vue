@@ -12,7 +12,7 @@ export default {
     return {
       sidebar: false,
       isAuthenticated: false,
-      authUser:[]
+      authUser: [],
     };
   },
   async created() {
@@ -29,11 +29,8 @@ export default {
       // userStore.reSetAuthUser();
       this.authUser = await userStore.reSetAuthUser();
     }
-    if (this.authUser.role != '1') {
-      
-        
-
-          this.$router.push("/admin/dashboard");
+    if (this.authUser.role != "1") {
+      this.$router.push("/admin/dashboard");
     }
   },
   methods: {
@@ -67,10 +64,8 @@ export default {
           });
         });
       this.$setLoading(false);
-      
     },
   },
-
 };
 </script>
 
@@ -82,7 +77,12 @@ export default {
 
 <template>
   <body>
-    
+    <div v-if="this.$isLoading()"  class="lo">
+      <div class="loader">
+        <span>Loading...</span>
+      </div>
+    </div>
+
     <header class="header">
       <nav
         class="navbar navbar-expand-lg py-3 bg-dash-dark-2 border-bottom border-dash-dark-1 z-index-10"
@@ -129,10 +129,14 @@ export default {
           class="container-fluid d-flex align-items-center justify-content-between py-1"
         >
           <div class="navbar-header d-flex align-items-center">
-            <Routerlink to="/" class="navbar-brand text-uppercase text-reset" href="index.html">
+            <Routerlink
+              to="/"
+              class="navbar-brand text-uppercase text-reset"
+              href="index.html"
+            >
               <div class="brand-text brand-big">
                 <img
-                  style="width: 140px; "
+                  style="width: 140px"
                   src="./../assets/deshboard/img/logo4.png"
                   alt=""
                 />
@@ -144,7 +148,7 @@ export default {
             >
             <button
               class="sidebar-toggle"
-              :class="{active: sidebar }"
+              :class="{ active: sidebar }"
               @click="toggleSidebar"
             >
               <svg class="svg-icon svg-icon-sm svg-icon-heavy transform-none">
@@ -156,9 +160,9 @@ export default {
             <li class="list-inline-item">
               <a class="search-open nav-link px-0" href="#">
                 <svg class="svg-icon svg-icon-xs svg-icon-heavy text-gray-700">
-                  <use xlink:href="#find-1"></use></svg
-              ></a>
+                  <use xlink:href="#find-1"></use></svg></a>
             </li>
+
             <li class="list-inline-item">
               <RouterLink class="nav-link px-0" to="/" style="color: darkgray">
                 <svg class="svg-icon svg-icon-sm svg-icon-heavy">
@@ -209,16 +213,17 @@ export default {
                 </li>
               </ul>
             </li>
-            <li class="list-inline-item logout px-lg-2"  @click="logout">
-              <p style="cursor: pointer;"
+            <li class="list-inline-item logout px-lg-2" @click="logout">
+              <p
+                style="cursor: pointer"
                 class="nav-link text-sm text-reset px-1 px-lg-0"
                 id="logout"
-                
               >
                 <span class="d-none d-sm-inline-block">Logout </span>
                 <svg class="svg-icon svg-icon-xs svg-icon-heavy">
-                  <use xlink:href="#disable-1"></use></svg
-              ></p>
+                  <use xlink:href="#disable-1"></use>
+                </svg>
+              </p>
             </li>
           </ul>
         </div>
@@ -235,7 +240,7 @@ export default {
             alt="..."
           />
           <div class="ms-3 title">
-            <h1 class="h5 mb-1">{{authUser.name}}</h1>
+            <h1 class="h5 mb-1">{{ authUser.name }}</h1>
             <p class="text-sm text-gray-700 mb-0 lh-1">Investor</p>
           </div>
         </div>
@@ -252,8 +257,7 @@ export default {
           >
             <RouterLink class="sidebar-link" to="/dashboard">
               <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                <use xlink:href="#sales-up-1"></use></svg
-              ><span>Dashboard </span></RouterLink
+                <use xlink:href="#sales-up-1"></use></svg><span>Dashboard </span></RouterLink
             >
           </li>
           <li
@@ -264,8 +268,7 @@ export default {
           >
             <RouterLink class="sidebar-link" to="/account">
               <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                <use xlink:href="#portfolio-grid-1"></use></svg
-              ><span>Accounts </span></RouterLink
+                <use xlink:href="#portfolio-grid-1"></use></svg><span>Accounts </span></RouterLink
             >
           </li>
 
@@ -285,9 +288,7 @@ export default {
               data-bs-toggle="collapse"
             >
               <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                <use xlink:href="#browser-window-1"></use></svg
-              ><span>Funds </span></a
-            >
+                <use xlink:href="#browser-window-1"></use></svg><span>Funds </span></a>
             <ul class="collapse list-unstyled" id="exampledropdownDropdown">
               <li>
                 <RouterLink class="sidebar-link" to="/deposit"
@@ -322,8 +323,7 @@ export default {
           >
             <a class="sidebar-link" href="#profile" data-bs-toggle="collapse">
               <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                <use xlink:href="#survey-1"></use></svg
-              ><span>Profile </span></a
+                <use xlink:href="#survey-1"></use></svg><span>Profile </span></a
             >
             <ul class="collapse list-unstyled" id="profile">
               <li>
@@ -345,7 +345,7 @@ export default {
           </li>
         </ul>
       </nav>
-      <div  class="page-content " >
+      <div class="page-content">
         <!-- Page Header-->
 
         <slot></slot>
@@ -369,5 +369,78 @@ export default {
 
 
 <style scoped>
+
 @import "../assets/main.css";
+.lo {
+  
+  z-index: 777777;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.479);
+  overflow: hidden;
+}
+
+.loader {
+  width: 10em;
+  height: 10em;
+  font-size: 25px;
+  box-sizing: border-box;
+  border-top: 0.3em solid hotpink;
+  border-radius: 50%;
+  position: relative;
+  animation: rotating 2s ease-in-out infinite;
+  --direction: 1;
+}
+
+.loader::before,
+.loader::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  box-sizing: border-box;
+  top: -0.2em;
+}
+
+.loader::before {
+  border-top: 0.3em solid dodgerblue;
+  transform: rotate(120deg);
+}
+
+.loader::after {
+  border-top: 0.3em solid gold;
+  transform: rotate(240deg);
+}
+
+.loader span {
+  position: absolute;
+  color: white;
+  width: inherit;
+  height: inherit;
+  text-align: center;
+  line-height: 10em;
+  font-family: sans-serif;
+  animation: rotating 2s linear infinite;
+  --direction: -1;
+}
+
+@keyframes rotating {
+  50% {
+    transform: rotate(calc(180deg * var(--direction)));
+  }
+
+  100% {
+    transform: rotate(calc(360deg * var(--direction)));
+  }
+}
+
 </style>

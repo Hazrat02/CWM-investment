@@ -322,7 +322,7 @@ export default {
             
             
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-              <div class="service-item bg-ligh p-5">
+              <div class="service-item bg-white p-5">
                 <img
                   class="img-fluid mb-4"
                   src="./../assets/frontend/img/icon-5.png"
