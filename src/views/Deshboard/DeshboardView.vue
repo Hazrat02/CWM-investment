@@ -17,10 +17,10 @@
                   <div class="row align-items-end">
                     <div class="col-lg-5">
                       <p class="text-xl fw-light mb-0 text-dash-color-3">
-                        ${{authUser.main_balance}}
+                        ${{ Number(authUser.main_balance) + Number(authUser.live_balance) }}
                       </p>
                       <span class="d-block">Last In</span
-                      ><small class="d-block"> 20-05-2023</small>
+                      ><small class="d-block"> {{lastDepositCreatedAt}}</small>
                     </div>
                     <div class="col-lg-7">
                       <canvas id="salesBarChart1"></canvas>
@@ -37,10 +37,10 @@
                   <div class="row align-items-end">
                     <div class="col-lg-5">
                       <p class="text-xl fw-light mb-0 text-dash-color-1">
-                        $457
+                        ${{sumtrx}}
                       </p>
                       <span class="d-block">Last Out</span
-                      ><small class="d-block"> 20-05-2023</small>
+                      ><small class="d-block"> {{lastWithdrawCreatedAt}}</small>
                     </div>
                     <div class="col-lg-7">
                       <canvas id="visitPieChart"></canvas>
@@ -56,7 +56,7 @@
                   <h3 class="h4 mb-0">Account History</h3>
                   <div class="row align-items-end">
                     <div class="col-lg-5">
-                      <p class="text-xl fw-light mb-0 text-dash-color-4">80%</p>
+                      <p class="text-xl fw-light mb-0 text-dash-color-4">657%</p>
                       <span class="d-block">Change</span
                       ><small class="d-block"> 20-05-2023</small>
                     </div>
@@ -70,7 +70,7 @@
           </div>
         </div>
       </section>
-    
+
       <section class="pt-0">
         <div class="container-fluid">
           <div class="row gy-4">
@@ -102,36 +102,58 @@
             <div class="col-lg-6">
               <!-- Stat card-->
               <div class="card mb-4">
-                  <div class="card-body">
-                    <div class="row gx-sm-5">
-                      <div class="col-6 border-sm-end border-dash-dark-1">
-                            <!-- Stat item-->
-                            <div class="d-flex"><i class="mt-3 fas fa-caret-up  text-success"></i>
-                              <div class="ms-2">
-                                <p class="text-xl fw-normal mb-0">${{authUser.main_balance}}</p>
-                                <p class="text-uppercase text-sm fw-light mb-2">Wallet Account Balance</p>
-                                <div class="progress" style="height: 2px">
-                                  <div class="progress-bar bg-dash-color-1" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                              </div>
-                            </div>
+                <div class="card-body">
+                  <div class="row gx-sm-5">
+                    <div class="col-6 border-sm-end border-dash-dark-1">
+                      <!-- Stat item-->
+                      <div class="d-flex">
+                        <i class="mt-3 fas fa-caret-up text-success"></i>
+                        <div class="ms-2">
+                          <p class="text-xl fw-normal mb-0">
+                            ${{ authUser.main_balance }}
+                          </p>
+                          <p class="text-uppercase text-sm fw-light mb-2">
+                            Wallet Account Balance
+                          </p>
+                          <div class="progress" style="height: 2px">
+                            <div
+                              class="progress-bar bg-dash-color-1"
+                              role="progressbar"
+                              style="width: 60%"
+                              aria-valuenow="60"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                            ></div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="col-6">
-                            <!-- Stat item-->
-                            <div class="d-flex"><i class="mt-3 fas  fa-caret-down text-danger "></i>
-                              <div class="ms-2">
-                                <p class="text-xl fw-normal mb-0">00.00</p>
-                                <p class="text-uppercase text-sm fw-light mb-2">Live Account Balance</p>
-                                <div class="progress" style="height: 2px">
-                                  <div class="progress-bar bg-dash-color-2" role="progressbar" style="width: 35%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                              </div>
-                            </div>
+                    </div>
+                    <div class="col-6">
+                      <!-- Stat item-->
+                      <div class="d-flex">
+                        <i class="mt-3 fas fa-caret-down text-danger"></i>
+                        <div class="ms-2">
+                          <p class="text-xl fw-normal mb-0">${{ authUser.live_balance }}</p>
+                          <p class="text-uppercase text-sm fw-light mb-2">
+                            Live Account Balance
+                          </p>
+                          <div class="progress" style="height: 2px">
+                            <div
+                              class="progress-bar bg-dash-color-2"
+                              role="progressbar"
+                              style="width: 35%"
+                              aria-valuenow="35"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                            ></div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-               
+              </div>
+
               <!-- Stat card-->
               <div class="card">
                 <div class="card-body">
@@ -198,7 +220,6 @@
         </div>
       </section>
 
-
       <section class="pt-0">
         <div class="container-fluid">
           <div class="row gy-4">
@@ -253,58 +274,92 @@
           </div>
         </div>
       </section>
-      
     </DeshboardLayout>
   </div>
 </template>
   
 <script>
-
 import { useAuthUserStore } from "../../store/user";
 import { transactionStore } from "../../store/transaction";
-import './../../assets/base.js';
+import "./../../assets/base.js";
 export default {
   data() {
     return {
       authUser: [],
- 
-      transaction: [],
+
+      transactions: [],
     };
   },
-  methods:{
-
-  },
+  methods: {},
   computed: {
-  
-    // filterTrx() {
-    //   const oneMonthAgotransaction = this.transaction.filter((item) => {
-    //     const itemDate = new Date(item.created_at);
-    //     const thirtyDaysAgo = new Date();
-    //     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    sumtrx() {
+     
+     
+       // Filter withdraw transactions with status success and calculate the sum
+    const withdrawSuccessTransactions = Object.values(this.transactions).filter(
+      transaction => transaction.type === 'Withdraw' && transaction.status === 'success'
+    );
+    
+    // Use reduce to calculate the sum
+    const sum = withdrawSuccessTransactions.reduce((total, transaction) => total + transaction.amount, 0);
 
-    //     return itemDate < thirtyDaysAgo;
-    //   });
-    //   const lastMonthtransaction = this.transaction.filter((item) => {
-    //     const itemDate = new Date(item.created_at);
-    //     const thirtyDaysAgo = new Date();
-    //     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    return sum;
+    },
+    lastWithdrawCreatedAt() {
+     // Filter withdraw transactions with status success
+     const withdrawSuccessTransactions = Object.values(this.transactions).filter(
+      transaction => transaction.type === 'Withdraw' && transaction.status === 'success'
+    );
 
-    //     return itemDate >= thirtyDaysAgo;
-    //   });
+    // If there are no successful withdraw transactions, return '00-00-0000'
+    if (withdrawSuccessTransactions.length === 0) {
+      return '00-00-0000';
+    }
 
-    //   return {
-    //     count: this.transaction.length.toString().padStart(4, "0"),
-    //     change:
-    //       (lastMonthtransaction.length / oneMonthAgotransaction.length) * 100,
-    //   };
-    // },
+    // Sort the transactions by created_at in descending order
+    const sortedTransactions = withdrawSuccessTransactions.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+    // Get the created_at value of the first transaction (latest one)
+    const lastWithdrawCreatedAt = new Date(sortedTransactions[0].created_at);
+
+    // Format the date to 'MM-DD-YYYY'
+    const formattedDate = lastWithdrawCreatedAt.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    });
+
+    return formattedDate;
+  },
+    lastDepositCreatedAt() {
+     // Filter withdraw transactions with status success
+     const withdrawSuccessTransactions = Object.values(this.transactions).filter(
+      transaction => transaction.type === 'deposit' && transaction.status === 'success'
+    );
+
+    // If there are no successful withdraw transactions, return '00-00-0000'
+    if (withdrawSuccessTransactions.length === 0) {
+      return '00-00-0000';
+    }
+
+    // Sort the transactions by created_at in descending order
+    const sortedTransactions = withdrawSuccessTransactions.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+    // Get the created_at value of the first transaction (latest one)
+    const lastWithdrawCreatedAt = new Date(sortedTransactions[0].created_at);
+
+    // Format the date to 'MM-DD-YYYY'
+    const formattedDate = lastWithdrawCreatedAt.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    });
+
+    return formattedDate;
+  },
   },
 
   async created() {
-
-   
-  
-   
     // const getTransaction = transactionStore();
 
     // // Try to get the data from the store
@@ -317,18 +372,31 @@ export default {
     //   this.transaction = await getTransaction.allUserTransaction();
     // }
 
-      const userStore = useAuthUserStore();
-      const authUser = userStore.authUser;
+    const userStore = useAuthUserStore();
+    const authUser = userStore.authUser;
 
+    if (authUser) {
+      this.authUser = authUser;
+      window.location.reload(true);
+    } else {
+      // userStore.reSetAuthUser();
+      this.authUser = await userStore.reSetAuthUser();
+    }
 
-      if (authUser) {
-        this.authUser = authUser;
-        window.location.reload(true)
-      } else {
-        // userStore.reSetAuthUser();
-        this.authUser = await userStore.reSetAuthUser();
-      }
+    // transactionStore===================================
+    const getTransaction = transactionStore();
 
+    // Try to get the data from the store
+    const transactionData = getTransaction.authTransaction;
+
+    if (transactionData) {
+      this.transactions = transactionData;
+    } else {
+      // If data is not available, fetch it and set the component property
+      this.transactions = await getTransaction.authUserTransaction();
+    }
+
+    console.log(this.transactions);
 
     this.$setLoading(false);
   },
@@ -336,5 +404,5 @@ export default {
 </script>
 
 <style scoped>
- @import "./../../assets/main.css";
+@import "./../../assets/main.css";
 </style>

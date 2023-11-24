@@ -159,7 +159,7 @@ export default {
   },
   methods: {
     async withdrawNow() {
-      this.$setLoading(true);
+       this.$setLoading(true);
       
       const data = {
         method: this.method,
@@ -170,12 +170,15 @@ export default {
 
       if (this.address === "Wallet") {
         if (this.amount > this.authUser.main_balance) {
+          this.$setLoading(false);
           this.$notify({
             title: "Message",
             text: `Your balance is too low. Current balance: ${this.authUser.main_balance} $`,
             type: "error",
           });
+          this.$setLoading(false);
         } else {
+         
           await axios
             .post("api/deposit", data)
             .then((response) => {
@@ -205,6 +208,7 @@ export default {
         }
       } else {
         if (this.amount > this.authUser.live_balance) {
+          this.$setLoading(false);
           this.$notify({
             title: "message",
             text: `Your balance is too low. Current balance: ${this.authUser.live_balance} $`,

@@ -33,7 +33,7 @@ export const workStore = defineStore("work", {
         const response = await axios.get(
           "/api/work"
         );
-        this.setWork(response.data.work);
+        this.setWork(response.data.economic);
         return this.work; // Return the fetched data
       } catch (error) {
         console.log(error);
