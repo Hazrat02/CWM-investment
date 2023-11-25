@@ -220,14 +220,14 @@ export default {
         text: "Hello user!",
       });
     },
-  login() {
+ async login() {
       this.$setLoading(true);
       const data = {
         email: this.email,
         password: this.password,
       };
 
-    axios
+   await axios
         .post("/api/auth/login", data)
         .then((response) => {
           login(response.data.authorisation.token);
@@ -259,7 +259,8 @@ export default {
           });
         });
 
-       
+        this.$setLoading(false);
+
     },
   },
 };

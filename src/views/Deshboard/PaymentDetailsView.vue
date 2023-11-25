@@ -172,7 +172,7 @@
                       </div>
                       <div class="">
                         <button class="btn btn-primary" type="submit">
-                          Update
+                          Submit
                         </button>
                       </div>
                     </form>
@@ -234,7 +234,8 @@
                                 class="card mb-0"
                                 style="border: solid white 2px"
                               >
-                               <img class="img-fluid" :src="authPayment.doc" alt="">
+                               <img v-if="authPayment.doc" class="img-fluid" :src="authPayment.doc" alt="">
+                               <img v-else  class="img-fluid" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW_80vVH0RghGLTxWZjz0EYc9JanOzT-m0wEUvdU0caY6bKU5n8oF5hbOHZlU9GVUM1dQ&usqp=CAU" alt="">
                               </div>
                             </div>
                           </div>
@@ -280,7 +281,9 @@
                                 class="card mb-0"
                                 style="border: solid white 2px"
                               >
-                               <img class="img-fluid"  :src="authPayment.qr" alt="">
+                               <img v-if="authPayment.qr" class="img-fluid"  :src="authPayment.qr" alt="">
+                               <img v-else  class="img-fluid" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW_80vVH0RghGLTxWZjz0EYc9JanOzT-m0wEUvdU0caY6bKU5n8oF5hbOHZlU9GVUM1dQ&usqp=CAU" alt="">
+
                               </div>
                             </div>
                           </div>
@@ -556,10 +559,13 @@ export default {
       this.doc = event.target.files[0];
     },
 
-    payment() {
-      this.$setLoading(true);
+   async payment() {
+
+        this.$setLoading(true);
+        this.$setLoading(true);
 
         const formData = new FormData(); // Create a FormData object
+        this.$setLoading(true);
         formData.append("method", this.method);
         formData.append("qr", this.qr);
         formData.append("doc", this.doc);
@@ -569,15 +575,15 @@ export default {
         formData.append("holder", this.holder); // Append the file to the FormData object
         formData.append("bank_name", this.bank_name); // Append the file to the FormData object
         formData.append("ifsc", this.ifsc); // Append the file to the FormData object
-
-        axios
+        this.$setLoading(true);
+       await axios
           .post("/api/payment.store", formData, {
             headers: {
               "Content-Type": "multipart/form-data", // Set content type for file upload
             },
           })
           .then((response) => {
-
+            this.$setLoading(false);
             this.authPayment=response.data.payment
 
             this.$notify({
@@ -594,15 +600,16 @@ export default {
               type: "error",
             });
 
-            console.log(error.response.data.message);
           });
       
       this.$setLoading(false);
     },
-    paymentEdit() {
-      this.$setLoading(true);
+   async paymentEdit() {
+
+        this.$setLoading(true);
 
         const formData = new FormData(); // Create a FormData object
+        this.$setLoading(true);
         formData.append("method", this.method);
         formData.append("qr", this.qr);
         formData.append("doc", this.doc);
@@ -612,18 +619,18 @@ export default {
         formData.append("holder", this.holder); // Append the file to the FormData object
         formData.append("bank_name", this.bank_name); // Append the file to the FormData object
         formData.append("ifsc", this.ifsc); // Append the file to the FormData object
-
-        axios
+        this.$setLoading(true);
+       await axios
           .post("/api/payment.edit", formData, {
             headers: {
               "Content-Type": "multipart/form-data", // Set content type for file upload
             },
           })
           .then((response) => {
-
+           
             this.authPayment=response.data.payment
 
-
+             this.$setLoading(false);
             this.$notify({
               title: "message",
               text: response.data.message,
@@ -631,14 +638,15 @@ export default {
             });
           })
           .catch((error) => {
+
             this.$setLoading(false);
+
             this.$notify({
               title: "Error message",
               text: error.response.data.message,
               type: "error",
             });
 
-            console.log(error.response.data.message);
           });
       
       this.$setLoading(false);
@@ -667,46 +675,6 @@ export default {
             }
           })
           
-      
-
-    //     // auth user data +++++++++++++++++++++++++++++
-
-    //     const userStore = useAuthUserStore();
-    //     const alluser = userStore.allUser;
-
-    //     if (alluser) {
-    //       this.alluser = alluser;
-    //     } else {
-    //       // userStore.reSetAuthUser();
-    //       this.alluser = await userStore.getAllUser();
-    //     }
-    //     this.userCount = this.alluser.length.toString().padStart(4, "0");
-
-    //     const oneMonthAgoUser = this.alluser.filter((item) => {
-    //       const itemDate = new Date(item.created_at); // Convert itemDate to a Date object
-    //       const thirtyDaysAgo = new Date();
-    //       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-    //       return itemDate < thirtyDaysAgo;
-    //     });
-    //     const lastMonthUser = this.alluser.filter((item) => {
-    //       const itemDate = new Date(item.created_at); // Convert itemDate to a Date object
-    //       const thirtyDaysAgo = new Date();
-    //       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-    //       return itemDate >= thirtyDaysAgo;
-    //     });
-    //     this.userChange = (lastMonthUser.length / oneMonthAgoUser.length) * 100;
-
-    //     const getTransaction = transactionStore();
-
-    //     // Try to get the data from the store
-    //     const transactionData = getTransaction.allTransaction;
-
-    //     if (transactionData) {
-    //       this.transaction = transactionData;
-    //     } else {
-    //       // If data is not available, fetch it and set the component property
-    //       this.transaction = await getTransaction.allUserTransaction();
-    //     }
 
     this.$setLoading(false);
   },

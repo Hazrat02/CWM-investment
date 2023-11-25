@@ -19,10 +19,10 @@ export default {
   },
 
   methods: {
-    logout() {
+   async logout() {
       this.$setLoading(true);
       logout();
-      axios
+     await axios
         .post("api/auth/logout")
         .then((response) => {
           this.$setLoading(false);

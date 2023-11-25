@@ -558,7 +558,7 @@ export default {
       this.file = event.target.files[0];
     },
 
-    kyc() {
+   async kyc() {
       this.$setLoading(true);
 
      
@@ -571,7 +571,8 @@ export default {
         formData.append("city", this.city);
         formData.append("address", this.address);
         formData.append("postel", this.postel);
-        axios
+
+       await axios
           .post("/api/kyc", formData, {
             headers: {
               "Content-Type": "multipart/form-data", // Set content type for file upload
@@ -584,6 +585,8 @@ export default {
             this.city = ''
             this.address =''
             this.posel = ''
+            this.$setLoading(false);
+
             this.$notify({
               title: "message",
               text: response.data.message,
@@ -598,7 +601,6 @@ export default {
               type: "error",
             });
 
-            console.log(error.response.data.message);
           });
      
       

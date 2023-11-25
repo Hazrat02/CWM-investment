@@ -265,7 +265,7 @@ export default {
         });
       this.$setLoading(false);
     },
-    forget() {
+   async forget() {
       this.$setLoading(true);
       const data = {
         email: this.email,
@@ -273,7 +273,7 @@ export default {
         password_confirmation: this.password_confirmation,
       };
 
-      axios
+     await axios
         .post("/api/auth/forget", data)
         .then((response) => {
           this.$router.push("/login");

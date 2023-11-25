@@ -723,8 +723,7 @@ Employment status: </b><span>{{ geteconomic.employ }}</span>
     </DeshboardLayout>
   </div>
 </template>
-      
-    <script>
+<script>
 import { useAuthUserStore } from "../../store/user";
 import { transactionStore } from "../../store/transaction";
 
@@ -807,7 +806,7 @@ export default {
 
       this.economicUpdate = !this.economicUpdate; // Toggle the value of sidebar between true and false
     },
-    economic() {
+   async economic() {
       this.$setLoading(true);
       
 
@@ -821,9 +820,11 @@ export default {
         formData.append("ever_traded", this.ever_traded);
         formData.append("previous_work_exp", this.previous_work_exp);
         formData.append("are_you_us_citizen", this.are_you_us_citizen);
-        axios
+       await axios
           .post("/api/work.create", formData)
           .then((response) => {
+            this.$setLoading(false);
+
             this.geteconomic=response.data.economic;
 
             this.$notify({
@@ -840,13 +841,12 @@ export default {
               type: "error",
             });
 
-            console.log(error.response.data.message);
           });
      
       
       this.$setLoading(false);
     },
-    economicEdit() {
+   async economicEdit() {
       this.$setLoading(true);
       
 
@@ -860,10 +860,12 @@ export default {
         formData.append("ever_traded", this.ever_traded);
         formData.append("previous_work_exp", this.previous_work_exp);
         formData.append("are_you_us_citizen", this.are_you_us_citizen);
-        axios
+      await  axios
           .post("/api/work.edit", formData)
           .then((response) => {
             this.geteconomic=response.data.economic;
+            this.$setLoading(false);
+
             this.economicUpdate='';
             this.$notify({
               title: "message",
@@ -879,7 +881,6 @@ export default {
               type: "error",
             });
 
-            console.log(error.response.data.message);
           });
      
       

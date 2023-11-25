@@ -146,6 +146,7 @@
 <script>
 import { useAuthUserStore } from "../../store/user";
 import isAuthenticated from "./../../midleware/auth";
+import { transactionStore } from "./../../store/transaction";
 
 import axios from "axios";
 export default {
@@ -220,6 +221,9 @@ export default {
             .then((response) => {
               this.$setLoading(false);
               this.authUser.live_balance=this.authUser.live_balance - this.amount
+              const getTransaction = transactionStore();
+
+                getTransaction.addTransaction(response.data);
               this.$router.push('/transaction')
 
               // transactionStore===================================

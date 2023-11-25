@@ -91,9 +91,8 @@ export default {
         text: "Hello user!",
       });
     },
-    register() {
+   async register() {
       this.$setLoading(true);
-      console.log(this.profile);
       if (this.userCode == this.oldCode) {
         const formData = new FormData(); // Create a FormData object
         formData.append("birth", this.birth);
@@ -105,13 +104,15 @@ export default {
         formData.append("profile", this.profile); // Append the file to the FormData object
         formData.append("country", this.country); // Append the file to the FormData object
 
-        axios
+       await axios
           .post("/api/auth/register", formData, {
             headers: {
               "Content-Type": "multipart/form-data", // Set content type for file upload
             },
           })
           .then((response) => {
+            this.$setLoading(false);
+
             this.$router.push("/login");
             this.$notify({
               title: "message",
@@ -127,9 +128,10 @@ export default {
               type: "error",
             });
 
-            console.log(error.response.data.message);
           });
       } else {
+        this.$setLoading(false);
+
         this.$notify({
           title: "Error message",
           text: "Code does not match!",

@@ -39,10 +39,10 @@ export default {
     toggleSidebar() {
       this.sidebar = !this.sidebar; // Toggle the value of sidebar between true and false
     },
-    logout() {
+   async logout() {
       this.$setLoading(true);
       logout();
-      axios
+      await axios
         .post("api/auth/logout")
         .then((response) => {
           this.$setLoading(false);
@@ -315,8 +315,9 @@ export default {
           <div class="container-fluid text-center">
             <!-- Please do not remove the backlink to us unless you support us at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
             <p class="mb-0 text-dash-gray">
-              2021 &copy; Your company. Design by
-              <a href="https://bootstrapious.com">Bootstrapious</a>.
+
+              2021 & copy; Your company. Design by CWM
+              
             </p>
           </div>
         </footer>

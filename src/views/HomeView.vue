@@ -530,32 +530,7 @@ export default {
                     </div>
                   </div>
                 </div>
-                <div class="accordion-item wow fadeInUp" data-wow-delay="0.5s">
-                  <h2 class="accordion-header" id="headingFive">
-                    <button
-                      class="accordion-button collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapseFive"
-                      aria-expanded="false"
-                      aria-controls="collapseFive"
-                    >
-                      Will you maintain my site for me?
-                    </button>
-                  </h2>
-                  <div
-                    id="collapseFive"
-                    class="accordion-collapse collapse"
-                    aria-labelledby="headingFive"
-                    data-bs-parent="#accordionExample"
-                  >
-                    <div class="accordion-body">
-                      Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam
-                      sed sed magna et magna diam aliquyam amet dolore ipsum
-                      erat duo. Sit rebum magna duo labore no diam.
-                    </div>
-                  </div>
-                </div>
+                
                 <div class="accordion-item wow fadeInUp" data-wow-delay="0.6s">
                   <h2 class="accordion-header" id="headingSix">
                     <button

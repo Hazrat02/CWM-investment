@@ -178,7 +178,6 @@ export default {
             text: response.data.message,
             type: "success",
           });
-          console.log(response.data)
           const getTransaction = transactionStore();
 
           getTransaction.addTransaction(response.data);
