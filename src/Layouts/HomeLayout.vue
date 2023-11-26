@@ -194,7 +194,7 @@ export default {
             <RouterLink to="/about" class="btn btn-link" >About Us</RouterLink>
             <RouterLink to="/contact" class="btn btn-link" >Contact Us</RouterLink>
             <RouterLink to="/servics" class="btn btn-link" >Our Services</RouterLink>
-            <RouterLink to="/contact" class="btn btn-link" >Terms & Condition</RouterLink>
+            <RouterLink to="/risk/disclosure" class="btn btn-link" >Risk Disclosure</RouterLink>
           </div>
           
         </div>

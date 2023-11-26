@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import ServicesView from '../views/ServicesView.vue'
 import ContactView from '../views/ContactView.vue'
 import AboutView from '../views/AboutView.vue'
+import riskView from '../views/RiskView.vue'
 
 // user
 import DeshboardView from '../views/Deshboard/DeshboardView.vue'
@@ -106,6 +107,13 @@ const router = createRouter({
       name: 'contactUs',
   
       component:ContactView,
+ 
+    },
+    {
+      path: '/risk/disclosure',
+      name: 'risk',
+  
+      component:riskView,
  
     },
     
