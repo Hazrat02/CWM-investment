@@ -75,9 +75,10 @@ export default {
 
 <template>
   <body>
-    <div v-if="this.$isLoading()" id="spinner"
-        class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center" style="background-color: rgba(100, 87, 87, 0.692)">
-        <div class="spinner-grow text-primary" role="status"></div>
+    <div v-if="this.$isLoading()"  class="lo">
+      <div class="loader">
+        <span>Loading...</span>
+      </div>
     </div>
     <header class="header">
       <nav
@@ -330,4 +331,78 @@ export default {
 
 <style scoped>
  @import "./../assets/main.css";
+
+ 
+.lo {
+  
+  z-index: 777777;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.479);
+  overflow: hidden;
+}
+
+.loader {
+  width: 10em;
+  height: 10em;
+  font-size: 25px;
+  box-sizing: border-box;
+  border-top: 0.3em solid hotpink;
+  border-radius: 50%;
+  position: relative;
+  animation: rotating 2s ease-in-out infinite;
+  --direction: 1;
+}
+
+.loader::before,
+.loader::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  box-sizing: border-box;
+  top: -0.2em;
+}
+
+.loader::before {
+  border-top: 0.3em solid dodgerblue;
+  transform: rotate(120deg);
+}
+
+.loader::after {
+  border-top: 0.3em solid gold;
+  transform: rotate(240deg);
+}
+
+.loader span {
+  position: absolute;
+  color: white;
+  width: inherit;
+  height: inherit;
+  text-align: center;
+  line-height: 10em;
+  font-family: sans-serif;
+  animation: rotating 2s linear infinite;
+  --direction: -1;
+}
+
+@keyframes rotating {
+  50% {
+    transform: rotate(calc(180deg * var(--direction)));
+  }
+
+  100% {
+    transform: rotate(calc(360deg * var(--direction)));
+  }
+}
+
 </style>

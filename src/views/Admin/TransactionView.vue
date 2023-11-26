@@ -164,7 +164,6 @@ import { transactionStore } from "../../store/transaction";
 export default {
   data() {
     return {
-      isOpen: false,
       selectedOption: "all", // Initial selected option
       filterOptions: ["all", "pending", "rejected", "success"], // Dropdown options
 
@@ -283,17 +282,9 @@ export default {
       this.$setLoading(false);
       console.log(id, status);
     },
-    toggleDropdown() {
-      this.isOpen = !this.isOpen;
-    },
-    selectOption(option) {
-      this.selectedOption = option;
-      this.isOpen = false;
+  
 
-      // You can add logic here to filter transactions based on the selected option
-      // For example, you can set a data property to store the selected filter option
-      // and then filter the transactions accordingly.
-    },
+
   },
 };
 </script>

@@ -43,9 +43,9 @@
                           <td>{{ user.email }}</td>
                           <td>
                             <div class="d-flex justify-content-center gap-2">
-                              <a type="button">
-                                <i class="fa fa-eye" style="color: beige"></i>
-                              </a>
+                              
+                              <router-link :to="{ name: 'userdetails', params: { id: user.id } }"> <i class="fa fa-eye" style="color: beige"></i></router-link>
+
 
                               <a>
                                 <i

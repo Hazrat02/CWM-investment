@@ -725,7 +725,6 @@ Employment status: </b><span>{{ geteconomic.employ }}</span>
 </template>
 <script>
 import { useAuthUserStore } from "../../store/user";
-import { transactionStore } from "../../store/transaction";
 
 import { workStore } from "../../store/work";
 
@@ -914,46 +913,6 @@ export default {
 
       console.log(this.geteconomic)
     
-    
-    // auth user data +++++++++++++++++++++++++++++
-
-    // const userStore = useAuthUserStore();
-    // const alluser = userStore.allUser;
-
-    // if (alluser) {
-    //   this.alluser = alluser;
-    // } else {
-    //   // userStore.reSetAuthUser();
-    //   this.alluser = await userStore.getAllUser();
-    // }
-    // this.userCount = this.alluser.length.toString().padStart(4, "0");
-
-    // const oneMonthAgoUser = this.alluser.filter((item) => {
-    //   const itemDate = new Date(item.created_at); // Convert itemDate to a Date object
-    //   const thirtyDaysAgo = new Date();
-    //   thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-    //   return itemDate < thirtyDaysAgo;
-    // });
-    // const lastMonthUser = this.alluser.filter((item) => {
-    //   const itemDate = new Date(item.created_at); // Convert itemDate to a Date object
-    //   const thirtyDaysAgo = new Date();
-    //   thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-    //   return itemDate >= thirtyDaysAgo;
-    // });
-    // this.userChange = (lastMonthUser.length / oneMonthAgoUser.length) * 100;
-
-    // const getTransaction = transactionStore();
-
-    // // Try to get the data from the store
-    // const transactionData = getTransaction.allTransaction;
-
-    // if (transactionData) {
-    //   this.transaction = transactionData;
-    // } else {
-    //   // If data is not available, fetch it and set the component property
-    //   this.transaction = await getTransaction.allUserTransaction();
-    // }
-
     this.$setLoading(false);
   },
 };

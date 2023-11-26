@@ -25,6 +25,7 @@ import LeadsManageview from '../views/Admin/LeadsManageview.vue'
 import OfferManageview from '../views/Admin/OfferManageview.vue'
 import PortfolioManageView from '../views/Admin/PortfolioManageView.vue'
 import AdminTransactionView from '../views/Admin/TransactionView.vue'
+import UserDetailsview from '../views/Admin/UserDetailsView.vue'
 
 
 import LoginComponent from '../views/Auth/Login.vue'
@@ -221,6 +222,15 @@ const router = createRouter({
       name: 'alluser',
 
       component:UserManageview,
+      meta:{
+        requiresAuth:true,
+      },
+    },
+    {
+      path: '/admin/user.details/:id?',
+      name: 'userdetails',
+
+      component:UserDetailsview,
       meta:{
         requiresAuth:true,
       },

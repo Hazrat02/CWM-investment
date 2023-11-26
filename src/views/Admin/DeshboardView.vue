@@ -319,6 +319,79 @@
 
 import { RouterLink } from 'vue-router';
 import "./../../assets/base.js";
+
+export default {
+  // data() {
+  //   return {
+  //     alluser: "",
+
+  //     // paginate
+  //     currentPage: 1, // The current page number
+  //     itemsPerPage: 10, // Number of items to display per page
+  //   };
+  // },
+  // methods: {
+  //   userDelete(id) {
+  //     axios
+  //       .get(`/api/user.delete/${id}`)
+  //       .then((response) => {
+
+
+
+
+
+
+  //         const User = useAuthUserStore();
+  //         this.alluser = User.deleteUser(id);
+
+  //         this.$notify({
+  //           title: "message",
+  //           text: response.data.message,
+  //           type: "success",
+  //         });
+  //       })
+  //       .catch((error) => {
+  //         this.$setLoading(false);
+  //         this.$notify({
+  //           title: "Error message",
+  //           text: error.response.data.message,
+  //           type: "error",
+  //         });
+  //       });
+  //     this.$setLoading(false);
+  //   },
+  // },
+
+  // computed: {
+  //   // Calculate the total number of pages based on the total number of items and itemsPerPage
+  //   totalPages() {
+  //     return Math.ceil(this.alluser.length / this.itemsPerPage);
+  //   },
+  //   // Get the items to display on the current page
+  //   displayedItems() {
+  //     const start = (this.currentPage - 1) * this.itemsPerPage;
+  //     const end = start + this.itemsPerPage;
+  //     return this.alluser.slice(start, end);
+  //   },
+  // },
+
+  async created() {
+    // auth user data +++++++++++++++++++++++++++++
+
+    // const userStore = useAuthUserStore();
+    // const alluser = userStore.allUser;
+
+    // if (alluser) {
+    //   this.alluser = alluser;
+    // } else {
+    //   // userStore.reSetAuthUser();
+    //   this.alluser = await userStore.getAllUser();
+    // }
+    this.$setLoading(false);
+  },
+};
+
+
 </script>
 
 <style scoped>
