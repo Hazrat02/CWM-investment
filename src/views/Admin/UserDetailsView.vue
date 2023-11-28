@@ -59,7 +59,11 @@
                       >
                         <i class="fas fa-code-branch me-2"></i>Withdraw
                       </li>
-                      <li class="list-inline-item">
+                      <li
+                        class="list-inline-item"
+                        data-bs-toggle="modal"
+                        data-bs-target="#transferModal"
+                      >
                         <i class="fab fa-gg me-2"></i>Transfer
                       </li>
                     </ul>
@@ -98,17 +102,7 @@
                             TRX</a
                           >
                         </li>
-                        <li class="sidebar-item">
-                          <a
-                            class="sidebar-link"
-                            :class="{
-                              'bg-dash-dark-2': currentSection === 'transfer',
-                            }"
-                            @click="handleClick('transfer')"
-                          >
-                            Transfer</a
-                          >
-                        </li>
+
                         <li class="sidebar-item">
                           <a
                             class="sidebar-link"
@@ -320,6 +314,7 @@
                                             10
                                           )
                                         }}
+                                      
                                       </td>
 
                                       <td>{{ transactionItem.type }}</td>
@@ -363,8 +358,7 @@
                                             "
                                           >
                                           </i>
-                                          <i
-                                            @click="
+                                          <i @click="
                                               trxEdit(
                                                 transactionItem.id,
                                                 'rejected'
@@ -1031,7 +1025,7 @@
               <div class="modal-body">
                 <form
                   enctype="multipart/form-data"
-                  @submit.prevent="trx('deposit')"
+                  @submit.prevent="trx2('deposit')"
                 >
                   <div class="">
                     <label class="" for="Account">Account Category</label>
@@ -1122,7 +1116,7 @@
               <div class="modal-body">
                 <form
                   enctype="multipart/form-data"
-                  @submit.prevent="trx('withdraw')"
+                  @submit.prevent="trx2('withdraw')"
                 >
                   <div class="">
                     <label class="" for="Account">Account Category</label>
@@ -1176,6 +1170,89 @@
                   <div class="mt-1">
                     <button class="btn btn-primary" type="submit">
                       Withdraw Now
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  class="btn btn-secondary"
+                  type="button"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="modal fade text-start"
+          id="transferModal"
+          tabindex="-1"
+          aria-labelledby="transferModal"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="transferModal">Transfer Money</h5>
+                <button
+                  class="btn-close btn-close-white"
+                  type="button"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form enctype="multipart/form-data" @submit.prevent="transfer">
+                  <div class="">
+                    <select
+                      class="form-select"
+                      id="Account"
+                      required
+                      v-model="address"
+                    >
+                      <option selected disabled>Select</option>
+                      <option value="Wallet">
+                        Wallet Account (${{ authUser.main_balance }})
+                      </option>
+                      <option value="Live">
+                        Live Account (${{ authUser.live_balance }})
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="centered-line mt-5 mb-5">
+                    <hr />
+                    <div class="centered-text">To</div>
+                  </div>
+                  <div class="">
+                    <input
+                      disabled
+                      v-model="fromAddress"
+                      class="form-control disabled"
+                      type="text"
+                    />
+                  </div>
+                  <div class="">
+                    <label class="mt-2" for="Amount">Transfer Amount</label>
+                    <div class="input-group">
+                      <div class="input-group-text">$</div>
+                      <input
+                        required
+                        v-model="amount"
+                        class="form-control"
+                        id="Amount"
+                        type="text"
+                        placeholder="Min 10"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="mt-2">
+                    <button class="btn btn-primary" type="submit">
+                      Transfer Now
                     </button>
                   </div>
                 </form>
@@ -1266,6 +1343,13 @@ export default {
         return this.search.filter(
           (authTransaction) => authTransaction.status === "success"
         );
+      }
+    },
+    fromAddress() {
+      if (this.address === "Wallet") {
+        return "Live Account"; // No filter applied, return all transactions
+      } else {
+        return "Wallet Account";
       }
     },
     // Calculate the total number of pages based on the total number of items and itemsPerPage
@@ -1397,7 +1481,7 @@ export default {
       this.$setLoading(false);
     },
 
-    async trx(type) {
+    async trx2(type) {
       this.$setLoading(true);
 
       const data = {
@@ -1407,27 +1491,62 @@ export default {
         amount: this.amount,
         address: this.address,
       };
-
+      
       await axios
         .post("api/admin.deposit", data)
         .then((response) => {
           // transactionStore===================================
+          const dataArray = Array.isArray(response.data.transection) ? response.data.transection : [response.data.transection];
+            this.authUser = response.data.user;
+      // Adds the elements of dataArray to the end of the authTransaction array
+            this.authTransaction.unshift(...dataArray);
 
+          const getTransaction = transactionStore();
+
+          getTransaction.addTransaction(response.data.transaction);
+          
           this.$notify({
             title: "message",
             text: response.data.message,
             type: "success",
           });
-          const dataArray = Array.isArray(response.data.transection)
-            ? transection
-            : [transection];
+         
+          this.$setLoading(false);
+        })
+        .catch((error) => {
+          // Handle the error
+          this.$setLoading(false);
+          this.$notify({
+            title: "Error message",
+            text: error.response.data.message,
+            type: "error",
+          });
+        });
+      this.$setLoading(false);
+    },
+    async transfer() {
+      this.$setLoading(true);
+
+      const data = {
+        id: this.$route.params.id,
+
+        amount: this.amount,
+        address: this.address,
+      };
+
+    //   if(this.amount > this.authUser.(this.address))
+
+      await axios
+        .post("api/transfer", data)
+        .then((response) => {
+          // transactionStore===================================
           this.authUser = response.data.user;
-          // Adds the elements of dataArray to the end of the authTransaction array
-          this.authTransaction.unshift(...dataArray);
+          this.$notify({
+            title: "message",
+            text: response.data.message,
+            type: "success",
+          });
 
-          const getTransaction = transactionStore();
-
-          getTransaction.addTransaction(response.data.transaction);
           this.$setLoading(false);
         })
         .catch((error) => {
@@ -1504,6 +1623,29 @@ span {
 }
 .list-inline-item {
   cursor: pointer;
+}
+.centered-line {
+  text-align: center;
+  position: relative;
+}
+
+.centered-line hr {
+  border: none;
+  height: 2px;
+  background-color: rgb(255, 255, 255);
+  margin: 0;
+}
+
+.centered-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 0 10px;
+}
+.disabled {
+  color: black;
 }
 </style>
 

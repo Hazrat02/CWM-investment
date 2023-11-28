@@ -17,6 +17,7 @@ export const transactionStore = defineStore("transaction", {
       
       // Adds the elements of dataArray to the end of the authTransaction array
       this.authTransaction.unshift(...dataArray);
+      this.allTransaction.unshift(...dataArray);
       
     },
     async getTransaction() {
