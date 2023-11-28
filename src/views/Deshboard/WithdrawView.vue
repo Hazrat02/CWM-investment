@@ -69,7 +69,7 @@
               <div class="col-lg-12">
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="h4 mb-0">Deposit Your Money</h3>
+                    <h3 class="h4 mb-0">Withdraw Your Money</h3>
                   </div>
                   <div class="card-body pt-0">
                     <form
@@ -88,7 +88,7 @@
                           <option value="Wallet">
                             Wallet Account (${{ authUser.main_balance }})
                           </option>
-                          <option value="Live">
+                          <option value="live">
                             Live Account (${{ authUser.live_balance }})
                           </option>
                         </select>
@@ -160,16 +160,17 @@ export default {
   },
   methods: {
     async withdrawNow() {
-       this.$setLoading(true);
-      
+      this.$setLoading(true);
+
       const data = {
+        status:'pending',
         method: this.method,
-        type: "Withdraw",
+        type: "withdraw",
         amount: this.amount,
         address: this.address,
       };
 
-      if (this.address === "Wallet") {
+      if (this.address === "Wallet" || this.address === "wallet") {
         if (this.amount > this.authUser.main_balance) {
           this.$setLoading(false);
           this.$notify({
@@ -179,13 +180,13 @@ export default {
           });
           this.$setLoading(false);
         } else {
-         
           await axios
             .post("api/deposit", data)
             .then((response) => {
               this.$setLoading(false);
-              this.authUser.main_balance=this.authUser.main_balance - this.amount
-              this.$router.push('/transaction')
+              this.authUser.main_balance =
+                this.authUser.main_balance - this.amount;
+              this.$router.push("/transaction");
 
               // transactionStore===================================
 
@@ -194,8 +195,9 @@ export default {
                 text: response.data.message,
                 type: "success",
               });
-       
+              const getTransaction = transactionStore();
 
+              getTransaction.addTransaction(response.data);
             })
             .catch((error) => {
               // Handle the error
@@ -220,11 +222,10 @@ export default {
             .post("api/deposit", data)
             .then((response) => {
               this.$setLoading(false);
-              this.authUser.live_balance=this.authUser.live_balance - this.amount
-              const getTransaction = transactionStore();
+              this.authUser.live_balance =
+                this.authUser.live_balance - this.amount;
 
-                getTransaction.addTransaction(response.data);
-              this.$router.push('/transaction')
+              this.$router.push("/transaction");
 
               // transactionStore===================================
 
@@ -233,8 +234,9 @@ export default {
                 text: response.data.message,
                 type: "success",
               });
-             
+              const getTransaction = transactionStore();
 
+              getTransaction.addTransaction(response.data);
             })
             .catch((error) => {
               // Handle the error

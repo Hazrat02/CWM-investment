@@ -45,10 +45,18 @@
                     <ul
                       class="list-inline text-center mb-0 d-flex justify-content-between text-sm mb-0"
                     >
-                      <li class="list-inline-item">
+                      <li
+                        class="list-inline-item"
+                        data-bs-toggle="modal"
+                        data-bs-target="#depositModal"
+                      >
                         <i class="fab fa-blogger-b me-2"></i>Deposit
                       </li>
-                      <li class="list-inline-item">
+                      <li
+                        class="list-inline-item"
+                        data-bs-toggle="modal"
+                        data-bs-target="#withdrawModal"
+                      >
                         <i class="fas fa-code-branch me-2"></i>Withdraw
                       </li>
                       <li class="list-inline-item">
@@ -197,9 +205,7 @@
                                         Proof of ID approved
                                       </p>
                                     </div>
-                                    <p
-                                      class="text-xxl lh-1 mb-0 text-dash-color-1"
-                                    >
+                                    <p class="lh-1 mb-0 text-dash-color-1">
                                       {{ authUser.id_kyc }}
                                     </p>
                                   </div>
@@ -213,9 +219,7 @@
                                         Proof of Address approved
                                       </p>
                                     </div>
-                                    <p
-                                      class="text-xxl lh-1 mb-0 text-dash-color-1"
-                                    >
+                                    <p class="lh-1 mb-0 text-dash-color-1">
                                       {{ authUser.ad_kyc }}
                                     </p>
                                   </div>
@@ -229,9 +233,7 @@
                                         Economic Profile Details approved
                                       </p>
                                     </div>
-                                    <p
-                                      class="text-xxl lh-1 mb-0 text-dash-color-1"
-                                    >
+                                    <p class="lh-1 mb-0 text-dash-color-1">
                                       {{ authUser.ec_kyc }}
                                     </p>
                                   </div>
@@ -262,7 +264,7 @@
                             <div class="row justify-content-between">
                               <div class="p-2 ms-3 col-3">
                                 <label>Result: </label>
-                                <span> {{ this.transaction.length }}</span>
+                                <span> {{ this.authTransaction.length }}</span>
                               </div>
                               <div class="col-6 p-3">
                                 <div class="input-group">
@@ -504,6 +506,14 @@
                                       }}</span>
                                     </div>
                                   </div>
+
+                                  <button
+                                    v-if="authUser.ec_kyc == 'pending'"
+                                    class="btn btn-success"
+                                    @click="kyc('ec_kyc')"
+                                  >
+                                    Approve
+                                  </button>
                                 </div>
                                 <div class="col-md-6 col-12">
                                   <div class="card">
@@ -592,11 +602,592 @@
                         </div>
                       </div>
                     </div>
-                    <div v-else>
-                        no data
-                    </div>
+                    <div v-else>No Data</div>
                   </section>
+
+                  <div v-if="currentSection == 'payment'">
+                    <section class="pt-0 mt-4" v-if="authPayment">
+                      <div class="container-fluid">
+                        <div class="row justify-content-center gy-4">
+                          <div class="col-12">
+                            <div class="card">
+                              <div class="card-body">
+                                <div
+                                  class="row gy-3 align-items-center"
+                                  v-if="authPayment.method == 'bank'"
+                                >
+                                  <div class="col-md-6 col-12">
+                                    <div class="col-lg-10">
+                                      <div>
+                                        <b for="">Payment Method: </b
+                                        ><span>{{ authPayment.method }}</span>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-10">
+                                      <div>
+                                        <b for="">Bank Holder Name: </b
+                                        ><span>{{ authPayment.holder }}</span>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-lg-10">
+                                      <div>
+                                        <b for="">Account Number: </b
+                                        ><span>{{
+                                          authPayment.bank_address
+                                        }}</span>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-10">
+                                      <div>
+                                        <b for="">Recipient Bank Name: </b
+                                        ><span>{{
+                                          authPayment.bank_name
+                                        }}</span>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-10 mb-3">
+                                      <div>
+                                        <b for="">Recipient Bank IFSC: </b
+                                        ><span>{{ authPayment.ifsc }}</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-12">
+                                    <div class="card">
+                                      <div class="card-body">
+                                        <div
+                                          class="row gy-3 r justify-content-center"
+                                        >
+                                          <div class="">
+                                            <div
+                                              class="card mb-0"
+                                              style="border: solid white 2px"
+                                            >
+                                              <img
+                                                v-if="authPayment.doc"
+                                                class="img-fluid"
+                                                :src="authPayment.doc"
+                                                alt=""
+                                              />
+                                              <img
+                                                v-else
+                                                class="img-fluid"
+                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW_80vVH0RghGLTxWZjz0EYc9JanOzT-m0wEUvdU0caY6bKU5n8oF5hbOHZlU9GVUM1dQ&usqp=CAU"
+                                                alt=""
+                                              />
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="row gy-3 align-items-center"
+                                  v-if="authPayment.method == 'crypto'"
+                                >
+                                  <div class="col-md-6 col-12">
+                                    <div class="col-lg-10">
+                                      <div>
+                                        <b for="">Payment Method: </b
+                                        ><span>{{ authPayment.method }}</span>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-10">
+                                      <div>
+                                        <b for="">Wallet Address: </b
+                                        ><span>{{
+                                          authPayment.wallet_address
+                                        }}</span>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-lg-10">
+                                      <div>
+                                        <b for="">Currency: </b
+                                        ><span>USDT</span>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-10">
+                                      <div>
+                                        <b for="">Wallet Tag Number: </b
+                                        ><span>{{ authPayment.tag }}</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-12">
+                                    <div class="card">
+                                      <div class="card-body">
+                                        <div
+                                          class="row gy-3 r justify-content-center"
+                                        >
+                                          <div class="">
+                                            <div
+                                              class="card mb-0"
+                                              style="border: solid white 2px"
+                                            >
+                                              <img
+                                                v-if="authPayment.qr"
+                                                class="img-fluid"
+                                                :src="authPayment.qr"
+                                                alt=""
+                                              />
+                                              <img
+                                                v-else
+                                                class="img-fluid"
+                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW_80vVH0RghGLTxWZjz0EYc9JanOzT-m0wEUvdU0caY6bKU5n8oF5hbOHZlU9GVUM1dQ&usqp=CAU"
+                                                alt=""
+                                              />
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
+                    <div v-else>No Data</div>
+                  </div>
+                  <div v-if="currentSection == 'doc'">
+                    <section class="pt-0 mt-4" v-if="idkyc">
+                      <div class="">
+                        <div class="row justify-content-between">
+                          <div class="col-12">
+                            <div class="card">
+                              <div class="card-body">
+                                <div
+                                  class="row gy-3 align-items-center"
+                                  v-if="authUser.id_kyc != 'No'"
+                                >
+                                  <div class="col-12">
+                                    <div class="">
+                                      <div>
+                                        <b for="">Proof of ID: </b
+                                        ><button
+                                          v-if="authUser.id_kyc == 'pending'"
+                                          class="btn btn-success mt-2"
+                                          @click="kyc('id_kyc')"
+                                        >
+                                          Approve
+                                        </button>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                      <div class="card">
+                                        <div class="card-body">
+                                          <div
+                                            class="row gy-3 justify-content-between"
+                                          >
+                                            <div class="col-lg-6">
+                                              <b>Id Front:</b>
+                                              <div
+                                                class="card mb-0"
+                                                style="border: solid white 2px"
+                                              >
+                                                <a
+                                                  :href="idkyc.id_front"
+                                                  v-if="idkyc.id_front"
+                                                >
+                                                  <img
+                                                    class="img-fluid"
+                                                    :src="idkyc.id_front"
+                                                    alt=""
+                                                  />
+                                                </a>
+                                                <span v-else>No Data</span>
+                                              </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                              <b>Id Back:</b>
+                                              <div
+                                                class="card mb-0"
+                                                style="border: solid white 2px"
+                                              >
+                                                <a
+                                                  :href="idkyc.id_back"
+                                                  v-if="idkyc.id_back"
+                                                >
+                                                  <img
+                                                    class="img-fluid"
+                                                    :src="idkyc.id_back"
+                                                    alt=""
+                                                  />
+                                                </a>
+
+                                                <span v-else>No Data</span>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="row align-items-center"
+                                    v-if="authUser.ad_kyc != 'No'"
+                                  >
+                                    <div class="">
+                                      <div>
+                                        <b for="">Proof of Address: </b>
+                                        <button
+                                          v-if="authUser.ad_kyc == 'pending'"
+                                          class="btn btn-success mt-2"
+                                          @click="kyc('ad_kyc')"
+                                        >
+                                          Approve
+                                        </button>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                      <div class="col-lg-10">
+                                        <div>
+                                          <b for="">Country: </b
+                                          ><span>{{ idkyc.country }}</span>
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-10">
+                                        <div>
+                                          <b for="">City: </b
+                                          ><span>{{ idkyc.city }}</span>
+                                        </div>
+                                      </div>
+
+                                      <div class="col-lg-10">
+                                        <div>
+                                          <b for="">Address: </b
+                                          ><span>{{ idkyc.address }}</span>
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-10">
+                                        <div>
+                                          <b for="">Postel Number: </b
+                                          ><span>{{ idkyc.postel }}</span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                      <div class="card">
+                                        <div class="card-body">
+                                          <div
+                                            class="row gy-3 r justify-content-center"
+                                          >
+                                            <div class="">
+                                              <div
+                                                class="card mb-0"
+                                                style="border: solid white 2px"
+                                              >
+                                                <a
+                                                  :href="idkyc.ad_file"
+                                                  v-if="idkyc.ad_file"
+                                                >
+                                                  <img
+                                                    class="img-fluid"
+                                                    :src="idkyc.ad_file"
+                                                    alt=""
+                                                  />
+                                                </a>
+                                                <span v-else> No Data </span>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="row align-items-center"
+                                    v-if="idkyc.se_file"
+                                  >
+                                    <div class="">
+                                      <div>
+                                        <b for="">Proof of Selfie: </b>
+                                        <button
+                                          v-if="authUser.id_kyc == 'pending'"
+                                          class="btn btn-success mt-2"
+                                          @click="kyc('id_kyc')"
+                                        >
+                                          Approve
+                                        </button>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                      <div class="card">
+                                        <div class="card-body">
+                                          <div
+                                            class="row justify-content-between"
+                                          >
+                                            <div class="">
+                                              <div
+                                                class="card mb-0"
+                                                style="border: solid white 2px"
+                                              >
+                                                <a
+                                                  :href="idkyc.se_file"
+                                                  v-if="idkyc.se_file"
+                                                >
+                                                  <img
+                                                    class="img-fluid"
+                                                    :src="idkyc.se_file"
+                                                    alt=""
+                                                  />
+                                                </a>
+                                                <span v-else> No Data </span>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="row align-items-center"
+                                    v-if="idkyc.ot_file"
+                                  >
+                                    <div class="">
+                                      <div>
+                                        <b for="">Proof of Other: </b>
+                                        <button
+                                          v-if="authUser.id_kyc == 'pending'"
+                                          class="btn btn-success mt-2"
+                                          @click="kyc('id_kyc')"
+                                        >
+                                          Approve
+                                        </button>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                      <div class="card">
+                                        <div class="card-body">
+                                          <div
+                                            class="row justify-content-between"
+                                          >
+                                            <div class="">
+                                              <div
+                                                class="card mb-0"
+                                                style="border: solid white 2px"
+                                              >
+                                                <a
+                                                  :href="idkyc.ot_file"
+                                                  v-if="idkyc.ot_file"
+                                                >
+                                                  <img
+                                                    class="img-fluid"
+                                                    :src="idkyc.ot_file"
+                                                    alt=""
+                                                  />
+                                                </a>
+                                                <span v-else> No Data </span>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
+                    <div v-else>No Data</div>
+                  </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="modal fade text-start"
+          id="depositModal"
+          tabindex="-1"
+          aria-labelledby="depositModal"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="depositModal">Deposit Money</h5>
+                <button
+                  class="btn-close btn-close-white"
+                  type="button"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form
+                  enctype="multipart/form-data"
+                  @submit.prevent="trx('deposit')"
+                >
+                  <div class="">
+                    <label class="" for="Account">Account Category</label>
+                    <select
+                      class="form-select"
+                      id="Account"
+                      required
+                      v-model="address"
+                    >
+                      <option selected disabled>Select</option>
+                      <option value="Wallet">
+                        Wallet Account (${{ authUser.main_balance }})
+                      </option>
+                      <option value="Live">
+                        Live Account (${{ authUser.live_balance }})
+                      </option>
+                    </select>
+                  </div>
+                  <div class="">
+                    <label class="" for="Amount">Deposit Amount</label>
+                    <div class="input-group">
+                      <div class="input-group-text">$</div>
+                      <input
+                        required
+                        v-model="amount"
+                        class="form-control"
+                        id="Amount"
+                        type="text"
+                        placeholder="Min 10"
+                      />
+                    </div>
+                  </div>
+                  <div class="">
+                    <label class="" for="inlineFormSelectPref"
+                      >Payment Method</label
+                    >
+                    <select
+                      class="form-select"
+                      id="inlineFormSelectPref"
+                      v-model="method"
+                      required
+                    >
+                      <option selected disabled>Select</option>
+                      <option value="btc">Bitcoin</option>
+                      <option value="bnb">BNB</option>
+                      <option value="ltc">Lite Coin</option>
+                      <option value="Trust Wallet">Trust Wallet</option>
+                      <option value="Bit Pay">Bit Pay</option>
+                    </select>
+                  </div>
+                  <div class="mt-1">
+                    <button class="btn btn-primary" type="submit">
+                      Deposit Now
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  class="btn btn-secondary"
+                  type="button"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="modal fade text-start"
+          id="withdrawModal"
+          tabindex="-1"
+          aria-labelledby="withdrawModal"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="withdrawModal">Withdraw Money</h5>
+                <button
+                  class="btn-close btn-close-white"
+                  type="button"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form
+                  enctype="multipart/form-data"
+                  @submit.prevent="trx('withdraw')"
+                >
+                  <div class="">
+                    <label class="" for="Account">Account Category</label>
+                    <select
+                      class="form-select"
+                      id="Account"
+                      required
+                      v-model="address"
+                    >
+                      <option selected disabled>Select</option>
+                      <option value="Wallet">
+                        Wallet Account (${{ authUser.main_balance }})
+                      </option>
+                      <option value="Live">
+                        Live Account (${{ authUser.live_balance }})
+                      </option>
+                    </select>
+                  </div>
+                  <div class="">
+                    <label class="" for="Amount">Deposit Amount</label>
+                    <div class="input-group">
+                      <div class="input-group-text">$</div>
+                      <input
+                        required
+                        v-model="amount"
+                        class="form-control"
+                        id="Amount"
+                        type="text"
+                        placeholder="Min 10"
+                      />
+                    </div>
+                  </div>
+                  <div class="">
+                    <label class="" for="inlineFormSelectPref"
+                      >Payment Method</label
+                    >
+                    <select
+                      class="form-select"
+                      id="inlineFormSelectPref"
+                      v-model="method"
+                      required
+                    >
+                      <option selected disabled>Select</option>
+                      <option value="btc">Bitcoin</option>
+                      <option value="bnb">BNB</option>
+                      <option value="ltc">Lite Coin</option>
+                      <option value="Trust Wallet">Trust Wallet</option>
+                      <option value="Bit Pay">Bit Pay</option>
+                    </select>
+                  </div>
+                  <div class="mt-1">
+                    <button class="btn btn-primary" type="submit">
+                      Withdraw Now
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  class="btn btn-secondary"
+                  type="button"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
               </div>
             </div>
           </div>
@@ -613,37 +1204,44 @@ import { RouterLink } from "vue-router";
 import { useAuthUserStore } from "../../store/user";
 import isAuthenticated from "./../../midleware/auth";
 import { transactionStore } from "../../store/transaction";
-import { workStore } from "../../store/work";
 
 import axios from "axios";
 export default {
   data() {
     return {
-      authUser: [],
+      authUser: "",
       checkbox: "",
       currentSection: "profile",
       userId: "",
+      alluser: [],
 
       geteconomic: "",
+      authPayment: "",
+      idkyc: "",
 
       selectedOption: "all", // Initial selected option
       filterOptions: ["all", "pending", "rejected", "success"], // Dropdown options
 
       transaction: [],
+      authTransaction: [],
       searchQuery: "",
 
       // paginate
       currentPage: 1, // The current page number
       itemsPerPage: 5, // Number of items to display per page
+
+      address: "Select",
+      method: "Select",
+      amount: "",
     };
   },
   computed: {
     search() {
       if (!this.searchQuery) {
-        return this.transaction;
+        return this.authTransaction;
       } else {
         const searchText = this.searchQuery.toLowerCase();
-        return this.transaction.filter((item) => {
+        return this.authTransaction.filter((item) => {
           const trxid = item.trxid ? item.trxid.toLowerCase() : ""; // Handle null trxid
           return (
             item.type.toLowerCase().includes(searchText) ||
@@ -658,15 +1256,15 @@ export default {
         return this.search; // No filter applied, return all transactions
       } else if (this.selectedOption === "pending") {
         return this.search.filter(
-          (transaction) => transaction.status === "pending"
+          (authTransaction) => authTransaction.status === "pending"
         );
       } else if (this.selectedOption === "rejected") {
         return this.search.filter(
-          (transaction) => transaction.status === "rejected"
+          (authTransaction) => authTransaction.status === "rejected"
         );
       } else {
         return this.search.filter(
-          (transaction) => transaction.status === "success"
+          (authTransaction) => authTransaction.status === "success"
         );
       }
     },
@@ -733,14 +1331,14 @@ export default {
         this.currentPage++;
       }
     },
-    trxEdit(id, status) {
+    async trxEdit(id, status) {
       this.$setLoading(true);
 
       const data = {
         status: status,
       };
 
-      axios
+      await axios
         .put(`api/transaction.edit/${id}`, data)
         .then((response) => {
           this.$notify({
@@ -768,24 +1366,98 @@ export default {
       this.$setLoading(false);
       console.log(id, status);
     },
+    async kyc(type) {
+      this.$setLoading(true);
+
+      const data = {
+        type: type,
+      };
+
+      await axios
+        .put(`api/kyc.edit/${this.$route.params.id}`, data)
+        .then((response) => {
+          this.authUser = response.data.user;
+          this.$setLoading(false);
+
+          this.$notify({
+            title: "message",
+            text: response.data.message,
+            type: "success",
+          });
+        })
+        .catch((error) => {
+          this.$setLoading(false);
+          this.$notify({
+            title: "Error message",
+            text: error.response.data.message,
+            type: "error",
+          });
+        });
+
+      this.$setLoading(false);
+    },
+
+    async trx(type) {
+      this.$setLoading(true);
+
+      const data = {
+        id: this.$route.params.id,
+        method: this.method,
+        type: type,
+        amount: this.amount,
+        address: this.address,
+      };
+
+      await axios
+        .post("api/admin.deposit", data)
+        .then((response) => {
+          // transactionStore===================================
+
+          this.$notify({
+            title: "message",
+            text: response.data.message,
+            type: "success",
+          });
+          const dataArray = Array.isArray(response.data.transection)
+            ? transection
+            : [transection];
+          this.authUser = response.data.user;
+          // Adds the elements of dataArray to the end of the authTransaction array
+          this.authTransaction.unshift(...dataArray);
+
+          const getTransaction = transactionStore();
+
+          getTransaction.addTransaction(response.data.transaction);
+          this.$setLoading(false);
+        })
+        .catch((error) => {
+          // Handle the error
+          this.$setLoading(false);
+          this.$notify({
+            title: "Error message",
+            text: error.response.data.message,
+            type: "error",
+          });
+        });
+      this.$setLoading(false);
+    },
   },
 
   async created() {
-    if (isAuthenticated() == true) {
-      // auth user data +++++++++++++++++++++++++++++
+    const userStore = useAuthUserStore();
+    const alluser = userStore.allUser;
 
-      const userStore = useAuthUserStore();
-      const authUser = userStore.authUser;
-
-      if (authUser) {
-        this.authUser = authUser;
-      } else {
-        // userStore.reSetAuthUser();
-        this.authUser = await userStore.reSetAuthUser();
-      }
+    if (alluser) {
+      this.alluser = alluser;
     } else {
-      this.authUser = "";
+      // userStore.reSetAuthUser();
+      this.alluser = await userStore.getAllUser();
     }
+
+    const filteredUsers = this.alluser.filter(
+      (user) => user.id == this.$route.params.id
+    );
+    this.authUser = filteredUsers["0"];
 
     const getTransaction = transactionStore();
 
@@ -799,17 +1471,17 @@ export default {
       this.transaction = await getTransaction.allUserTransaction();
     }
 
-    const works = workStore();
-    const allwork = works.work;
-    if (allwork) {
-      this.geteconomic = allwork;
-    } else {
-      // userStore.reSetAuthUser();
-      this.$setLoading(false);
-      this.geteconomic = await works.getWork();
-    }
+    this.authTransaction = this.transaction.filter(
+      (user) => user.user_id == this.$route.params.id
+    );
 
-    console.log(this.geteconomic);
+    await axios
+      .get(`api/user.details/${this.$route.params.id}`)
+      .then((response) => {
+        this.geteconomic = response.data.economic;
+        this.idkyc = response.data.kyc;
+        this.authPayment = response.data.payment;
+      });
 
     this.$setLoading(false);
   },
@@ -821,6 +1493,16 @@ export default {
   color: rgb(255, 240, 249) !important;
 }
 .sidebar-link {
+  cursor: pointer;
+}
+b {
+  color: aliceblue;
+}
+
+span {
+  color: blueviolet;
+}
+.list-inline-item {
   cursor: pointer;
 }
 </style>

@@ -3,26 +3,37 @@
 import isAuthenticated from "./../midleware/auth";
 import { logout } from "./../midleware/auth";
 import axios from "axios";
-
+import { useAuthUserStore } from "./../store/user";
 export default {
   data() {
     return {
-      isAuthenticated: false,
+      authUser: [],
     };
   },
 
-  created() {
-    if (isAuthenticated()) {
-      this.isAuthenticated = true;
-    }
+  async created() {
+    if (isAuthenticated() == true) {
+      // auth user data +++++++++++++++++++++++++++++
 
+      const userStore = useAuthUserStore();
+      const authUser = userStore.authUser;
+
+      if (authUser) {
+        this.authUser = authUser;
+      } else {
+        // userStore.reSetAuthUser();
+        this.authUser = await userStore.reSetAuthUser();
+      }
+    } else {
+      this.authUser = "";
+    }
   },
 
   methods: {
-   async logout() {
+    async logout() {
       this.$setLoading(true);
       logout();
-     await axios
+      await axios
         .post("api/auth/logout")
         .then((response) => {
           this.$setLoading(false);
@@ -54,9 +65,13 @@ export default {
 <template>
   <body>
     <!-- Spinner Start -->
-    <div v-if="this.$isLoading()" id="spinner"
-        class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center" style="background-color: rgba(100, 87, 87, 0.692)">
-        <div class="spinner-grow text-primary" role="status"></div>
+    <div
+      v-if="this.$isLoading()"
+      id="spinner"
+      class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+      style="background-color: rgba(100, 87, 87, 0.692)"
+    >
+      <div class="spinner-grow text-primary" role="status"></div>
     </div>
     <!-- Spinner End -->
     <!-- <div v-if="this.$isLoading()" id="preloader">
@@ -89,20 +104,36 @@ export default {
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-4 py-lg-0">
-          <RouterLink to="/" class="nav-item nav-link  " :class="{
+          <RouterLink
+            to="/"
+            class="nav-item nav-link"
+            :class="{
               active: this.$route.path === '/',
-            }">Home</RouterLink>
-          <RouterLink to="/about" class="nav-item nav-link" :class="{
+            }"
+            >Home</RouterLink
+          >
+          <RouterLink
+            to="/about"
+            class="nav-item nav-link"
+            :class="{
               active: this.$route.path === '/about',
-            }">About</RouterLink>
-          <RouterLink :class="{
+            }"
+            >About</RouterLink
+          >
+          <RouterLink
+            :class="{
               active: this.$route.path === '/servics',
-            }" to="/servics" class="nav-item nav-link"
+            }"
+            to="/servics"
+            class="nav-item nav-link"
             >Service</RouterLink
           >
-          <RouterLink to="/contact" :class="{
+          <RouterLink
+            to="/contact"
+            :class="{
               active: this.$route.path === '/contact',
-            }" class="nav-item nav-link"
+            }"
+            class="nav-item nav-link"
             >Contact</RouterLink
           >
           <!-- <div class="nav-item dropdown">
@@ -139,17 +170,25 @@ export default {
         </div>
         <div class="nav-item nav-link">
           <RouterLink
-                v-if="!isAuthenticated"
-                to="/login"
-                class=" btn-dark py-3 px-4 animated slideInDown "
-                >LOGIN</RouterLink
-              >
-              <RouterLink
-                v-if="isAuthenticated"
-                to="/dashboard"
-                class=" btn-dark py-3 px-4 animated slideInDown"
-                >Dashboard</RouterLink
-              >
+            v-if="!authUser"
+            to="/login"
+            class="btn-dark py-3 px-4 animated slideInDown"
+            >LOGIN</RouterLink
+          >
+          <div v-if="authUser">
+            <RouterLink
+              v-if="authUser.role == '0'"
+              to="/admin/dashboard"
+              class="btn-dark py-3 px-4 animated slideInDown"
+              >Dashboard</RouterLink
+            >
+            <RouterLink
+             v-else
+              to="/dashboard"
+              class="btn-dark py-3 px-4 animated slideInDown"
+              >Dashboard</RouterLink
+            >
+          </div>
         </div>
       </div>
     </nav>
@@ -176,10 +215,14 @@ export default {
               />
             </h1>
             <span
-              >Our Portfolio Managers and Research Analysts Integrate ESG analysis into our investment process, where available, by focusing on companies with sustainable business models and evaluating ESG-related risks as part of the proprietary research recommendations we use throughout the firm.</span
+              >Our Portfolio Managers and Research Analysts Integrate ESG
+              analysis into our investment process, where available, by focusing
+              on companies with sustainable business models and evaluating
+              ESG-related risks as part of the proprietary research
+              recommendations we use throughout the firm.</span
             >
           </div>
-          
+
           <div class="col-lg-3 col-md-6">
             <h5 class="mb-4">Get In Touch</h5>
             <p>
@@ -188,15 +231,20 @@ export default {
             <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
             <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
           </div>
-         
+
           <div class="col-lg-3 col-md-6">
             <h5 class="mb-4">Quick Links</h5>
-            <RouterLink to="/about" class="btn btn-link" >About Us</RouterLink>
-            <RouterLink to="/contact" class="btn btn-link" >Contact Us</RouterLink>
-            <RouterLink to="/servics" class="btn btn-link" >Our Services</RouterLink>
-            <RouterLink to="/risk/disclosure" class="btn btn-link" >Risk Disclosure</RouterLink>
+            <RouterLink to="/about" class="btn btn-link">About Us</RouterLink>
+            <RouterLink to="/contact" class="btn btn-link"
+              >Contact Us</RouterLink
+            >
+            <RouterLink to="/servics" class="btn btn-link"
+              >Our Services</RouterLink
+            >
+            <RouterLink to="/risk/disclosure" class="btn btn-link"
+              >Risk Disclosure</RouterLink
+            >
           </div>
-          
         </div>
       </div>
       <div class="container-fluid copyright">
@@ -207,7 +255,6 @@ export default {
             </div>
             <div class="col-md-6 text-center text-md-end">
               <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-             
             </div>
           </div>
         </div>

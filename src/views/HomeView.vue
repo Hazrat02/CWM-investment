@@ -7,6 +7,7 @@ export default {
   data() {
     return {
       isAuthenticated: false,
+      authUser: [],
     };
   },
 
@@ -86,12 +87,21 @@ export default {
                 class="btn btn-primary py-3 px-4 animated slideInDown"
                 >LOGIN</RouterLink
               >
-              <RouterLink
-                v-if="isAuthenticated"
-                to="/dashboard"
-                class="btn btn-primary py-3 px-4 animated slideInDown"
-                >Dashboard</RouterLink
-              >
+              <div v-if="isAuthenticated">
+                <RouterLink
+                  v-if="authUser.role == '0'"
+                  to="/admin/dashboard"
+                  class="btn btn-primary py-3 px-4 animated slideInDown"
+                  >Dashboard</RouterLink
+                >
+                <RouterLink
+                  v-else
+                  to="/dashboard"
+                  class="btn btn-primary py-3 px-4 animated slideInDown"
+                  >Dashboard</RouterLink
+                >
+              </div>
+             
             </div>
             <div class="col-lg-6 animated fadeIn">
               <img
@@ -191,7 +201,6 @@ export default {
       </div>
       <!-- About End -->
 
-
       <!-- Features Start -->
       <div class="container-xxl py-5">
         <div class="container">
@@ -202,7 +211,8 @@ export default {
           >
             <h1 class="display-6">Why Us!</h1>
             <p class="text-primary fs-5 mb-5">
-                The best in Investment Industry            </p>
+              The best in Investment Industry
+            </p>
           </div>
           <div class="row g-5">
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -215,9 +225,10 @@ export default {
                 <div class="ps-4">
                   <h5 class="mb-3">Easy To Start</h5>
                   <span
-                    >Our expert wealth manager shall assist you with a quick and easy process for opening your account in the most efficient manner.
-</span
-                  >
+                    >Our expert wealth manager shall assist you with a quick and
+                    easy process for opening your account in the most efficient
+                    manner.
+                  </span>
                 </div>
               </div>
             </div>
@@ -231,9 +242,10 @@ export default {
                 <div class="ps-4">
                   <h5 class="mb-3">Safe & Secure</h5>
                   <span
-                    >Our clients have their independent & secure portfolio accounts with secure digital vaults which is directly insured by Lloyd Bank of United Kingdom.
-</span
-                  >
+                    >Our clients have their independent & secure portfolio
+                    accounts with secure digital vaults which is directly
+                    insured by Lloyd Bank of United Kingdom.
+                  </span>
                 </div>
               </div>
             </div>
@@ -247,9 +259,12 @@ export default {
                 <div class="ps-4">
                   <h5 class="mb-3">Affordable Plans</h5>
                   <span
-                    >We understand that not all our clients have the same financial diversification. We have basic Investment Plans starting from just $5000USD. Our wealth managers shall assist you time and when you wish to diversify and increase your portfolio with us.
-</span
-                  >
+                    >We understand that not all our clients have the same
+                    financial diversification. We have basic Investment Plans
+                    starting from just $5000USD. Our wealth managers shall
+                    assist you time and when you wish to diversify and increase
+                    your portfolio with us.
+                  </span>
                 </div>
               </div>
             </div>
@@ -263,7 +278,9 @@ export default {
                 <div class="ps-4">
                   <h5 class="mb-3">Secure Storage</h5>
                   <span
-                    >For our luxury investment clients, we offer access to direct SWISS Digital Vault facility accessible only by our client’s preregistered biometrics</span
+                    >For our luxury investment clients, we offer access to
+                    direct SWISS Digital Vault facility accessible only by our
+                    client’s preregistered biometrics</span
                   >
                 </div>
               </div>
@@ -278,9 +295,10 @@ export default {
                 <div class="ps-4">
                   <h5 class="mb-3">Protected By Insurance</h5>
                   <span
-                    >All the assets of the company, with its portfolio of our invested client is directly secured by Lloyd Bank of United Kingdom.
-</span
-                  >
+                    >All the assets of the company, with its portfolio of our
+                    invested client is directly secured by Lloyd Bank of United
+                    Kingdom.
+                  </span>
                 </div>
               </div>
             </div>
@@ -294,9 +312,10 @@ export default {
                 <div class="ps-4">
                   <h5 class="mb-3">24/7 Support</h5>
                   <span
-                    >Through our designated virtual offices across the globe, we are able to cater our investor clients 24*7 for any assistance that may be required.
-</span
-                  >
+                    >Through our designated virtual offices across the globe, we
+                    are able to cater our investor clients 24*7 for any
+                    assistance that may be required.
+                  </span>
                 </div>
               </div>
             </div>
@@ -319,8 +338,6 @@ export default {
             </p>
           </div>
           <div class="row g-4">
-            
-            
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
               <div class="service-item bg-white p-5">
                 <img
@@ -330,12 +347,12 @@ export default {
                 />
                 <h5 class="mb-3">Currency Exchange</h5>
                 <p>
-                    For clients who wish to BUY/SELL Crypto with our platform can enjoy the best and most minimal exchange rates in the market.
-
+                  For clients who wish to BUY/SELL Crypto with our platform can
+                  enjoy the best and most minimal exchange rates in the market.
                 </p>
               </div>
             </div>
-           
+
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
               <div class="service-item bg-white p-5">
                 <img
@@ -345,8 +362,8 @@ export default {
                 />
                 <h5 class="mb-3">Crypto Escrow Services</h5>
                 <p>
-                    For our High Net Worth Corporate Clients we offer Crypto Escrow Services for safe & secure entity transactions.
-
+                  For our High Net Worth Corporate Clients we offer Crypto
+                  Escrow Services for safe & secure entity transactions.
                 </p>
               </div>
             </div>
@@ -359,11 +376,10 @@ export default {
                 />
                 <h5 class="mb-3">Currency Transaction</h5>
                 <p>
-                    With ZERO transfer rates policy, CWM is the best investment platform for clients without any transactional deductions.
-
+                  With ZERO transfer rates policy, CWM is the best investment
+                  platform for clients without any transactional deductions.
                 </p>
               </div>
-              
             </div>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
               <div class="service-item bg-white p-5">
@@ -374,8 +390,11 @@ export default {
                 />
                 <h5 class="mb-3">Currency Wallet</h5>
                 <p>
-                To facilitate our investor clients with the ease of transfer our company has embraced Crypto Wallet Transfers as the most efficient, discreet & safest form of exchange and transfer for all deposits & withdrawals which will be directly linked with their respective crypto wallets.
-
+                  To facilitate our investor clients with the ease of transfer
+                  our company has embraced Crypto Wallet Transfers as the most
+                  efficient, discreet & safest form of exchange and transfer for
+                  all deposits & withdrawals which will be directly linked with
+                  their respective crypto wallets.
                 </p>
               </div>
             </div>
@@ -388,11 +407,14 @@ export default {
                 />
                 <h5 class="mb-3">Portfolio Investment</h5>
                 <p>
-                    Our expert advisors provide personalized investment diversification structure for our clients who wish to invest in Crypto Currency, Gold & Silver ETF, Forex Currency Trading, Commodities Trading etc.
+                  Our expert advisors provide personalized investment
+                  diversification structure for our clients who wish to invest
+                  in Crypto Currency, Gold & Silver ETF, Forex Currency Trading,
+                  Commodities Trading etc.
                 </p>
               </div>
             </div>
-            
+
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
               <div class="service-item bg-white p-5">
                 <img
@@ -402,8 +424,9 @@ export default {
                 />
                 <h5 class="mb-3">Luxury Auction Investment</h5>
                 <p>
-                    As per the Knight Frank Index, our company diversify client’s investments across various luxury segments for maximum return on investments.
-
+                  As per the Knight Frank Index, our company diversify client’s
+                  investments across various luxury segments for maximum return
+                  on investments.
                 </p>
               </div>
             </div>
@@ -436,8 +459,8 @@ export default {
                       aria-expanded="true"
                       aria-controls="collapseOne"
                     >
-                    What is the minimum investment as an investor client can I start with?
-
+                      What is the minimum investment as an investor client can I
+                      start with?
                     </button>
                   </h2>
                   <div
@@ -447,8 +470,9 @@ export default {
                     data-bs-parent="#accordionExample"
                   >
                     <div class="accordion-body">
-                        A – Minimum Investment starts from $5000USD only, however to access higher return on investments we request our clients to co-ordinate with the assigned wealth manager.
-
+                      A – Minimum Investment starts from $5000USD only, however
+                      to access higher return on investments we request our
+                      clients to co-ordinate with the assigned wealth manager.
                     </div>
                   </div>
                 </div>
@@ -462,8 +486,8 @@ export default {
                       aria-expanded="false"
                       aria-controls="collapseTwo"
                     >
-                    What kind of return on investments can I as an investor expect?
-
+                      What kind of return on investments can I as an investor
+                      expect?
                     </button>
                   </h2>
                   <div
@@ -473,8 +497,10 @@ export default {
                     data-bs-parent="#accordionExample"
                   >
                     <div class="accordion-body">
-                        A – For our retail investors the return on investments is as lucrative as 5% month on month. However, the return on investments may vary for investments 15% - 20% or even higher depending on the nature of diversification.
-
+                      A – For our retail investors the return on investments is
+                      as lucrative as 5% month on month. However, the return on
+                      investments may vary for investments 15% - 20% or even
+                      higher depending on the nature of diversification.
                     </div>
                   </div>
                 </div>
@@ -488,8 +514,7 @@ export default {
                       aria-expanded="false"
                       aria-controls="collapseThree"
                     >
-                    How safe is my investment as an investor client?
-
+                      How safe is my investment as an investor client?
                     </button>
                   </h2>
                   <div
@@ -499,8 +524,11 @@ export default {
                     data-bs-parent="#accordionExample"
                   >
                     <div class="accordion-body">
-                        A – Each Investor has exclusive access to his privatized personal digital locker account which only client has the exclusive access to and the personal digital locker is directly linked with the investor’s crypto wallet for smart and efficient deposit & withdrawals. 
-
+                      A – Each Investor has exclusive access to his privatized
+                      personal digital locker account which only client has the
+                      exclusive access to and the personal digital locker is
+                      directly linked with the investor’s crypto wallet for
+                      smart and efficient deposit & withdrawals.
                     </div>
                   </div>
                 </div>
@@ -514,8 +542,8 @@ export default {
                       aria-expanded="true"
                       aria-controls="collapseFour"
                     >
-                    What sectors are the investment portfolios diversified across?
-
+                      What sectors are the investment portfolios diversified
+                      across?
                     </button>
                   </h2>
                   <div
@@ -525,12 +553,16 @@ export default {
                     data-bs-parent="#accordionExample"
                   >
                     <div class="accordion-body">
-                        A – Generalizing portfolio diversification can be always tricky. Our wealth managers, based on the risk to return ratio; best optimize advise our clients to diversify across some mentionable sectors such as Forex, Crypto, Gold & Silver Exchange Trade Fund, Luxury Auction Investments, Real Estate Investment Trust etc.
-
+                      A – Generalizing portfolio diversification can be always
+                      tricky. Our wealth managers, based on the risk to return
+                      ratio; best optimize advise our clients to diversify
+                      across some mentionable sectors such as Forex, Crypto,
+                      Gold & Silver Exchange Trade Fund, Luxury Auction
+                      Investments, Real Estate Investment Trust etc.
                     </div>
                   </div>
                 </div>
-                
+
                 <div class="accordion-item wow fadeInUp" data-wow-delay="0.6s">
                   <h2 class="accordion-header" id="headingSix">
                     <button
@@ -541,8 +573,8 @@ export default {
                       aria-expanded="false"
                       aria-controls="collapseSix"
                     >
-                    As an Investor client, is there any LOCK – IN Period from the time of investment?
-
+                      As an Investor client, is there any LOCK – IN Period from
+                      the time of investment?
                     </button>
                   </h2>
                   <div
@@ -552,12 +584,14 @@ export default {
                     data-bs-parent="#accordionExample"
                   >
                     <div class="accordion-body">
-                    A – No, as a strict company policy, we do not have any LOCK- IN Period for the portfolios set by our investor clients. The client has the freedom to forfeit his investment with the company anytime during the tenure of his investment.
-
+                      A – No, as a strict company policy, we do not have any
+                      LOCK- IN Period for the portfolios set by our investor
+                      clients. The client has the freedom to forfeit his
+                      investment with the company anytime during the tenure of
+                      his investment.
                     </div>
                   </div>
                 </div>
-                
               </div>
             </div>
           </div>

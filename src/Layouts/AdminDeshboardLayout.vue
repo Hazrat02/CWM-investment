@@ -27,13 +27,18 @@ export default {
     } else {
       // userStore.reSetAuthUser();
       this.authUser = await userStore.reSetAuthUser();
-    }
-    if (this.authUser.role != '0') {
+      if (this.authUser.role != '0') {
       
         
 
-          this.$router.push("/dashboard");
+      this.$router.push("/dashboard");
+}
     }
+
+    
+
+    this.$setLoading(false);
+
   },
   methods: {
     toggleSidebar() {
@@ -256,7 +261,7 @@ export default {
           <li
             class="sidebar-item"
             :class="{
-              active: this.$route.path === '/admin/user',
+              active: this.$route.path === '/admin/user' ,
             }"
           >
             <RouterLink class="sidebar-link" to="/admin/user">
