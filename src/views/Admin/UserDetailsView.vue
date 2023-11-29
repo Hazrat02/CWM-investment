@@ -1289,8 +1289,9 @@
 import { RouterLink } from "vue-router";
 
 import { useAuthUserStore } from "../../store/user";
-import isAuthenticated from "./../../midleware/auth";
 import { transactionStore } from "../../store/transaction";
+import isAuthenticated from "./../../midleware/auth";
+
 
 import axios from "axios";
 export default {

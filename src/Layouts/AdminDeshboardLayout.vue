@@ -72,7 +72,7 @@ export default {
 
 
 <template>
-  <body>
+  <body style="margin-top: 0 !important;padding-top: 0 !important">
     <!--  class="lo" -->
 
     <div v-if="this.$isLoading()"
@@ -357,5 +357,16 @@ export default {
   100% {
     transform: rotate(calc(360deg * var(--direction)));
   }
+}
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 </style>

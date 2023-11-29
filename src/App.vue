@@ -27,6 +27,7 @@ export default {
 <template>
    
   <div  v-if="isBeforeDate">
+    
     <Notifications style="margin-top: 30px;"></Notifications>
 
     <RouterView />
