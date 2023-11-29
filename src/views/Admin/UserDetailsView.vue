@@ -250,354 +250,9 @@
                     </div>
                   </div>
 
-                  <section class="tables py-0" v-if="currentSection == 'trx'">
-                    <div class="container-fluid">
-                      <div class="row gy-4">
-                        <div class="col-lg-12">
-                          <div class="card mb-0">
-                            <div class="row justify-content-between">
-                              <div class="p-2 ms-3 col-3">
-                                <label>Result: </label>
-                                <span> {{ this.authTransaction.length }}</span>
-                              </div>
-                              <div class="col-6 p-3">
-                                <div class="input-group">
-                                  <div class="input-group-text">
-                                    <select
-                                      class="form-select"
-                                      v-model="selectedOption"
-                                    >
-                                      <option selected disabled>Select</option>
-                                      <option value="all">All</option>
-                                      <option value="pending">Pending</option>
-                                      <option value="success">Success</option>
-                                      <option value="rejected">Rejected</option>
-                                    </select>
-                                  </div>
-                                  <input
-                                    style="border: solid white 1px"
-                                    class="form-control"
-                                    type="text"
-                                    v-model="searchQuery"
-                                    placeholder="search.."
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                            <div class="card-body pt-0">
-                              <div class="table-responsive">
-                                <table class="table mb-0">
-                                  <thead>
-                                    <tr>
-                                      <th>#</th>
-                                      <th>Date</th>
-                                      <th>Type</th>
-                                      <th>Payment Method</th>
-                                      <th>Amount</th>
-                                      <th>Account</th>
+                  
 
-                                      <th>Status</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr
-                                      v-for="(
-                                        transactionItem, index
-                                      ) in displayedItems"
-                                      :key="index"
-                                    >
-                                      <th scope="row">{{ index }}</th>
-                                      <td>
-                                        {{
-                                          transactionItem.created_at.substring(
-                                            0,
-                                            10
-                                          )
-                                        }}
-                                      
-                                      </td>
-
-                                      <td>{{ transactionItem.type }}</td>
-                                      <td>{{ transactionItem.method }}</td>
-                                      <td>${{ transactionItem.amount }}</td>
-                                      <td>
-                                        {{ transactionItem.address }} Account
-                                      </td>
-                                      <td>
-                                        <span
-                                          v-if="
-                                            transactionItem.status != 'pending'
-                                          "
-                                          class="badge"
-                                          :class="{
-                                            'bg-danger':
-                                              transactionItem.status ===
-                                              'rejected',
-                                            'bg-success':
-                                              transactionItem.status ===
-                                              'success',
-                                          }"
-                                        >
-                                          {{ transactionItem.status }}
-                                        </span>
-                                        <span
-                                          v-else
-                                          class="d-flex justify-content-evenly"
-                                        >
-                                          <i
-                                            @click="
-                                              trxEdit(
-                                                transactionItem.id,
-                                                'success'
-                                              )
-                                            "
-                                            class="fa fa-check"
-                                            style="
-                                              color: green;
-                                              font-size: 20px;
-                                            "
-                                          >
-                                          </i>
-                                          <i @click="
-                                              trxEdit(
-                                                transactionItem.id,
-                                                'rejected'
-                                              )
-                                            "
-                                            else
-                                            class="fa fa-times"
-                                            style="color: red; font-size: 20px"
-                                          ></i>
-                                        </span>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                                <nav
-                                  v-show="totalPages > 1"
-                                  aria-label="Page navigation example mt-3"
-                                >
-                                  <ul class="pagination justify-content-center">
-                                    <li
-                                      class="page-item"
-                                      :class="{
-                                        disabled: currentPage === 1,
-                                      }"
-                                    >
-                                      <button
-                                        class="page-link"
-                                        @click="previousPage"
-                                        :disabled="currentPage === 1"
-                                      >
-                                        Previous
-                                      </button>
-                                    </li>
-                                    <li class="page-item">
-                                      <span class="page-link"
-                                        >Page {{ currentPage }} of
-                                        {{ totalPages }}</span
-                                      >
-                                    </li>
-
-                                    <li class="page-item">
-                                      <button
-                                        class="page-link"
-                                        @click="nextPage"
-                                        :class="{
-                                          disabled: currentPage === totalPages,
-                                        }"
-                                      >
-                                        Next
-                                      </button>
-                                    </li>
-                                  </ul>
-                                </nav>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
-
-                  <section
-                    class="pt-0 mt-4"
-                    v-if="currentSection == 'economic'"
-                  >
-                    <div class="container-fluid" v-if="geteconomic">
-                      <div class="row justify-content-center gy-4">
-                        <div class="col-12">
-                          <div class="card">
-                            <div class="card-body">
-                              <div class="row gy-3 align-items-center">
-                                <div class="col-md-6 col-12">
-                                  <div class="col-lg-10">
-                                    <div>
-                                      <b for=""> Employment status: </b
-                                      ><span>{{ geteconomic.employ }}</span>
-                                    </div>
-                                  </div>
-                                  <div class="col-lg-10">
-                                    <div>
-                                      <b for="">Industry: </b
-                                      ><span>{{ geteconomic.industry }}</span>
-                                    </div>
-                                  </div>
-
-                                  <div class="col-lg-10">
-                                    <div>
-                                      <b for="">Source of Income/Funds: </b
-                                      ><span>{{
-                                        geteconomic.source_of_income
-                                      }}</span>
-                                    </div>
-                                  </div>
-                                  <div class="col-lg-10">
-                                    <div>
-                                      <b for=""
-                                        >Estimated Annual Income (USD): </b
-                                      ><span>{{
-                                        geteconomic.est_annual_income
-                                      }}</span>
-                                    </div>
-                                  </div>
-                                  <div class="col-lg-10 mb-3">
-                                    <div>
-                                      <b for="">Estimated Net Worth (USD): </b
-                                      ><span>{{
-                                        geteconomic.est_net_worth
-                                      }}</span>
-                                    </div>
-                                  </div>
-                                  <div class="col-lg-10">
-                                    <div>
-                                      <b for=""
-                                        >Have you ever traded in derivatives or
-                                        FX & CFD products before?: </b
-                                      ><span>{{
-                                        geteconomic.ever_traded
-                                      }}</span>
-                                    </div>
-                                  </div>
-                                  <div class="col-lg-10">
-                                    <div>
-                                      <b for=""
-                                        >Do you have previous work experience or
-                                        any qualification that can help you to
-                                        understand the risks related to trading
-                                        in leveraged products?: </b
-                                      ><span>{{
-                                        geteconomic.previous_work_exp
-                                      }}</span>
-                                    </div>
-                                  </div>
-                                  <div class="col-lg-10 mb-3">
-                                    <div>
-                                      <b for=""
-                                        >Are you a US citizen for tax purposes?: </b
-                                      ><span>{{
-                                        geteconomic.are_you_us_citizen
-                                      }}</span>
-                                    </div>
-                                  </div>
-
-                                  <button
-                                    v-if="authUser.ec_kyc == 'pending'"
-                                    class="btn btn-success"
-                                    @click="kyc('ec_kyc')"
-                                  >
-                                    Approve
-                                  </button>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                  <div class="card">
-                                    <div class="card-body">
-                                      <div
-                                        class="row gy-3 r justify-content-center"
-                                      >
-                                        <div class="">
-                                          <div
-                                            class="card mb-0"
-                                            style="border: solid white 2px"
-                                          >
-                                            <div class="card-body">
-                                              <div
-                                                class="d-flex align-items-end justify-content-between mb-2"
-                                              >
-                                                <div class="me-2">
-                                                  <p
-                                                    class="text-sm text-uppercase text-gray-600 lh-1 mb-0"
-                                                  >
-                                                    Proof of ID approved
-                                                  </p>
-                                                </div>
-                                                <p
-                                                  class="lh-1 mb-0 text-dash-color-1"
-                                                >
-                                                  {{ authUser.id_kyc }}
-                                                </p>
-                                              </div>
-                                              <div
-                                                class="d-flex align-items-end justify-content-between mb-2"
-                                              >
-                                                <div class="me-2">
-                                                  <p
-                                                    class="text-sm text-uppercase text-gray-600 lh-1 mb-0"
-                                                  >
-                                                    Proof of Address approved
-                                                  </p>
-                                                </div>
-                                                <p
-                                                  class="lh-1 mb-0 text-dash-color-1"
-                                                >
-                                                  {{ authUser.ad_kyc }}
-                                                </p>
-                                              </div>
-                                              <div
-                                                class="d-flex align-items-end justify-content-between mb-2"
-                                              >
-                                                <div class="me-2">
-                                                  <p
-                                                    class="text-sm text-uppercase text-gray-600 lh-1 mb-0"
-                                                  >
-                                                    Economic Profile Details
-                                                    approved
-                                                  </p>
-                                                </div>
-                                                <p
-                                                  class="lh-1 mb-0 text-dash-color-1"
-                                                >
-                                                  {{ authUser.ec_kyc }}
-                                                </p>
-                                              </div>
-                                              <div
-                                                class="progress"
-                                                style="height: 3px"
-                                              >
-                                                <div
-                                                  class="progress-bar bg-dash-color-1"
-                                                  role="progressbar"
-                                                  style="width: 30%"
-                                                  aria-valuenow="30"
-                                                  aria-valuemin="0"
-                                                  aria-valuemax="100"
-                                                ></div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div v-else>No Data</div>
-                  </section>
+                  
 
                   <div v-if="currentSection == 'payment'">
                     <section class="pt-0 mt-4" v-if="authPayment">
@@ -999,11 +654,366 @@
                     <div v-else>No Data</div>
                   </div>
                 </div>
+                <section
+                    class=""
+                    v-if="currentSection == 'economic'"
+                  >
+                    <div class="container-fluid" v-if="geteconomic">
+                      <div class="row justify-content-center gy-4">
+                        <div class="col-12">
+                          <div class="">
+                            <div class="">
+                              <div class="row gy-3 align-items-center">
+                                <div class="col-12 col-md-6">
+                                  <div class="col-lg-12">
+                                    <div>
+                                      <b for=""> Employment status: </b
+                                      ><span>{{ geteconomic.employ }}</span>
+                                    </div>
+                                  </div>
+                                  <div class="col-lg-10">
+                                    <div>
+                                      <b for="">Industry: </b
+                                      ><span>{{ geteconomic.industry }}</span>
+                                    </div>
+                                  </div>
+
+                                  <div class="col-lg-10">
+                                    <div>
+                                      <b for="">Source of Income/Funds: </b
+                                      ><span>{{
+                                        geteconomic.source_of_income
+                                      }}</span>
+                                    </div>
+                                  </div>
+                                  <div class="col-lg-10">
+                                    <div>
+                                      <b for=""
+                                        >Estimated Annual Income (USD): </b
+                                      ><span>{{
+                                        geteconomic.est_annual_income
+                                      }}</span>
+                                    </div>
+                                  </div>
+                                  <div class="col-lg-10 mb-3">
+                                    <div>
+                                      <b for="">Estimated Net Worth (USD): </b
+                                      ><span>{{
+                                        geteconomic.est_net_worth
+                                      }}</span>
+                                    </div>
+                                  </div>
+                                  <div class="col-lg-10">
+                                    <div>
+                                      <b for=""
+                                        >Have you ever traded in derivatives or
+                                        FX & CFD products before?: </b
+                                      ><span>{{
+                                        geteconomic.ever_traded
+                                      }}</span>
+                                    </div>
+                                  </div>
+                                  <div class="col-lg-10">
+                                    <div>
+                                      <b for=""
+                                        >Do you have previous work experience or
+                                        any qualification that can help you to
+                                        understand the risks related to trading
+                                        in leveraged products?: </b
+                                      ><span>{{
+                                        geteconomic.previous_work_exp
+                                      }}</span>
+                                    </div>
+                                  </div>
+                                  <div class="col-lg-10 mb-3">
+                                    <div>
+                                      <b for=""
+                                        >Are you a US citizen for tax purposes?: </b
+                                      ><span>{{
+                                        geteconomic.are_you_us_citizen
+                                      }}</span>
+                                    </div>
+                                  </div>
+
+                                  <button
+                                    v-if="authUser.ec_kyc == 'pending'"
+                                    class="btn btn-success"
+                                    @click="kyc('ec_kyc')"
+                                  >
+                                    Approve
+                                  </button>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                  <div class="card">
+                                    <div class="card-body">
+                                      <div
+                                        class="row gy-3 r justify-content-center"
+                                      >
+                                        <div class="">
+                                          <div
+                                            class="card mb-0"
+                                            style="border: solid white 2px"
+                                          >
+                                            <div class="card-body">
+                                              <div
+                                                class="d-flex align-items-end justify-content-between mb-2"
+                                              >
+                                                <div class="me-2">
+                                                  <p
+                                                    class="text-sm text-uppercase text-gray-600 lh-1 mb-0"
+                                                  >
+                                                    Proof of ID approved
+                                                  </p>
+                                                </div>
+                                                <p
+                                                  class="lh-1 mb-0 text-dash-color-1"
+                                                >
+                                                  {{ authUser.id_kyc }}
+                                                </p>
+                                              </div>
+                                              <div
+                                                class="d-flex align-items-end justify-content-between mb-2"
+                                              >
+                                                <div class="me-2">
+                                                  <p
+                                                    class="text-sm text-uppercase text-gray-600 lh-1 mb-0"
+                                                  >
+                                                    Proof of Address approved
+                                                  </p>
+                                                </div>
+                                                <p
+                                                  class="lh-1 mb-0 text-dash-color-1"
+                                                >
+                                                  {{ authUser.ad_kyc }}
+                                                </p>
+                                              </div>
+                                              <div
+                                                class="d-flex align-items-end justify-content-between mb-2"
+                                              >
+                                                <div class="me-2">
+                                                  <p
+                                                    class="text-sm text-uppercase text-gray-600 lh-1 mb-0"
+                                                  >
+                                                    Economic Profile Details
+                                                    approved
+                                                  </p>
+                                                </div>
+                                                <p
+                                                  class="lh-1 mb-0 text-dash-color-1"
+                                                >
+                                                  {{ authUser.ec_kyc }}
+                                                </p>
+                                              </div>
+                                              <div
+                                                class="progress"
+                                                style="height: 3px"
+                                              >
+                                                <div
+                                                  class="progress-bar bg-dash-color-1"
+                                                  role="progressbar"
+                                                  style="width: 30%"
+                                                  aria-valuenow="30"
+                                                  aria-valuemin="0"
+                                                  aria-valuemax="100"
+                                                ></div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div v-else>No Data</div>
+                  </section>
               </div>
             </div>
+            
           </div>
-        </div>
+          
+          <section class="tables py-0" v-if="currentSection == 'trx'">
+                    <div class="">
+                      <div class="row gy-4">
+                        <div class="col-lg-12">
+                          <div class="card mb-0">
+                            <div class="row justify-content-between">
+                              <div class="p-2 ms-3 col-3">
+                                <label>Result: </label>
+                                <span> {{ this.authTransaction.length }}</span>
+                              </div>
+                              <div class="col-6 p-3">
+                                <div class="input-group">
+                                  <div class="input-group-text">
+                                    <select
+                                      class="form-select"
+                                      v-model="selectedOption"
+                                    >
+                                      <option selected disabled>Select</option>
+                                      <option value="all">All</option>
+                                      <option value="pending">Pending</option>
+                                      <option value="success">Success</option>
+                                      <option value="rejected">Rejected</option>
+                                    </select>
+                                  </div>
+                                  <input
+                                    style="border: solid white 1px"
+                                    class="form-control"
+                                    type="text"
+                                    v-model="searchQuery"
+                                    placeholder="search.."
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card-body pt-0">
+                              <div class="table-responsive">
+                                <table class="table mb-0">
+                                  <thead>
+                                    <tr>
+                                      <th>#</th>
+                                      <th>Date</th>
+                                      <th>Type</th>
+                                      <th>Payment Method</th>
+                                      <th>Amount</th>
+                                      <th>Account</th>
 
+                                      <th>Status</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr
+                                      v-for="(
+                                        transactionItem, index
+                                      ) in displayedItems"
+                                      :key="index"
+                                    >
+                                      <th scope="row">{{ index }}</th>
+                                      <td>
+                                        {{
+                                          transactionItem.created_at.substring(
+                                            0,
+                                            10
+                                          )
+                                        }}
+                                      
+                                      </td>
+
+                                      <td>{{ transactionItem.type }}</td>
+                                      <td>{{ transactionItem.method }}</td>
+                                      <td>${{ transactionItem.amount }}</td>
+                                      <td>
+                                        {{ transactionItem.address }} Account
+                                      </td>
+                                      <td>
+                                        <span
+                                          v-if="
+                                            transactionItem.status != 'pending'
+                                          "
+                                          class="badge"
+                                          :class="{
+                                            'bg-danger':
+                                              transactionItem.status ===
+                                              'rejected',
+                                            'bg-success':
+                                              transactionItem.status ===
+                                              'success',
+                                          }"
+                                        >
+                                          {{ transactionItem.status }}
+                                        </span>
+                                        <span
+                                          v-else
+                                          class="d-flex justify-content-evenly"
+                                        >
+                                          <i
+                                            @click="
+                                              trxEdit(
+                                                transactionItem.id,
+                                                'success'
+                                              )
+                                            "
+                                            class="fa fa-check"
+                                            style="
+                                              color: green;
+                                              font-size: 20px;
+                                            "
+                                          >
+                                          </i>
+                                          <i @click="
+                                              trxEdit(
+                                                transactionItem.id,
+                                                'rejected'
+                                              )
+                                            "
+                                            else
+                                            class="fa fa-times"
+                                            style="color: red; font-size: 20px"
+                                          ></i>
+                                        </span>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <nav
+                                  v-show="totalPages > 1"
+                                  aria-label="Page navigation example mt-3"
+                                >
+                                  <ul class="pagination justify-content-center">
+                                    <li
+                                      class="page-item"
+                                      :class="{
+                                        disabled: currentPage === 1,
+                                      }"
+                                    >
+                                      <button
+                                        class="page-link"
+                                        @click="previousPage"
+                                        :disabled="currentPage === 1"
+                                      >
+                                        Previous
+                                      </button>
+                                    </li>
+                                    <li class="page-item">
+                                      <span class="page-link"
+                                        >Page {{ currentPage }} of
+                                        {{ totalPages }}</span
+                                      >
+                                    </li>
+
+                                    <li class="page-item">
+                                      <button
+                                        class="page-link"
+                                        @click="nextPage"
+                                        :class="{
+                                          disabled: currentPage === totalPages,
+                                        }"
+                                      >
+                                        Next
+                                      </button>
+                                    </li>
+                                  </ul>
+                                </nav>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  
+
+
+
+
+
+        </div>
+        
         <div
           class="modal fade text-start"
           id="depositModal"

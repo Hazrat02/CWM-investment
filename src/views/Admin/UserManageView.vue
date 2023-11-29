@@ -108,6 +108,16 @@ export default {
     };
   },
   methods: {
+    previousPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
+    },
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+      }
+    },
     userDelete(id) {
       axios
         .get(`/api/user.delete/${id}`)

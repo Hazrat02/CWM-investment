@@ -93,7 +93,9 @@
                             >
                               {{ transactionItem.status }}
                             </span>
-                            <span v-else class="d-flex justify-content-evenly">
+                            <span v-else class="d-flex justify-content-between">
+                              <router-link :to="{ name: 'userdetails', params: { id: transactionItem.user_id } }"> <i class="fa fa-eye" style="color: beige"></i></router-link>
+
                               <i @click="trxEdit(transactionItem.id,'success')"
                                 class="fa fa-check"
                                 style="color: green; font-size: 20px"
@@ -247,14 +249,14 @@ export default {
         this.currentPage++;
       }
     },
-    trxEdit(id, status) {
+   async trxEdit(id, status) {
       this.$setLoading(true);
 
       const data = {
         status: status,
       };
 
-      axios
+     await axios
         .put(`api/transaction.edit/${id}`, data)
         .then((response) => {
           this.$notify({

@@ -76,9 +76,14 @@ export default {
 
 <template>
   <body>
-    <div v-if="this.$isLoading()"  class="lo">
-      <div class="loader">
-        <span>Loading...</span>
+    <div v-if="this.$isLoading()"
+      style="z-index: 43435466666666 !important"
+      class="search-inner d-flex align-items-center justify-content-center"
+    >
+      <div class="d-flex w-100 justify-content-center">
+        <div class="loader">
+          <span>Loading...</span>
+        </div>
       </div>
     </div>
 
@@ -86,44 +91,7 @@ export default {
       <nav
         class="navbar navbar-expand-lg py-3 bg-dash-dark-2 border-bottom border-dash-dark-1 z-index-10"
       >
-        <div class="search-panel">
-          <div
-            class="search-inner d-flex align-items-center justify-content-center"
-          >
-            <div
-              class="close-btn d-flex align-items-center position-absolute top-0 end-0 me-4 mt-2 cursor-pointer"
-            >
-              <span>Close </span>
-              <svg
-                class="svg-icon svg-icon-md svg-icon-heavy text-gray-700 mt-1"
-              >
-                <use xlink:href="#close-1"></use>
-              </svg>
-            </div>
-            <div class="row w-100">
-              <div class="col-lg-8 mx-auto">
-                <form class="px-4" id="searchForm" action="#">
-                  <div
-                    class="input-group position-relative flex-column flex-lg-row flex-nowrap"
-                  >
-                    <input
-                      class="form-control shadow-0 bg-none px-0 w-100"
-                      type="search"
-                      name="search"
-                      placeholder="What are you searching for..."
-                    />
-                    <button
-                      class="btn btn-link text-gray-600 px-0 text-decoration-none fw-bold cursor-pointer text-center"
-                      type="submit"
-                    >
-                      Search
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+        
         <div
           class="container-fluid d-flex align-items-center justify-content-between py-1"
         >
@@ -156,11 +124,7 @@ export default {
             </button>
           </div>
           <ul class="list-inline mb-0">
-            <li class="list-inline-item">
-              <a class="search-open nav-link px-0" href="#">
-                <svg class="svg-icon svg-icon-xs svg-icon-heavy text-gray-700">
-                  <use xlink:href="#find-1"></use></svg></a>
-            </li>
+            
 
             <li class="list-inline-item">
               <RouterLink class="nav-link px-0" to="/" style="color: darkgray">
@@ -376,22 +340,10 @@ export default {
 <style scoped>
 
 @import "../assets/main.css";
-.lo {
-  
-  z-index: 777777;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0;
-  height: 100vh;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.479);
-  overflow: hidden;
+.search-inner {
+  background: rgba(0, 0, 0, 0.479);
 }
+
 
 .loader {
   width: 10em;

@@ -222,8 +222,8 @@ export default {
             .post("api/deposit", data)
             .then((response) => {
               this.$setLoading(false);
-              this.authUser.live_balance =
-                this.authUser.live_balance - this.amount;
+              this.authUser.live_balance=this.authUser.live_balance - this.amount;
+                
 
               this.$router.push("/transaction");
 
