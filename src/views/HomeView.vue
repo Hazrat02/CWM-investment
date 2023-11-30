@@ -7,6 +7,7 @@ export default {
   data() {
     return {
       isAuthenticated: false,
+      
       authUser: [],
     };
   },
@@ -65,11 +66,21 @@ export default {
   <div>
     <HomeLayout>
       <!-- Header Start -->
-      <div class="container-fluid hero-header bg-light py-5 mb-5">
-        <div class="container py-5">
+      <div
+        class="container-fluid hero-header py-5"
+        style="
+          .blur-background {
+            background-color: #009fc2;
+            background-image: linear-gradient(0deg, #009fc2 0%, #0d0a0b 74%);
+            backdrop-filter: blur(100px); /* Adjust the blur value as needed */
+          }
+          
+        "
+      >
+        <div class="container py-5 mb-0">
           <div class="row g-5 align-items-center">
             <div class="col-lg-6">
-              <h1 class="mb-3 animated slideInDown">
+              <h1 class="mb-3 animated slideInDown text-white">
                 Your trust is our guide. Building and Preserving Wealth Since
                 1989
               </h1>
@@ -101,7 +112,6 @@ export default {
                   >Dashboard</RouterLink
                 >
               </div>
-             
             </div>
             <div class="col-lg-6 animated fadeIn">
               <img
@@ -117,7 +127,13 @@ export default {
       <!-- Header End -->
 
       <!-- About Start -->
-      <div class="container-xxl py-5">
+      <div class="container-xxl py-3 mt-0"  style="
+          .blur-background {
+            background-color: #0d0a0b ;
+            background-image: linear-gradient(360deg, #0d0a0b 0%, #009fc2 74%);
+            backdrop-filter: blur(100px); /* Adjust the blur value as needed */
+          }
+        ">
         <div class="container">
           <div class="row g-5 align-items-center">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -130,10 +146,10 @@ export default {
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
               <div class="h-100">
                 <h1 class="display-6">About Us</h1>
-                <p class="text-primary fs-5 mb-4">
+                <p class="text-white fs-5 mb-4">
                   The Most Trusted Cryptocurrency Platform
                 </p>
-                <p>
+                <p class="text-dark">
                   Research backed data-driven investment strategies. We choose
                   the right asset mix for your risk profile in the all market
                   conditions. We add incremental alpha using dynamic allocation
@@ -142,7 +158,7 @@ export default {
 
                 <div class="d-flex align-items-center mb-2">
                   <i
-                    class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"
+                    class="fa fa-check bg-light text-white btn-sm-square rounded-circle me-3 fw-bold"
                   ></i>
                   <span
                     >Factor Investing - We explain the market movement using
@@ -151,7 +167,7 @@ export default {
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i
-                    class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"
+                    class="fa fa-check bg-light text-white btn-sm-square rounded-circle me-3 fw-bold"
                   ></i>
                   <span
                     >Regime Modelling - Markets do not stay the same. Our regime
@@ -160,7 +176,7 @@ export default {
                 </div>
                 <div class="d-flex align-items-center mb-4">
                   <i
-                    class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"
+                    class="fa fa-check bg-light text-white btn-sm-square rounded-circle me-3 fw-bold"
                   ></i>
                   <span
                     >Momentum Investing - Momentum is the stringest factor in
@@ -169,7 +185,7 @@ export default {
                 </div>
                 <div class="d-flex align-items-center mb-4">
                   <i
-                    class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"
+                    class="fa fa-check bg-light text-white btn-sm-square rounded-circle me-3 fw-bold"
                   ></i>
                   <span
                     >Risk Modelling Risk Management is at the core of our
@@ -178,7 +194,7 @@ export default {
                 </div>
                 <div class="d-flex align-items-center mb-4">
                   <i
-                    class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"
+                    class="fa fa-check bg-light text-white btn-sm-square rounded-circle me-3 fw-bold"
                   ></i>
                   <span
                     >Asset Allocation - We choose the best mix of investment
@@ -187,7 +203,7 @@ export default {
                 </div>
                 <div class="d-flex align-items-center mb-4">
                   <i
-                    class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"
+                    class="fa fa-check bg-light text-white btn-sm-square rounded-circle me-3 fw-bold"
                   ></i>
                   <span
                     >Artificial Intelligence - We use machine learning models to
@@ -202,15 +218,22 @@ export default {
       <!-- About End -->
 
       <!-- Features Start -->
-      <div class="container-xxl py-5">
+      <div class="container-xxl py-5" style="
+          .blur-background {
+            background-color: #009fc2;
+            background-image: linear-gradient(0deg, #009fc2 0%, #0d0a0b 74%);
+            backdrop-filter: blur(100px); /* Adjust the blur value as needed */
+          }
+          
+        ">
         <div class="container">
           <div
             class="text-center mx-auto wow fadeInUp"
             data-wow-delay="0.1s"
             style="max-width: 500px"
           >
-            <h1 class="display-6">Why Us!</h1>
-            <p class="text-primary fs-5 mb-5">
+            <h1 class="display-6 text-white">Why Us!</h1>
+            <p class="text-white fs-5 mb-5">
               The best in Investment Industry
             </p>
           </div>
@@ -223,7 +246,7 @@ export default {
                   alt=""
                 />
                 <div class="ps-4">
-                  <h5 class="mb-3">Easy To Start</h5>
+                  <h5 class="mb-3 text-white">Easy To Start</h5>
                   <span
                     >Our expert wealth manager shall assist you with a quick and
                     easy process for opening your account in the most efficient
@@ -240,7 +263,7 @@ export default {
                   alt=""
                 />
                 <div class="ps-4">
-                  <h5 class="mb-3">Safe & Secure</h5>
+                  <h5 class="mb-3 text-white">Safe & Secure</h5>
                   <span
                     >Our clients have their independent & secure portfolio
                     accounts with secure digital vaults which is directly
@@ -257,7 +280,7 @@ export default {
                   alt=""
                 />
                 <div class="ps-4">
-                  <h5 class="mb-3">Affordable Plans</h5>
+                  <h5 class="mb-3 text-white">Affordable Plans</h5>
                   <span
                     >We understand that not all our clients have the same
                     financial diversification. We have basic Investment Plans
@@ -276,7 +299,7 @@ export default {
                   alt=""
                 />
                 <div class="ps-4">
-                  <h5 class="mb-3">Secure Storage</h5>
+                  <h5 class="mb-3 text-white">Secure Storage</h5>
                   <span
                     >For our luxury investment clients, we offer access to
                     direct SWISS Digital Vault facility accessible only by our
@@ -293,7 +316,7 @@ export default {
                   alt=""
                 />
                 <div class="ps-4">
-                  <h5 class="mb-3">Protected By Insurance</h5>
+                  <h5 class="mb-3 text-white">Protected By Insurance</h5>
                   <span
                     >All the assets of the company, with its portfolio of our
                     invested client is directly secured by Lloyd Bank of United
@@ -310,7 +333,7 @@ export default {
                   alt=""
                 />
                 <div class="ps-4">
-                  <h5 class="mb-3">24/7 Support</h5>
+                  <h5 class="mb-3 text-white">24/7 Support</h5>
                   <span
                     >Through our designated virtual offices across the globe, we
                     are able to cater our investor clients 24*7 for any
@@ -325,7 +348,14 @@ export default {
       <!-- Features End -->
 
       <!-- Service Start -->
-      <div class="container-xxl bg-light py-5 my-5">
+      <div class="container-xxl bg-light py-5" style="
+          .blur-background {
+            background-color: #0d0a0b;
+            background-image: linear-gradient(300deg, #0d0a0b  0%, #009fc2 74%);
+            backdrop-filter: blur(100px); /* Adjust the blur value as needed */
+          }
+          
+        ">
         <div class="container py-5">
           <div
             class="text-center mx-auto wow fadeInUp"
@@ -333,20 +363,21 @@ export default {
             style="max-width: 500px"
           >
             <h1 class="display-6">Services</h1>
-            <p class="text-primary fs-5 mb-5">
+            <p class="text-white fs-5 mb-5">
               Buy, Sell And Exchange Cryptocurrency
             </p>
           </div>
+          
           <div class="row g-4">
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-              <div class="service-item bg-white p-5">
+              <div class="service-item bg-glass p-5">
                 <img
                   class="img-fluid mb-4"
                   src="./../assets/frontend/img/icon-5.png"
                   alt=""
                 />
-                <h5 class="mb-3">Currency Exchange</h5>
-                <p>
+                <h5 class="mb-3 text-white">Currency Exchange</h5>
+                <p class="">
                   For clients who wish to BUY/SELL Crypto with our platform can
                   enjoy the best and most minimal exchange rates in the market.
                 </p>
@@ -354,13 +385,13 @@ export default {
             </div>
 
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-              <div class="service-item bg-white p-5">
+              <div class="service-item bg-glass p-5">
                 <img
                   class="img-fluid mb-4"
                   src="./../assets/frontend/img/icon-8.png"
                   alt=""
                 />
-                <h5 class="mb-3">Crypto Escrow Services</h5>
+                <h5 class="mb-3 text-white">Crypto Escrow Services</h5>
                 <p>
                   For our High Net Worth Corporate Clients we offer Crypto
                   Escrow Services for safe & secure entity transactions.
@@ -368,13 +399,13 @@ export default {
               </div>
             </div>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-              <div class="service-item bg-white p-5">
+              <div class="service-item bg-glass p-5">
                 <img
                   class="img-fluid mb-4"
                   src="./../assets/frontend/img/icon-3.png"
                   alt=""
                 />
-                <h5 class="mb-3">Currency Transaction</h5>
+                <h5 class="mb-3 text-white">Currency Transaction</h5>
                 <p>
                   With ZERO transfer rates policy, CWM is the best investment
                   platform for clients without any transactional deductions.
@@ -382,13 +413,13 @@ export default {
               </div>
             </div>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-              <div class="service-item bg-white p-5">
+              <div class="service-item bg-glass p-5">
                 <img
                   class="img-fluid mb-4"
                   src="./../assets/frontend/img/icon-7.png"
                   alt=""
                 />
-                <h5 class="mb-3">Currency Wallet</h5>
+                <h5 class="mb-3 text-white">Currency Wallet</h5>
                 <p>
                   To facilitate our investor clients with the ease of transfer
                   our company has embraced Crypto Wallet Transfers as the most
@@ -399,13 +430,13 @@ export default {
               </div>
             </div>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-              <div class="service-item bg-white p-5">
+              <div class="service-item bg-glass p-5">
                 <img
                   class="img-fluid mb-4"
                   src="./../assets/frontend/img/icon-9.png"
                   alt=""
                 />
-                <h5 class="mb-3">Portfolio Investment</h5>
+                <h5 class="mb-3 text-white">Portfolio Investment</h5>
                 <p>
                   Our expert advisors provide personalized investment
                   diversification structure for our clients who wish to invest
@@ -416,13 +447,13 @@ export default {
             </div>
 
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-              <div class="service-item bg-white p-5">
+              <div class="service-item bg-glass p-5">
                 <img
                   class="img-fluid mb-4"
                   src="./../assets/frontend/img/icon-2.png"
                   alt=""
                 />
-                <h5 class="mb-3">Luxury Auction Investment</h5>
+                <h5 class="mb-3 text-white">Luxury Auction Investment</h5>
                 <p>
                   As per the Knight Frank Index, our company diversify client’s
                   investments across various luxury segments for maximum return
@@ -436,15 +467,22 @@ export default {
       <!-- Service End -->
 
       <!-- FAQs Start -->
-      <div class="container-xxl py-5">
+      <div class="container-xxl py-2" style="
+          .blur-background {
+            background-color: #009fc2;
+            background-image: linear-gradient(90deg,  #009fc2 0%,  #0d0a0b 74%);
+            backdrop-filter: blur(100px); /* Adjust the blur value as needed */
+          }
+          
+        ">
         <div class="container">
           <div
             class="text-center mx-auto wow fadeInUp"
             data-wow-delay="0.1s"
             style="max-width: 500px"
           >
-            <h1 class="display-6">FAQs</h1>
-            <p class="text-primary fs-5 mb-5">Frequently Asked Questions</p>
+            <h1 class="display-6 text-white">FAQs</h1>
+            <p class="text-white fs-5 mb-5">Frequently Asked Questions</p>
           </div>
           <div class="row justify-content-center">
             <div class="col-lg-10">
@@ -597,6 +635,7 @@ export default {
           </div>
         </div>
       </div>
+     
       <!-- FAQs Start -->
     </HomeLayout>
   </div>
@@ -604,4 +643,10 @@ export default {
 
 <style scoped>
 @import "./../assets/home.css";
+
+
+.bg-glass {
+  background-color: rgba(7, 38, 51, 0.692) !important;
+  backdrop-filter: saturate(200%) blur(25px);
+}
 </style>

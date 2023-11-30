@@ -163,24 +163,22 @@ export default {
             >
               <div class="row gx-lg-5 align-items-center mb-5">
                 <div
-                  class="col-lg-6 mb-5 mb-lg-0"
-                  style="z-index: 10; height: 50vw"
+                  class="col-lg-6  mb-lg-0 mb-35"
+                  style="z-index: 10; height: 50vw ;" 
                 >
                   <h1
                     class="my-2 display-5 fw-bold ls-tight"
                     style="color: hsl(218, 81%, 95%)"
                   >
-                    The best offer <br />
+                  Our Portfolio <br />
                     <span style="color: hsl(218, 81%, 75%)"
-                      >for your business</span
+                      >Managers and Research</span
                     >
                   </h1>
-                  <p class="mb-4 opacity-60" style="color: hsl(218, 81%, 85%)">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Temporibus
+                  <p class="mb-5 opacity-60" style="color: hsl(218, 81%, 85%)">
+                    Analysts Integrate ESG analysis into our investment process, where available, by focusing on companies with sustainable business models and evaluating ESG-related risks as part of the proprietary research recommendations we use throughout the firm
                   </p>
                 </div>
-
                 <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
                   <div
                     id="radius-shape-2"
@@ -842,5 +840,10 @@ label {
 
 span {
   color: #000000;
+}
+@media only screen and (max-width: 400px) {
+    .mb-35 {
+        margin-bottom: 54% !important;
+    }
 }
 </style>

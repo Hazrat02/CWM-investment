@@ -65,11 +65,17 @@ export default {
   <div>
     <HomeLayout>
       <!-- Header Start -->
-    <div class="container-fluid hero-header bg-light py-5 mb-5">
+    <div class="container-fluid hero-headerpy-5  " style="
+          .blur-background {
+            background-color: #0d0a0b ;
+            background-image: linear-gradient(90deg, #0d0a0b 0%, #009fc2 74%);
+            backdrop-filter: blur(100px); /* Adjust the blur value as needed */
+          }
+        ">
         <div class="container py-5">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="display-4 mb-3 animated slideInDown">Contact Us</h1>
+                    <h1 class="display-4 mb-3 animated slideInDown text-white">Contact Us</h1>
                     <nav aria-label="breadcrumb animated slideInDown">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><RouterLink to="/">Home</RouterLink></li>
@@ -88,38 +94,36 @@ export default {
 
 
     <!-- Contact Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5" style="
+          .blur-background {
+            background-color: #0d0a0b ;
+            background-image: linear-gradient(0deg, #0d0a0b 0%, #009fc2 74%);
+            backdrop-filter: blur(100px); /* Adjust the blur value as needed */
+          }
+        ">
         <div class="container">
             <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="col-lg-6">
                     <h1 class="display-6">Contact Us</h1>
                     <p class="text-primary fs-5 mb-0">If You Have Any Query, Please Contact Us</p>
                 </div>
-                <div class="col-lg-6 text-lg-end">
-                    <a class="btn btn-primary py-3 px-4" href="">Say Hello</a>
-                </div>
+            
             </div>
             <div class="row g-5">
                 <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <p class="mb-2">Our office:</p>
-                    <h4>123 Street, New York, USA</h4>
+                    <p class="mb-2 text-white">Our office:</p>
+                    <h4>#18, Capitals Wealth Management Ltd, Wesltecot Rd., Swindon, United Kingdom</h4>
                     <hr class="w-100">
-                    <p class="mb-2">Call us:</p>
-                    <h4>+012 345 6789</h4>
+                    <p class="mb-2 text-white">Call us:</p>
+                    <h4>+447817541947</h4>
                     <hr class="w-100">
-                    <p class="mb-2">Mail us:</p>
-                    <h4>info@example.com</h4>
+                    <p class="mb-2 text-white">Mail us:</p>
+                    <h4>info@capitalswealthmanagement.com</h4>
                     <hr class="w-100">
-                    <p class="mb-2">Follow us:</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+                    
                 </div>
                 <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
+                    <p class="mb-4 text-white">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
                     <form @submit.prevent="contact">
                         <div class="row g-3">
                             <div class="col-md-6">
@@ -159,8 +163,14 @@ export default {
 
 
     <!-- Google Map Start -->
-    <div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
-        <iframe class="w-100 mb-n2" style="height: 450px;"
+    <div class="container-xxl  px-0 wow fadeInUp" data-wow-delay="0.1s" style="
+          .blur-background {
+            background-color: #0d0a0b ;
+            background-image: linear-gradient(0deg, #0d0a0b 0%, #009fc2 74%);
+            backdrop-filter: blur(100px); /* Adjust the blur value as needed */
+          }
+        ">
+        <iframe class="w-100 " style="height: 450px;"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
             frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
     </div>

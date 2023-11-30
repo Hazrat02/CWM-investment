@@ -17,16 +17,23 @@ export default {
   <div>
     <HomeLayout>
       <!-- Header Start -->
-      <div class="container-fluid hero-header bg-light py-5">
+      <div class="container-fluid hero-header  py-5" style="
+          .blur-background {
+            background-color: #009fc2;
+            background-image: linear-gradient(315deg, #009fc2 0%, #0d0a0b 74%);
+            backdrop-filter: blur(100px); /* Adjust the blur value as needed */
+          }
+          
+        ">
         <div class="container py-5">
           <div class="row g-5 align-items-center">
             <div class="col-lg-6">
-              <h1 class="display-4 mb-3 animated slideInDown">
+              <h1 class="display-4 mb-3 animated slideInDown text-white">
                 Risk Disclosure
               </h1>
               <nav aria-label="breadcrumb animated slideInDown">
-                <p>
-                  We (BetterInvest) herein highlight that investing in alternate
+                <p class="text-white">
+                  We Capitals Wealth Management herein highlight that investing in alternate
                   investment opportunities involves high risk and you (user of
                   the BetterInvest Platform) consent that, prior to making any
                   decision with respect to an investment on our platform, you
@@ -47,10 +54,7 @@ export default {
             </div>
           </div>
         </div>
-      </div>
-      <!-- Header End -->
-
-      <div class="container-xxl py-5">
+        <div class="container-xxl py-5" >
         <div class="container">
           <div class="row g-5 align-items-center">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -63,9 +67,9 @@ export default {
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
               <div class="h-100">
-                <h1 class="display-6">Risk Disclosure</h1>
+                <h1 class="display-6 text-white">Risk Disclosure</h1>
                 <p class="text-primary fs-5 mb-4">Loss of Investment</p>
-                <p>
+                <p class="text-white">
                   ‍You herein agree that your investment in any of the
                   investment opportunities listed on our platform will not
                   generate guaranteed returns, despite the quantum of amount
@@ -95,7 +99,7 @@ export default {
                 <p class="text-primary fs-5 mb-4">
                   ‍Adverse Marketing Conditions
                 </p>
-                <p>
+                <p class="text-white">
                   ‍We, through our platform, would have projected certain
                   forward-looking statements with respect to certain investment
                   opportunities listed on the platform. These statements are
@@ -120,7 +124,7 @@ export default {
           </div>
         </div>
       </div>
-      <div class="container-xxl py-5">
+      <div class="container-xxl py-5" >
         <div class="container">
           <div class="row g-5 align-items-center">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -134,7 +138,7 @@ export default {
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
               <div class="h-100">
                 <p class="text-primary fs-5 mb-4">‍‍Leverage</p>
-                <p>
+                <p class="text-white">
                   ‍The investments in the opportunities currently do not have
                   any avenues for leverage.
                 </p>
@@ -143,7 +147,19 @@ export default {
           </div>
         </div>
       </div>
-      <div class="container-xxl py-5">
+      </div>
+      <!-- Header End -->
+
+    
+    <div  style="
+          .blur-background {
+            background-color: #009fc2;
+            background-image: linear-gradient(170deg, #009fc2 0%, #0d0a0b 74%);
+            backdrop-filter: blur(100px); /* Adjust the blur value as needed */
+          }
+          
+        ">
+      <div class="container-xxl py-5" >
         <div class="container">
           <div class="row g-5 align-items-center">
             <div
@@ -154,7 +170,7 @@ export default {
                 <p class="text-primary fs-5 mb-4">
                   ‍Minority Investment and Inability to Control
                 </p>
-                <p>
+                <p class="text-white">
                   ‍Investment in a particular opportunity will represent a
                   minority stake that cannot accord the control characteristics
                   of majority or controlling stakes in the SPV or otherwise
@@ -192,7 +208,7 @@ export default {
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
               <div class="h-100">
                 <p class="text-primary fs-5 mb-4">‍Lack of Liquidity</p>
-                <p>
+                <p class="text-white">
                   ‍Investment in the investment opportunities enlisted on our
                   platform should be considered as a long-term investment and
                   liquidity may not be achieved at the projected price all the
@@ -224,7 +240,7 @@ export default {
                 <p class="text-primary fs-5 mb-4">
                   ‍Natural or Man Made Disasters
                 </p>
-                <p>
+                <p class="text-white">
                   ‍The occurrence of natural disasters, including hurricanes,
                   floods, earthquakes, tornadoes, fires, explosions, pandemic
                   diseases and manmade disasters, including acts of terrorism
@@ -237,7 +253,17 @@ export default {
           </div>
         </div>
       </div>
-      <div class="container-xxl py-5">
+     
+    </div>
+    <div style="
+          .blur-background {
+            background-color: #009fc2;
+            background-image: linear-gradient(0deg, #009fc2 0%, #0d0a0b 74%);
+            backdrop-filter: blur(100px); /* Adjust the blur value as needed */
+          }
+          
+        ">
+      <div class="container-xxl py-5" >
         <div class="container">
           <div class="row g-5 align-items-center">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -251,7 +277,7 @@ export default {
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
               <div class="h-100">
                 <p class="text-primary fs-5 mb-4">‍Delayed payments</p>
-                <p>
+                <p class="text-white">
                   ‍You herein acknowledge that payments to you with respect to
                   an investment opportunity are subject to reasonable/inordinate
                   delay. In other words, you acknowledge that you may receive
@@ -281,7 +307,7 @@ export default {
                 <p class="text-primary fs-5 mb-4">
                   ‍Inaccurate/Incomplete Information
                 </p>
-                <p>
+                <p class="text-white">
                   ‍You acknowledge that the information provided by us with
                   respect to an investment opportunity contains reports and
                   analysis which may be uploaded on our platform from time to
@@ -313,7 +339,7 @@ export default {
                 <p class="text-primary fs-5 mb-4">
                   ‍‍Changes in Indian Law/ Regulations
                 </p>
-                <p>
+                <p class="text-white">
                   ‍You herein acknowledge that the legal and regulatory
                   landscape with respect to the investment opportunities
                   enlisted on our platform are evolving by nature. Any changes
@@ -335,6 +361,8 @@ export default {
           </div>
         </div>
       </div>
+    </div>
+    
       <!-- About Start -->
       <!-- About End -->
     </HomeLayout>

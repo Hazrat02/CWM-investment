@@ -326,7 +326,7 @@ export default {
           <div class="container-fluid text-center">
             <!-- Please do not remove the backlink to us unless you support us at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
             <p class="mb-0 text-dash-gray">
-              2021 &copy; Your company. Design by cwm
+              #18, Capitals Wealth Management Ltd, Wesltecot Rd., Swindon, United Kingdom
               
             </p>
           </div>

@@ -13,25 +13,24 @@
             >
               <div class="row gx-lg-5 align-items-center mb-5">
                 <div
-                  class="col-lg-6 mb-5 mb-lg-0"
-                  style="z-index: 10; height: 50vw"
+                  class="col-lg-6  mb-lg-0 mb-35"
+                  style="z-index: 10; height: 50vw ;" 
                 >
                   <h1
                     class="my-2 display-5 fw-bold ls-tight"
                     style="color: hsl(218, 81%, 95%)"
                   >
-                    The best offer <br />
+                  Our Portfolio <br />
                     <span style="color: hsl(218, 81%, 75%)"
-                      >for your business</span
+                      >Managers and Research</span
                     >
                   </h1>
-                  <p class="mb-4 opacity-60" style="color: hsl(218, 81%, 85%)">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Temporibus
+                  <p class="mb-5 opacity-60" style="color: hsl(218, 81%, 85%)">
+                    Analysts Integrate ESG analysis into our investment process, where available, by focusing on companies with sustainable business models and evaluating ESG-related risks as part of the proprietary research recommendations we use throughout the firm
                   </p>
                 </div>
 
-                <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                <div class="col-lg-6 mb-5 mb-lg-0 mt-5 position-relative" >
                   <div
                     id="radius-shape-2"
                     class="position-absolute shadow-5-strong"
@@ -49,11 +48,11 @@
                     class="position-absolute rounded-circle shadow-5-strong"
                   ></div>
 
-                  <div class="card bg-glass">
-                    <div class="card-body px-4 py-5 px-md-5">
+                  <div class="card bg-glass " >
+                    <div class="card-body px-4 py-5  px-md-5">
                       <div style="z-index: 444444444444"></div>
 
-                      <h1 class="mb-4 mb-lg-4 text-center">log in</h1>
+                      <h1 class="mb-4 mb-lg-4 text-center">Log In</h1>
 
                       <form class="justify-content-center" action="">
                         <!-- Email input -->
@@ -107,7 +106,7 @@
                             style="justify-content: space-between"
                           >
                             <label class="form-label" for="form3Example4"
-                              >password</label
+                              >Password</label
                             >
                             <router-link
                               to="/forget"
@@ -116,7 +115,7 @@
                                 cursor: pointer;
                                 text-decoration: underline;
                               "
-                              >forget password
+                              >forgot password
                             </router-link>
                           </div>
                         </div>
@@ -133,9 +132,9 @@
                             required
                           />
                           <p>
-                            <RouterLink style="color: green" to="/contact"
-                              >Read all tarm.</RouterLink
-                            >Uderested?
+                            <RouterLink style="color: green" to="/risk/disclosure"
+                              >Read all terms & conditions</RouterLink
+                            >
                           </p>
                         </div>
 
@@ -153,10 +152,10 @@
                         </div>
                         <div>
                           <label
-                            >Haven't any account? /<RouterLink
+                            >Don’t have an account with us? /<RouterLink
                               style="color: green"
                               to="/register"
-                              >Singup</RouterLink
+                              >Sign up</RouterLink
                             ></label
                           >
                         </div>
@@ -268,6 +267,12 @@ export default {
 
 <style scoped>
 @import "./../../assets/home.css";
+
+@media only screen and (max-width: 400px) {
+    .mb-35 {
+        margin-bottom: 36% !important;
+    }
+}
 .background-radial-gradient {
   background-color: #d9afd9;
 
@@ -304,7 +309,7 @@ export default {
 }
 
 .bg-glass {
-  background-color: rgba(255, 255, 255, 0.692) !important;
+  background-color: rgba(255, 255, 255, 0.651) !important;
   backdrop-filter: saturate(200%) blur(25px);
 }
 label {
