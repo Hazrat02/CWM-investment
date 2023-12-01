@@ -4,7 +4,7 @@ import isAuthenticated from "./../midleware/auth";
 import { logout } from "./../midleware/auth";
 import axios from "axios";
 import { useAuthUserStore } from "../store/user";
-import "./../assets/base.js";
+// import "./../assets/base.js";
 
 export default {
   data() {
@@ -131,47 +131,6 @@ export default {
               >
             </li>
 
-            <!-- Languages dropdown    -->
-
-            <li class="list-inline-item dropdown">
-              <a
-                class="nav-link dropdown-toggle text-sm text-reset px-1 px-lg-0"
-                id="languages"
-                rel="nofollow"
-                data-bs-target="#"
-                href="#"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                ><img
-                  src="./../assets/deshboard/img/flags/16/GB.png"
-                  alt="English"
-                /><span class="d-none d-sm-inline-block ms-2">English</span></a
-              >
-              <ul
-                class="dropdown-menu dropdown-menu-end mt-sm-3 dropdown-menu-dark"
-                aria-labelledby="languages"
-              >
-                <li>
-                  <a class="dropdown-item" rel="nofollow" href="#">
-                    <img
-                      class="me-2"
-                      src="./../assets/deshboard/img/flags/16/DE.png"
-                      alt="English"
-                    /><span>German</span></a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" rel="nofollow" href="#">
-                    <img
-                      class="me-2"
-                      src="./../assets/deshboard/img/flags/16/FR.png"
-                      alt="English"
-                    /><span>French </span></a
-                  >
-                </li>
-              </ul>
-            </li>
             <li class="list-inline-item logout px-lg-2" @click="logout">
               <p
                 style="cursor: pointer"

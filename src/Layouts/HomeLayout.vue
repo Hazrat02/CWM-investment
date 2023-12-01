@@ -115,7 +115,14 @@ export default {
 </script>
 
 <template>
-  <body>
+  <body style="
+          .blur-background {
+            background-color: #009fc2;
+            background-image: linear-gradient(0deg, #009fc2 0%, #0d0a0b 74%);
+            backdrop-filter: blur(100px); /* Adjust the blur value as needed */
+          }
+          
+        ">
     <!-- Spinner Start -->
     <div
       v-if="this.$isLoading()"
@@ -189,39 +196,25 @@ export default {
             class="nav-item nav-link"
             >Contact</RouterLink
           >
-          <!-- <div class="nav-item dropdown">
-            <a
-              href="#"
-              class="nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-              >More</a
-            >
-            <div class="dropdown-menu shadow-sm m-0">
-              <div
+          <!-- <RouterLink
+            to="/contact"
+            :class="{
+              active: this.$route.path === '/contact',
+            }"
+           
+            >Contact</RouterLink
+          > -->
+          <div  class="nav-item nav-link"
                 v-if="isAuthenticated"
-                href="feature.html"
+               
                 @click="logout"
-                class="dropdown-item"
+         
               >
                 Logout
               </div>
-              <router-link
-                v-if="!isAuthenticated"
-                class="dropdown-item"
-                to="/login"
-                >Login</router-link
-              >
-
-              <RouterLink
-                v-if="isAuthenticated"
-                to="/dashboard"
-                class="dropdown-item"
-                >Dashboard</RouterLink
-              >
-            </div>
-          </div> -->
+          
         </div>
-        <div class="nav-item nav-link">
+        <div class="nav-item nav-link mb-4 mb-lg-0">
           <RouterLink
             v-if="!authUser"
             to="/login"
@@ -308,7 +301,7 @@ export default {
         <div class="container">
           <div class="row">
             <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-              #18, Capitals Wealth Management Ltd, Wesltecot Rd.,
+              #18, Capitals Wealth Management Ltd, Wesltecot Rd.,windon, United Kingdom
             </div>
             <div class="col-md-6 text-center text-md-end">
               <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
@@ -506,16 +499,16 @@ export default {
 
 color: rgb(211, 225, 238) !important; background-color: #0C3B41 !important;
 }
+
+.chat-bot{
+  position: fixed;
+  top: 87%;
+  left: 2%;
+}
 .background-radial-gradient {
   
   background-color: rgb(40, 45, 82) 59, 77);
 
   background-image: linear-gradient(300deg, #232b4e 10%, #000000 100%);
 }
-.chat-bot{
-  position: fixed;
-  top: 87%;
-  left: 2%;
-}
-
 </style>

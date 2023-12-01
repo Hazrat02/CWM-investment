@@ -104,7 +104,6 @@
     
 
 <script>
-import axios from "axios";
 import { contactStore } from "../../store/contact";
 export default {
   data() {

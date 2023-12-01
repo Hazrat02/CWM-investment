@@ -55,8 +55,8 @@ export default {
     </div>
     <!-- Header End -->
 
- <!-- About Start -->
- <div class="container-xxl py-3 mt-0"  style="
+      <!-- About Start -->
+      <div class="container-xxl py-3 mt-0"  style="
           .blur-background {
             background-color: #0d0a0b ;
             background-image: linear-gradient(360deg, #0d0a0b 0%, #009fc2 74%);
@@ -87,7 +87,7 @@ export default {
 
                 <div class="d-flex align-items-center mb-2">
                   <i
-                    class="fa fa-check bg-light text-white btn-sm-square rounded-circle me-3 fw-bold"
+                    class="fa fa-check bg-dark text-white btn-sm-square rounded-circle me-3 fw-bold"
                   ></i>
                   <span
                     >Factor Investing - We explain the market movement using
@@ -96,7 +96,7 @@ export default {
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i
-                    class="fa fa-check bg-light text-white btn-sm-square rounded-circle me-3 fw-bold"
+                    class="fa fa-check bg-dark text-white btn-sm-square rounded-circle me-3 fw-bold"
                   ></i>
                   <span
                     >Regime Modelling - Markets do not stay the same. Our regime
@@ -105,7 +105,7 @@ export default {
                 </div>
                 <div class="d-flex align-items-center mb-4">
                   <i
-                    class="fa fa-check bg-light text-white btn-sm-square rounded-circle me-3 fw-bold"
+                    class="fa fa-check bg-dark text-white btn-sm-square rounded-circle me-3 fw-bold"
                   ></i>
                   <span
                     >Momentum Investing - Momentum is the stringest factor in
@@ -114,7 +114,7 @@ export default {
                 </div>
                 <div class="d-flex align-items-center mb-4">
                   <i
-                    class="fa fa-check bg-light text-white btn-sm-square rounded-circle me-3 fw-bold"
+                    class="fa fa-check bg-dark  text-white btn-sm-square rounded-circle me-3 fw-bold"
                   ></i>
                   <span
                     >Risk Modelling Risk Management is at the core of our
@@ -123,7 +123,7 @@ export default {
                 </div>
                 <div class="d-flex align-items-center mb-4">
                   <i
-                    class="fa fa-check bg-light text-white btn-sm-square rounded-circle me-3 fw-bold"
+                    class="fa fa-check bg-dark text-white btn-sm-square rounded-circle me-3 fw-bold"
                   ></i>
                   <span
                     >Asset Allocation - We choose the best mix of investment
@@ -132,7 +132,7 @@ export default {
                 </div>
                 <div class="d-flex align-items-center mb-4">
                   <i
-                    class="fa fa-check bg-light text-white btn-sm-square rounded-circle me-3 fw-bold"
+                    class="fa fa-check bg-dark text-white btn-sm-square rounded-circle me-3 fw-bold"
                   ></i>
                   <span
                     >Artificial Intelligence - We use machine learning models to
@@ -145,7 +145,6 @@ export default {
         </div>
       </div>
       <!-- About End -->
-
 
     </HomeLayout>
   </div>

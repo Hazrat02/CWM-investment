@@ -52,7 +52,7 @@
                     <div class="card-body px-4 py-5  px-md-5">
                       <div style="z-index: 444444444444"></div>
 
-                      <h1 class="mb-4 mb-lg-4 text-center">Log In</h1>
+                      <h1 class="mb-4 mb-lg-4 text-center text-white">Log In</h1>
 
                       <form class="justify-content-center" action="">
                         <!-- Email input -->
@@ -274,9 +274,14 @@ export default {
     }
 }
 .background-radial-gradient {
-  background-color: #d9afd9;
+ 
+            background-color: #009fc2;
+            background-image: linear-gradient(315deg, #009fc2 0%, #0d0a0b 74%);
+            backdrop-filter: blur(100px); /* Adjust the blur value as needed */
+          
+  /* background-color: #d9afd9;
 
-  background-image: linear-gradient(300deg, #97abff 10%, #000000 100%);
+  background-image: linear-gradient(300deg, #174d5e 10%, #000000 100%); */
 }
 
 #radius-shape-2 {
@@ -309,14 +314,16 @@ export default {
 }
 
 .bg-glass {
-  background-color: rgba(255, 255, 255, 0.651) !important;
+  background-color: rgba(0, 0, 0, 0.705) !important;
   backdrop-filter: saturate(200%) blur(25px);
 }
 label {
-  color: #000000;
+  color: #fdfbfb;
 }
 
 span {
-  color: #000000;
+  color: #fcfcfc;
 }
+
+
 </style>

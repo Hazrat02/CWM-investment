@@ -1286,11 +1286,9 @@
     
   
     <script>
-import { RouterLink } from "vue-router";
 
 import { useAuthUserStore } from "../../store/user";
 import { transactionStore } from "../../store/transaction";
-import isAuthenticated from "./../../midleware/auth";
 
 
 import axios from "axios";

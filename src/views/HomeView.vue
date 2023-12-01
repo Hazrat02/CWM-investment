@@ -136,14 +136,14 @@ export default {
         ">
         <div class="container">
           <div class="row g-5 align-items-center">
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="col-lg-6 wow " >
               <img
                 class="img-fluid"
                 src="./../assets/frontend/img/about.png"
                 alt=""
               />
             </div>
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+            <div class="col-lg-6 wow " >
               <div class="h-100">
                 <h1 class="display-6">About Us</h1>
                 <p class="text-white fs-5 mb-4">
@@ -158,7 +158,7 @@ export default {
 
                 <div class="d-flex align-items-center mb-2">
                   <i
-                    class="fa fa-check bg-light text-white btn-sm-square rounded-circle me-3 fw-bold"
+                    class="fa fa-check bg-dark text-white btn-sm-square rounded-circle me-3 fw-bold"
                   ></i>
                   <span
                     >Factor Investing - We explain the market movement using
@@ -167,7 +167,7 @@ export default {
                 </div>
                 <div class="d-flex align-items-center mb-2">
                   <i
-                    class="fa fa-check bg-light text-white btn-sm-square rounded-circle me-3 fw-bold"
+                    class="fa fa-check bg-dark text-white btn-sm-square rounded-circle me-3 fw-bold"
                   ></i>
                   <span
                     >Regime Modelling - Markets do not stay the same. Our regime
@@ -176,7 +176,7 @@ export default {
                 </div>
                 <div class="d-flex align-items-center mb-4">
                   <i
-                    class="fa fa-check bg-light text-white btn-sm-square rounded-circle me-3 fw-bold"
+                    class="fa fa-check bg-dark text-white btn-sm-square rounded-circle me-3 fw-bold"
                   ></i>
                   <span
                     >Momentum Investing - Momentum is the stringest factor in
@@ -185,7 +185,7 @@ export default {
                 </div>
                 <div class="d-flex align-items-center mb-4">
                   <i
-                    class="fa fa-check bg-light text-white btn-sm-square rounded-circle me-3 fw-bold"
+                    class="fa fa-check bg-dark  text-white btn-sm-square rounded-circle me-3 fw-bold"
                   ></i>
                   <span
                     >Risk Modelling Risk Management is at the core of our
@@ -194,7 +194,7 @@ export default {
                 </div>
                 <div class="d-flex align-items-center mb-4">
                   <i
-                    class="fa fa-check bg-light text-white btn-sm-square rounded-circle me-3 fw-bold"
+                    class="fa fa-check bg-dark text-white btn-sm-square rounded-circle me-3 fw-bold"
                   ></i>
                   <span
                     >Asset Allocation - We choose the best mix of investment
@@ -203,7 +203,7 @@ export default {
                 </div>
                 <div class="d-flex align-items-center mb-4">
                   <i
-                    class="fa fa-check bg-light text-white btn-sm-square rounded-circle me-3 fw-bold"
+                    class="fa fa-check bg-dark text-white btn-sm-square rounded-circle me-3 fw-bold"
                   ></i>
                   <span
                     >Artificial Intelligence - We use machine learning models to
@@ -228,8 +228,8 @@ export default {
         ">
         <div class="container">
           <div
-            class="text-center mx-auto wow fadeInUp"
-            data-wow-delay="0.1s"
+            class="text-center mx-auto wow "
+           
             style="max-width: 500px"
           >
             <h1 class="display-6 text-white">Why Us!</h1>
@@ -238,7 +238,7 @@ export default {
             </p>
           </div>
           <div class="row g-5">
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="col-lg-4 col-md-6 wow " >
               <div class="d-flex align-items-start">
                 <img
                   class="img-fluid flex-shrink-0"
@@ -247,7 +247,7 @@ export default {
                 />
                 <div class="ps-4">
                   <h5 class="mb-3 text-white">Easy To Start</h5>
-                  <span
+                  <span class="white-4"
                     >Our expert wealth manager shall assist you with a quick and
                     easy process for opening your account in the most efficient
                     manner.
@@ -255,7 +255,7 @@ export default {
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="col-lg-4 col-md-6 wow " >
               <div class="d-flex align-items-start">
                 <img
                   class="img-fluid flex-shrink-0"
@@ -264,7 +264,7 @@ export default {
                 />
                 <div class="ps-4">
                   <h5 class="mb-3 text-white">Safe & Secure</h5>
-                  <span
+                  <span class="white-4"
                     >Our clients have their independent & secure portfolio
                     accounts with secure digital vaults which is directly
                     insured by Lloyd Bank of United Kingdom.
@@ -272,7 +272,7 @@ export default {
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+            <div class="col-lg-4 col-md-6 wow " >
               <div class="d-flex align-items-start">
                 <img
                   class="img-fluid flex-shrink-0"
@@ -281,7 +281,7 @@ export default {
                 />
                 <div class="ps-4">
                   <h5 class="mb-3 text-white">Affordable Plans</h5>
-                  <span
+                  <span class="white-4"
                     >We understand that not all our clients have the same
                     financial diversification. We have basic Investment Plans
                     starting from just $5000USD. Our wealth managers shall
@@ -291,7 +291,7 @@ export default {
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="col-lg-4 col-md-6 wow ">
               <div class="d-flex align-items-start">
                 <img
                   class="img-fluid flex-shrink-0"
@@ -300,7 +300,7 @@ export default {
                 />
                 <div class="ps-4">
                   <h5 class="mb-3 text-white">Secure Storage</h5>
-                  <span
+                  <span class="white-4"
                     >For our luxury investment clients, we offer access to
                     direct SWISS Digital Vault facility accessible only by our
                     client’s preregistered biometrics</span
@@ -308,7 +308,7 @@ export default {
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="col-lg-4 col-md-6 wow " >
               <div class="d-flex align-items-start">
                 <img
                   class="img-fluid flex-shrink-0"
@@ -317,7 +317,7 @@ export default {
                 />
                 <div class="ps-4">
                   <h5 class="mb-3 text-white">Protected By Insurance</h5>
-                  <span
+                  <span class="white-4"
                     >All the assets of the company, with its portfolio of our
                     invested client is directly secured by Lloyd Bank of United
                     Kingdom.
@@ -325,7 +325,7 @@ export default {
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+            <div class="col-lg-4 col-md-6 wow " >
               <div class="d-flex align-items-start">
                 <img
                   class="img-fluid flex-shrink-0"
@@ -334,7 +334,7 @@ export default {
                 />
                 <div class="ps-4">
                   <h5 class="mb-3 text-white">24/7 Support</h5>
-                  <span
+                  <span class="white-4"
                     >Through our designated virtual offices across the globe, we
                     are able to cater our investor clients 24*7 for any
                     assistance that may be required.
@@ -348,7 +348,7 @@ export default {
       <!-- Features End -->
 
       <!-- Service Start -->
-      <div class="container-xxl bg-light py-5" style="
+      <div class="container-xxl py-5" style="
           .blur-background {
             background-color: #0d0a0b;
             background-image: linear-gradient(300deg, #0d0a0b  0%, #009fc2 74%);
@@ -358,8 +358,8 @@ export default {
         ">
         <div class="container py-5">
           <div
-            class="text-center mx-auto wow fadeInUp"
-            data-wow-delay="0.1s"
+            class="text-center mx-auto wow "
+           
             style="max-width: 500px"
           >
             <h1 class="display-6">Services</h1>
@@ -369,7 +369,7 @@ export default {
           </div>
           
           <div class="row g-4">
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="col-lg-4 col-md-6 wow ">
               <div class="service-item bg-glass p-5">
                 <img
                   class="img-fluid mb-4"
@@ -384,7 +384,7 @@ export default {
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+            <div class="col-lg-4 col-md-6 wow " >
               <div class="service-item bg-glass p-5">
                 <img
                   class="img-fluid mb-4"
@@ -398,7 +398,7 @@ export default {
                 </p>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="col-lg-4 col-md-6 wow " >
               <div class="service-item bg-glass p-5">
                 <img
                   class="img-fluid mb-4"
@@ -412,7 +412,7 @@ export default {
                 </p>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="col-lg-4 col-md-6 wow " >
               <div class="service-item bg-glass p-5">
                 <img
                   class="img-fluid mb-4"
@@ -429,7 +429,7 @@ export default {
                 </p>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+            <div class="col-lg-4 col-md-6 wow " >
               <div class="service-item bg-glass p-5">
                 <img
                   class="img-fluid mb-4"
@@ -446,7 +446,7 @@ export default {
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="col-lg-4 col-md-6 wow " >
               <div class="service-item bg-glass p-5">
                 <img
                   class="img-fluid mb-4"
@@ -477,8 +477,8 @@ export default {
         ">
         <div class="container">
           <div
-            class="text-center mx-auto wow fadeInUp"
-            data-wow-delay="0.1s"
+            class="text-center mx-auto wow "
+           
             style="max-width: 500px"
           >
             <h1 class="display-6 text-white">FAQs</h1>
@@ -487,8 +487,8 @@ export default {
           <div class="row justify-content-center">
             <div class="col-lg-10">
               <div class="accordion" id="accordionExample">
-                <div class="accordion-item wow fadeInUp" data-wow-delay="0.1s">
-                  <h2 class="accordion-header" id="headingOne">
+                <div class="accordion-item wow  bg-glass" >
+                  <h2 class="accordion-header " id="headingOne">
                     <button
                       class="accordion-button"
                       type="button"
@@ -514,7 +514,7 @@ export default {
                     </div>
                   </div>
                 </div>
-                <div class="accordion-item wow fadeInUp" data-wow-delay="0.2s">
+                <div class="accordion-item wow  bg-glass" >
                   <h2 class="accordion-header" id="headingTwo">
                     <button
                       class="accordion-button collapsed"
@@ -542,7 +542,7 @@ export default {
                     </div>
                   </div>
                 </div>
-                <div class="accordion-item wow fadeInUp" data-wow-delay="0.3s">
+                <div class="accordion-item wow  bg-glass" >
                   <h2 class="accordion-header" id="headingThree">
                     <button
                       class="accordion-button collapsed"
@@ -570,7 +570,7 @@ export default {
                     </div>
                   </div>
                 </div>
-                <div class="accordion-item wow fadeInUp" data-wow-delay="0.4s">
+                <div class="accordion-item wow  bg-glass" >
                   <h2 class="accordion-header" id="headingFour">
                     <button
                       class="accordion-button collapsed"
@@ -601,7 +601,7 @@ export default {
                   </div>
                 </div>
 
-                <div class="accordion-item wow fadeInUp" data-wow-delay="0.6s">
+                <div class="accordion-item wow  bg-glass" >
                   <h2 class="accordion-header" id="headingSix">
                     <button
                       class="accordion-button collapsed"
@@ -648,5 +648,8 @@ export default {
 .bg-glass {
   background-color: rgba(7, 38, 51, 0.692) !important;
   backdrop-filter: saturate(200%) blur(25px);
+}
+.white-4{
+  color: rgb(230, 230, 221);
 }
 </style>

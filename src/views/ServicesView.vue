@@ -56,7 +56,7 @@ export default {
 
 
     <!-- Service Start -->
-    <div class="container-xxl bg-light py-5" style="
+    <div class="container-xxl py-5" style="
           .blur-background {
             background-color: #0d0a0b;
             background-image: linear-gradient(300deg, #0d0a0b  0%, #009fc2 74%);

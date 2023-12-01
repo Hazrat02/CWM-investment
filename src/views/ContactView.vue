@@ -118,12 +118,14 @@ export default {
                     <h4>+447817541947</h4>
                     <hr class="w-100">
                     <p class="mb-2 text-white">Mail us:</p>
-                    <h4>info@capitalswealthmanagement.com</h4>
+                    <h6>info@capitalswealthmanagement.com</h6>
                     <hr class="w-100">
                     
                 </div>
                 <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <p class="mb-4 text-white">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
+                    <p class="mb-4 text-white">As per the Knight Frank Index, our company diversify client’s
+                  investments across various luxury segments for maximum return
+                  on investments.</p>
                     <form @submit.prevent="contact">
                         <div class="row g-3">
                             <div class="col-md-6">

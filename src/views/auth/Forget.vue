@@ -53,7 +53,7 @@
                     <div class="card-body px-4 py-5 px-md-5">
                       <div style="z-index: 444444444444"></div>
 
-                      <h1 class="mb-4 mb-lg-4 text-center">Forget Now</h1>
+                      <h1 class="mb-4 mb-lg-4 text-center text-white">Forget Now</h1>
 
                       <form
                         class="justify-content-center"
@@ -71,7 +71,7 @@
                               class="form-control"
                               required
                             />
-                            <label class="form-label" for="userCode"
+                            <label class="form-label d-flex justify-content-between" for="userCode"
                               >Code</label
                             >
                           </div>
@@ -102,7 +102,7 @@
                               class="form-control"
                               required
                             />
-                            <label class="form-label" for="form3Example3"
+                            <label class="form-label d-flex justify-content-between" for="form3Example3"
                               >Email address</label
                             >
                           </div>
@@ -125,7 +125,6 @@
                         <div v-if="showReset">
                           <div class="form-outline mb-4">
                             <input
-                              name="email"
                               placeholder="******"
                               v-model="password"
                               type="password"
@@ -133,7 +132,7 @@
                               class="form-control"
                               required
                             />
-                            <label class="form-label" for="resetPassword"
+                            <label class="form-label  d-flex justify-content-between" for="resetPassword"
                               >New Password</label
                             >
                           </div>
@@ -148,7 +147,7 @@
                               required
                             />
                             <label
-                              class="form-label"
+                              class="form-label  d-flex justify-content-between"
                               for="password_confirmation"
                               >Confirmation New Password</label
                             >
@@ -301,50 +300,55 @@ export default {
 <style scoped>
 @import "./../../assets/home.css";
 .background-radial-gradient {
-  background-color: #d9afd9;
+ 
+ background-color: #009fc2;
+ background-image: linear-gradient(315deg, #009fc2 0%, #0d0a0b 74%);
+ backdrop-filter: blur(100px); /* Adjust the blur value as needed */
 
-  background-image: linear-gradient(300deg, #97abff 10%, #000000 100%);
+/* background-color: #d9afd9;
+
+background-image: linear-gradient(300deg, #174d5e 10%, #000000 100%); */
 }
 
 #radius-shape-2 {
-  border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
-  bottom: -60px;
-  right: -110px;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(#44006b, #ad1fff);
-  overflow: hidden;
+border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+bottom: -60px;
+right: -110px;
+width: 300px;
+height: 300px;
+background: radial-gradient(#44006b, #ad1fff);
+overflow: hidden;
 }
 
 #radius-shape-3 {
-  border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
-  bottom: -60px;
-  left: -110px;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(#44006b, #ad1fff);
-  overflow: hidden;
+border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+bottom: -60px;
+left: -110px;
+width: 300px;
+height: 300px;
+background: radial-gradient(#44006b, #ad1fff);
+overflow: hidden;
 }
 
 #radius-shape-4 {
-  height: 270px;
-  width: 700px;
-  top: -100px;
-  left: -92px;
-  background: radial-gradient(#866798, #d5aeec);
-  overflow: hidden;
+height: 270px;
+width: 700px;
+top: -100px;
+left: -92px;
+background: radial-gradient(#866798, #d5aeec);
+overflow: hidden;
 }
 
 .bg-glass {
-  background-color: rgba(255, 255, 255, 0.692) !important;
-  backdrop-filter: saturate(200%) blur(25px);
+background-color: rgba(0, 0, 0, 0.705) !important;
+backdrop-filter: saturate(200%) blur(25px);
 }
 label {
-  color: #000000;
+color: #fdfbfb;
 }
 
 span {
-  color: #000000;
+color: #fcfcfc;
 }
 @media only screen and (max-width: 400px) {
     .mb-35 {

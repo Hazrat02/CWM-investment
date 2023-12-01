@@ -267,8 +267,7 @@
 </template>
   
 <script>
-import { RouterLink } from "vue-router";
-import "./../../assets/base.js";
+
 
 import { useAuthUserStore } from "../../store/user";
 import { transactionStore } from "../../store/transaction";

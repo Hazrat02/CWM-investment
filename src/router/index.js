@@ -22,14 +22,12 @@ import AccountView from '../views/Deshboard/AccountView.vue'
 import AdminDeshboardview from '../views/Admin/DeshboardView.vue'
 import UserManageview from '../views/Admin/UserManageview.vue'
 import LeadsManageview from '../views/Admin/LeadsManageview.vue'
-import OfferManageview from '../views/Admin/OfferManageview.vue'
-import PortfolioManageView from '../views/Admin/PortfolioManageView.vue'
+
 import AdminTransactionView from '../views/Admin/TransactionView.vue'
 import UserDetailsview from '../views/Admin/UserDetailsView.vue'
 
 
 import LoginComponent from '../views/Auth/Login.vue'
-// import GoogleAds from '../components/earn/GoogleAds.vue'
 import RegisterComponent from '../views/Auth/Register.vue'
 import ForgetComponent from '../views/Auth/Forget.vue'
 import authenticated from '../midleware/auth.js';
@@ -244,24 +242,7 @@ const router = createRouter({
         requiresAuth:true,
       },
     },
-    {
-      path: '/admin/offer',
-      name: 'offer',
-
-      component:OfferManageview,
-      meta:{
-        requiresAuth:true,
-      },
-    },
-    {
-      path: '/admin/portfolio',
-      name: 'portfolio',
-
-      component:PortfolioManageView,
-      meta:{
-        requiresAuth:true,
-      },
-    },
+    
     {
       path: '/admin/transaction',
       name: 'Admintransaction',
@@ -310,7 +291,7 @@ router.beforeEach((to, from, next) => {
     } else {
       // https://api.capitalswealthmanagement.com/
       // http://127.0.0.1:8000
-      axios.defaults.baseURL='http://127.0.0.1:8000/';
+      axios.defaults.baseURL='http://127.0.0.1:8000';
       axios.defaults.headers.common['Authorization']='bearer'+localStorage.getItem('token');
      
 
