@@ -282,7 +282,6 @@ export default {
         });
 
       this.$setLoading(false);
-      console.log(id, status);
     },
   
 

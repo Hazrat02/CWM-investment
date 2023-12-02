@@ -90,11 +90,11 @@
                               <i
                                 style="
                                   position: absolute;
-                                  top: 7%;
+                                  top: 15%;
                                   right: 5%;
                                   font-size: 25px;
                                 "
-                                class="bi"
+                                class="fa"
                                 :class="icon"
                                 @click="togglePasswordVisibility"
                               ></i>
@@ -201,7 +201,7 @@ export default {
       return this.showPassword ? "text" : "password";
     },
     icon() {
-      return this.showicon ? "bi-eye-slash-fill" : "bi-eye-fill";
+      return this.showicon ? "fa-eye-slash" : "fa-eye";
     },
   },
   created() {
@@ -322,7 +322,7 @@ label {
 }
 
 span {
-  color: #fcfcfc;
+  color: #110e0e;
 }
 
 

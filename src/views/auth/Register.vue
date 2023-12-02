@@ -28,7 +28,7 @@ export default {
       return this.showPassword ? "text" : "password";
     },
     icon() {
-      return this.showicon ? "bi-eye-slash-fill" : "bi-eye-fill";
+      return this.showicon ? "fa-eye-slash" : "fa-eye";
     },
   },
 
@@ -60,7 +60,7 @@ export default {
         .then((response) => {
           this.oldCode = response.data.code;
           this.authEmail = response.data.email;
-          console.log(this.oldCode);
+
         })
         .catch((error) => {
           this.$setLoading(false);
@@ -686,16 +686,16 @@ export default {
                             />
 
                             <i
-                              style="
-                                position: absolute;
-                                top: 7%;
-                                right: 5%;
-                                font-size: 25px;
-                              "
-                              class="bi"
-                              :class="icon"
-                              @click="togglePasswordVisibility"
-                            ></i>
+                                style="
+                                  position: absolute;
+                                  top: 15%;
+                                  right: 5%;
+                                  font-size: 25px;
+                                "
+                                class="fa"
+                                :class="icon"
+                                @click="togglePasswordVisibility"
+                              ></i>
                           </div>
 
                           <div
@@ -760,7 +760,11 @@ export default {
                             id="form2Example33"
                             required
                           />
-                          <p><RouterLink style="color: green;" to="/contact">Read all term.</RouterLink>Uderested?</p>
+                          <p>
+                            <RouterLink style="color: green" to="/risk/disclosure"
+                              >Read all terms & conditions</RouterLink
+                            >
+                          </p>
                         </div>
                         <input type="hidden" name="role" value="1" />
 

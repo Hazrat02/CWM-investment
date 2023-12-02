@@ -248,7 +248,6 @@ export default {
           this.showCode = true;
           this.showEmail = false;
           this.oldCode = response.data.code;
-          console.log(this.oldCode);
         })
         .catch((error) => {
           this.showCode = false;

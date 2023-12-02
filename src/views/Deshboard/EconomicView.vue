@@ -911,7 +911,6 @@ export default {
         this.geteconomic = await works.getWork();
       }
 
-      console.log(this.geteconomic)
     
     this.$setLoading(false);
   },

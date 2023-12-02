@@ -46,7 +46,7 @@
                           <td>{{ contactItem.name }}</td>
                           <td>{{ contactItem.email }}</td>
                           <td>{{ contactItem.sub }}</td>
-                          <td>{{ contactItem.sms }} Account</td>
+                          <td>{{ contactItem.sms }}</td>
                           <td>
                             {{ contactItem.created_at.substring(0, 10) }}
                           </td>

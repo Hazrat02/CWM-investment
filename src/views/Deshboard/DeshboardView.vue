@@ -396,7 +396,6 @@ export default {
       this.transactions = await getTransaction.authUserTransaction();
     }
 
-    console.log(this.transactions);
 
     this.$setLoading(false);
   },

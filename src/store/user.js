@@ -41,7 +41,6 @@ export const useAuthUserStore = defineStore('authUser', {
         const response = await axios.get("/api/reffer.user");
         this.refferUser=response.data.alluser;
        return  response.data.alluser
-       console.log(response.data.alluser);
       } catch (error) {
         console.log(error);
       }

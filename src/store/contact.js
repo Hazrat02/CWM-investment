@@ -20,7 +20,6 @@ export const contactStore = defineStore("contact", {
         this.setContact(response.data.contact);
         return response.data.contact; // Return the fetched data
       } catch (error) {
-        console.log(error);
       }
     },
    

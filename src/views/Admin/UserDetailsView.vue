@@ -1408,7 +1408,6 @@ export default {
             type: "error",
           });
 
-          console.log(error.response.data.message);
         });
 
       this.$setLoading(false);
@@ -1457,7 +1456,6 @@ export default {
         });
 
       this.$setLoading(false);
-      console.log(id, status);
     },
     async kyc(type) {
       this.$setLoading(true);

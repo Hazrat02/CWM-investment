@@ -347,7 +347,6 @@ export default {
             type: "error",
           });
 
-          console.log(error.response.data.message);
         });
 
       this.$setLoading(false);

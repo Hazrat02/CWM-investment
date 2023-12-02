@@ -119,7 +119,7 @@ export default {
           .blur-background {
             background-color: #009fc2;
             background-image: linear-gradient(0deg, #009fc2 0%, #0d0a0b 74%);
-            backdrop-filter: blur(100px); /* Adjust the blur value as needed */
+           
           }
           
         ">
@@ -205,7 +205,7 @@ export default {
             >Contact</RouterLink
           > -->
           <div  class="nav-item nav-link"
-                v-if="isAuthenticated"
+                v-if="authUser"
                
                 @click="logout"
          
@@ -494,6 +494,8 @@ export default {
 .content {
   position: fixed;
   bottom: 2vh;
+  z-index: 4545454;
+
 }
 .bg-dark{
 
@@ -504,6 +506,7 @@ color: rgb(211, 225, 238) !important; background-color: #0C3B41 !important;
   position: fixed;
   top: 87%;
   left: 2%;
+  z-index: 4545454;
 }
 .background-radial-gradient {
   
