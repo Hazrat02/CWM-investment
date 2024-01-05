@@ -24,6 +24,7 @@
                           <th>#</th>
                           <th>User Name</th>
                           <th>Date of Birth</th>
+                          <th>Date of Reg.</th>
                           <th>Country</th>
                           <th>Phone</th>
                           <th>Email</th>
@@ -37,6 +38,7 @@
                         >
                           <th scope="row">{{ index }}</th>
                           <td>{{ user.name }}</td>
+                          <td>{{ user.birth.substring(0, 10) }}</td>
                           <td>{{ user.created_at.substring(0, 10) }}</td>
                           <td>{{ user.country }}</td>
                           <td>{{ user.Phone }}</td>

@@ -58,7 +58,9 @@
                         Total Deposit
                       </p>
                     </div>
-                    <p class="text-xxl lh-1 mb-0 text-dash-color-2">{{filteredDeposit.length}}</p>
+                    <p class="text-xxl lh-1 mb-0 text-dash-color-2">
+                      {{ filteredDeposit.length }}
+                    </p>
                   </div>
                   <div class="progress" style="height: 3px">
                     <div
@@ -89,7 +91,9 @@
                         Total Withdraw
                       </p>
                     </div>
-                    <p class="text-xxl lh-1 mb-0 text-dash-color-4">{{filteredWithdraw.length}}</p>
+                    <p class="text-xxl lh-1 mb-0 text-dash-color-4">
+                      {{ filteredWithdraw.length }}
+                    </p>
                   </div>
                   <div class="progress" style="height: 3px">
                     <div
@@ -120,7 +124,9 @@
                         Total Message
                       </p>
                     </div>
-                    <p class="text-xxl lh-1 mb-0 text-dash-color-3">{{contactData.length}}</p>
+                    <p class="text-xxl lh-1 mb-0 text-dash-color-3">
+                      {{ contactData.length }}
+                    </p>
                   </div>
                   <div class="progress" style="height: 3px">
                     <div
@@ -218,7 +224,6 @@
                             ></router-link>
                           </td>
                         </tr>
-                       
                       </tbody>
                     </table>
                   </div>
@@ -250,9 +255,7 @@
 
                           <td>{{ item.email }}</td>
                           <td>{{ item.sms }}</td>
-                          
                         </tr>
-                        
                       </tbody>
                     </table>
                   </div>
@@ -267,8 +270,6 @@
 </template>
   
 <script>
-
-
 import { useAuthUserStore } from "../../store/user";
 import { transactionStore } from "../../store/transaction";
 import { contactStore } from "../../store/contact";
@@ -278,8 +279,8 @@ export default {
     return {
       allUser: [],
       limit: 5,
-      transactions:[],
-      contactData:[],
+      transactions: [],
+      contactData: [],
     };
   },
   methods: {},
@@ -291,17 +292,31 @@ export default {
         return [];
       }
 
-      // Use this computed property to filter the array
-      return this.allUser.slice(0, this.limit);
+      // Get the current date in string format (e.g., "2024-01-05")
+      const currentDateStr = new Date().toISOString().split("T")[0];
+
+      // Use this computed property to filter the array based on created_at
+      return this.allUser
+        .filter((user) => {
+          // Assuming user.created_at is a string in ISO format
+          return user.created_at.split("T")[0] === currentDateStr;
+        })
+        .slice(0, this.limit);
     },
     filteredTrx() {
       // Ensure that allUsers is defined and is an array before using slice
       if (!Array.isArray(this.transactions)) {
         return [];
       }
+      // Get the current date in string format (e.g., "2024-01-05")
+      const currentDateStr = new Date().toISOString().split("T")[0];
 
-      // Use this computed property to filter the array
-      return this.transactions.slice(0, this.limit);
+      // Use this computed property to filter the array based on created_at
+      return this.transactions
+        .filter((transaction) => {
+          // Assuming user.created_at is a string in ISO format
+          return transaction.created_at.split("T")[0] === currentDateStr;
+        });
     },
     filteredSms() {
       // Ensure that allUsers is defined and is an array before using slice
@@ -309,20 +324,34 @@ export default {
         return [];
       }
 
-      // Use this computed property to filter the array
-      return this.contactData.slice(0, '3');
+        // Get the current date in string format (e.g., "2024-01-05")
+        const currentDateStr = new Date().toISOString().split("T")[0];
+
+// Use this computed property to filter the array based on created_at
+return this.contactData
+  .filter((transaction) => {
+    // Assuming user.created_at is a string in ISO format
+    return transaction.created_at.split("T")[0] === currentDateStr;
+  });
+
     },
     filteredDeposit() {
-      const withdrawSuccessTransactions = Object.values(this.transactions).filter(
-      transaction => transaction.type === 'deposit' && transaction.status === 'success'
-    );
+      const withdrawSuccessTransactions = Object.values(
+        this.transactions
+      ).filter(
+        (transaction) =>
+          transaction.type === "deposit" && transaction.status === "success"
+      );
       // Use this computed property to filter the array
       return withdrawSuccessTransactions;
     },
     filteredWithdraw() {
-      const withdrawSuccessTransactions = Object.values(this.transactions).filter(
-      transaction => transaction.type === 'withdraw' && transaction.status === 'success'
-    );
+      const withdrawSuccessTransactions = Object.values(
+        this.transactions
+      ).filter(
+        (transaction) =>
+          transaction.type === "withdraw" && transaction.status === "success"
+      );
       // Use this computed property to filter the array
       return withdrawSuccessTransactions;
     },
