@@ -119,6 +119,8 @@
                         >
                           <option selected disabled>Select</option>
                           <option value="btc">Bitcoin</option>
+                          <option value="usdt">Usdt</option>
+
                           <option value="bnb">BNB</option>
                           <option value="ltc">Lite Coin</option>
                           <option value="Trust Wallet">Trust Wallet</option>

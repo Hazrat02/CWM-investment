@@ -199,7 +199,7 @@ export default {
 
                   <div class="card bg-glass">
                     <div class="card-body px-4 py-5 px-md-5">
-                      <h1 class="mb-4 mb-lg-4 text-center text-white">Sing Up</h1>
+                      <h1 class="mb-4 mb-lg-4 text-center text-white">Sign Up</h1>
 
                       <form
                         class="justify-content-center"
