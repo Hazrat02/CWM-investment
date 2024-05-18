@@ -230,6 +230,21 @@ export default {
               ><span>Contact Us </span></RouterLink
             >
           </li>
+          <li
+            class="sidebar-item"
+            :class="{
+              active: this.$route.path === '/admin/leadcollect',
+            }"
+          >
+            <RouterLink class="sidebar-link" to="/admin/leadcollect">
+              <i
+                class="fa fa-id-card svg-icon svg-icon-sm svg-icon-heavy"
+                style="font-size: 24px"
+              >
+              </i
+              ><span>Leads </span></RouterLink
+            >
+          </li>
         </ul>
       </nav>
       <div class="page-content">

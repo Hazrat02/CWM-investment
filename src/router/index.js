@@ -5,6 +5,7 @@ import ServicesView from '../views/ServicesView.vue'
 import ContactView from '../views/ContactView.vue'
 import AboutView from '../views/AboutView.vue'
 import riskView from '../views/RiskView.vue'
+import LeadView from '../views/LeadView.vue'
 
 // user
 import DeshboardView from '../views/Deshboard/DeshboardView.vue'
@@ -22,6 +23,7 @@ import AccountView from '../views/Deshboard/AccountView.vue'
 import AdminDeshboardview from '../views/Admin/DeshboardView.vue'
 import UserManageview from '../views/Admin/UserManageview.vue'
 import LeadsManageview from '../views/Admin/LeadsManageview.vue'
+import Leadsview from '../views/Admin/Leadsview.vue'
 
 import AdminTransactionView from '../views/Admin/TransactionView.vue'
 import UserDetailsview from '../views/Admin/UserDetailsView.vue'
@@ -113,6 +115,13 @@ const router = createRouter({
       name: 'risk',
   
       component:riskView,
+ 
+    },
+    {
+      path: '/leads',
+      name: 'info',
+  
+      component:LeadView,
  
     },
     
@@ -238,6 +247,15 @@ const router = createRouter({
       name: 'leads',
 
       component:LeadsManageview,
+      meta:{
+        requiresAuth:true,
+      },
+    },
+    {
+      path: '/admin/leadcollect',
+      name: 'lead',
+
+      component:Leadsview,
       meta:{
         requiresAuth:true,
       },
