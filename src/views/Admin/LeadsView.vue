@@ -28,7 +28,7 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Phone</th>
-                            <th>city</th>
+                            <th>Country</th>
                             <th>Date</th>
   
                            
