@@ -24,7 +24,7 @@ export default {
   async created() {
 
     if (localStorage.getItem('popup')) {
-      this.popup =true;
+      this.popup =false;
    
     } else {
       this.popup =true;
