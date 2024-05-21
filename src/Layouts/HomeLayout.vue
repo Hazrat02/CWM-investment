@@ -4,21 +4,37 @@ import isAuthenticated from "./../midleware/auth";
 import { logout } from "./../midleware/auth";
 import axios from "axios";
 import { useAuthUserStore } from "./../store/user";
+import popup from "../components/popup.vue";
 export default {
+  components: { popup },
   data() {
     return {
+      popup:true,
       authUser: [],
       bot: false,
       messages: [
-        { type: 'in', sender: 'Bot', text: 'How can I help you?' },
+        { type: "in", sender: "Bot", text: "How can I help you?" },
         // Add more messages as needed
       ],
-      newMessageText: '',
-      smsloading:false
+      newMessageText: "",
+      smsloading: false,
     };
   },
 
   async created() {
+
+    if (localStorage.getItem('popup')) {
+      this.popup =true;
+   
+    } else {
+      this.popup =true;
+      localStorage.setItem('popup','fdsakflhsadfh');
+
+    }
+   
+
+
+
     if (isAuthenticated() == true) {
       // auth user data +++++++++++++++++++++++++++++
 
@@ -37,50 +53,44 @@ export default {
   },
 
   methods: {
-
     toggleBot() {
       this.bot = !this.bot; // Toggle the value of sidebar between true and false
     },
     sendMessage() {
       // Add a new outgoing message
       this.messages.push({
-        type: 'out',
-        sender: 'You', // Change the sender as needed
+        type: "out",
+        sender: "You", // Change the sender as needed
         text: this.newMessageText,
-        avatar: 'https://bootdey.com/img/Content/avatar/avatar6.png',
+        avatar: "https://bootdey.com/img/Content/avatar/avatar6.png",
       });
-      
+
       this.smsloading = true;
 
-      this.newMessageText = '';
+      this.newMessageText = "";
 
-      if (this.messages.length == '2') {
+      if (this.messages.length == "2") {
         setTimeout(() => {
-        this.messages.push({
-          type: 'in',
-          sender: 'bot',
-          text: 'Thank you!What is your name?',
-        });
-        this.smsloading=false
-
-      }, 2000); // 5000 milliseconds = 5 seconds
-      
-    }
-      if (this.messages.length == '4') {
+          this.messages.push({
+            type: "in",
+            sender: "bot",
+            text: "Thank you!What is your name?",
+          });
+          this.smsloading = false;
+        }, 2000); // 5000 milliseconds = 5 seconds
+      }
+      if (this.messages.length == "4") {
         setTimeout(() => {
-        this.messages.push({
-          type: 'in',
-          sender: 'bot',
-          text: 'Give us email for solve your problem',
-        });
-        this.smsloading=false
+          this.messages.push({
+            type: "in",
+            sender: "bot",
+            text: "Give us email for solve your problem",
+          });
+          this.smsloading = false;
+        }, 2000); // 5000 milliseconds = 5 seconds
+      }
 
-      }, 2000); // 5000 milliseconds = 5 seconds
-      
-    }
-      
       // Clear the input field after sending the message
-      
     },
     async logout() {
       this.$setLoading(true);
@@ -115,14 +125,14 @@ export default {
 </script>
 
 <template>
-  <body style="
-          .blur-background {
-            background-color: #009fc2;
-            background-image: linear-gradient(0deg, #009fc2 0%, #0d0a0b 74%);
-           
-          }
-          
-        ">
+  <body
+    style="
+      .blur-background {
+        background-color: #009fc2;
+        background-image: linear-gradient(0deg, #009fc2 0%, #0d0a0b 74%);
+      }
+    "
+  >
     <!-- Spinner Start -->
     <div
       v-if="this.$isLoading()"
@@ -132,13 +142,61 @@ export default {
     >
       <div class="spinner-grow text-primary" role="status"></div>
     </div>
-    <!-- Spinner End -->
-    <!-- <div v-if="this.$isLoading()" id="preloader">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div> -->
+
+    <div v-if="popup"
+      id="spinner"
+      class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+      style="background-color: rgba(100, 87, 87, 0.692) ; backdropFilter: blur(5px);
+        WebkitBackdropFilter: blur(5px)"
+    >
+      <div class="p-0 row justify-content-center">
+        <div
+          class="col-11 col-md-8 row p-0"
+          style="background-color: black; border-radius: 2%; position: relative"
+        >
+          <div>
+            <i @click="popup = false"
+              style="
+              cursor: pointer;
+                font-size: 24px;
+                position: absolute;
+                top: 0%;
+                right: 0%;
+                background: #fce704ac;
+                z-index: 333;
+              "
+              class="fa p-2"
+              >&#xf00d;</i
+            >
+          </div>
+
+          <img
+            class="col-6 img-fluid"
+            src="./../assets/frontend/img/popup.png"
+            alt=""
+          />
+
+          <div
+            class="col-6 bg-white p-0 pt-2 align-content-center"
+            style="border-top-right-radius: 2%; border-bottom-right-radius: 2%"
+          >
+            <div class="d-flex justify-content-center">
+              <div class="d-flex p-2 " style="">
+                <div class="text-center">
+                  <div style="font-size: 40px;font-weight: 50; " class="get ps-3">GET</div>
+
+                  <h1 class=""><span>5</span><sup>% </sup>   <sub>R E T U R N S</sub></h1>
+                  <h1 style="color: #0474c9">Monthly</h1>
+                  <p class="text-dark">On Your Investment</p>
+                  <a  href="https://capitalswealthmanagement.com/leads" class="btn btn-primary">Sing Up Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Navbar Start -->
     <nav
       class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top p-0 px-4 px-lg-5"
@@ -204,15 +262,9 @@ export default {
            
             >Contact</RouterLink
           > -->
-          <div  class="nav-item nav-link"
-                v-if="authUser"
-               
-                @click="logout"
-         
-              >
-                Logout
-              </div>
-          
+          <div class="nav-item nav-link" v-if="authUser" @click="logout">
+            Logout
+          </div>
         </div>
         <div class="nav-item nav-link mb-4 mb-lg-0">
           <RouterLink
@@ -301,7 +353,8 @@ export default {
         <div class="container">
           <div class="row">
             <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-              #18, Capitals Wealth Management Ltd, Wesltecot Rd.,windon, United Kingdom
+              #18, Capitals Wealth Management Ltd, Wesltecot Rd.,windon, United
+              Kingdom
             </div>
             <div class="col-md-6 text-center text-md-end">
               <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
@@ -325,25 +378,31 @@ export default {
             </div>
             <div class="card-body height3">
               <ul class="chat-list">
-                <li v-for="(message, index) in messages" :key="index" :class="message.type">
-                <div class="chat-img">
-                  <img v-if="message.type == 'in'"
+                <li
+                  v-for="(message, index) in messages"
+                  :key="index"
+                  :class="message.type"
+                >
+                  <div class="chat-img">
+                    <img
+                      v-if="message.type == 'in'"
                       alt="Avtar"
                       src="https://bootdey.com/img/Content/avatar/avatar1.png"
                     />
-                  <img v-if="message.type == 'out'"
+                    <img
+                      v-if="message.type == 'out'"
                       alt="Avtar"
                       src="https://bootdey.com/img/Content/avatar/avatar6.png"
                     />
-                </div>
-                <div class="chat-body">
-                  <div class="chat-message">
-                    <h5>{{ message.sender }}</h5>
-                    <p>{{ message.text }}</p>
                   </div>
-                </div>
-              </li>
-                <li class="in" v-if="smsloading" >
+                  <div class="chat-body">
+                    <div class="chat-message">
+                      <h5>{{ message.sender }}</h5>
+                      <p>{{ message.text }}</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="in" v-if="smsloading">
                   <div class="chat-img">
                     <img
                       alt="Avtar"
@@ -353,14 +412,21 @@ export default {
                   <div class="chat-body">
                     <div class="chat-message">
                       <h5>Bot</h5>
-                      <img style="height: 30px; width: 80px;" src="https://img.wattpad.com/3c4ec5726f6b6a96766920ff0f12304e2ae87188/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f43585a6e724a34764638565a30773d3d2d3832333532313032382e313565363730663931313030336636663636303039393830323832302e676966" alt="">
+                      <img
+                        style="height: 30px; width: 80px"
+                        src="https://img.wattpad.com/3c4ec5726f6b6a96766920ff0f12304e2ae87188/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f43585a6e724a34764638565a30773d3d2d3832333532313032382e313565363730663931313030336636663636303039393830323832302e676966"
+                        alt=""
+                      />
                     </div>
                   </div>
                 </li>
-                
               </ul>
             </div>
-            <form @submit.prevent="sendMessage" class="d-flex justify-content-center mb-2" v-if="messages.length != '5'">
+            <form
+              @submit.prevent="sendMessage"
+              class="d-flex justify-content-center mb-2"
+              v-if="messages.length != '5'"
+            >
               <div class="col-10">
                 <div class="input-group">
                   <input
@@ -514,4 +580,16 @@ color: rgb(211, 225, 238) !important; background-color: #0C3B41 !important;
 
   background-image: linear-gradient(300deg, #232b4e 10%, #000000 100%);
 }
+
+.get {
+  color: #0474c9;
+
+  font-family: "Caveat", cursive,'Roboto', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+
+
 </style>

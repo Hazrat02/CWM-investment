@@ -89,7 +89,7 @@
                           <select
                           class="form-select"
                           id="country"
-                          v-model="city"
+                          v-model="country"
                         >
                           <option selected disabled>Select</option>
                           <option value="Afghanistan">Afghanistan</option>
@@ -427,7 +427,20 @@
                           </div>
                         </div>
   
-                     
+                        <div class="form-outline mb-4">
+                            <input
+                              name="city"
+                              placeholder="Enter Your city"
+                              v-model="city"
+                              type="text"
+                              id="form3Example3"
+                              class="form-control"
+                              required
+                            />
+                            <label class="d-flex" for="form3Example3"
+                              >City  <span style="color: red;"> *</span></label
+                            >
+                          </div>
   
       
                           <!-- Submit button -->
@@ -442,6 +455,7 @@
                               Submit
                             </button>
                           </div>
+
           
                         </form>
                       </div>
@@ -477,7 +491,8 @@
  
         name: "",
         phone: "",
-        city: "Select",
+        city: "",
+        country: "Select",
       
       };
     },
@@ -497,6 +512,7 @@
           name: this.name,
           phone: this.phone,
           city: this.city,
+          country: this.country,
         };
   
      await axios

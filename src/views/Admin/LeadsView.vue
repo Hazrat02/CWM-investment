@@ -29,6 +29,7 @@
                             <th>Name</th>
                             <th>Phone</th>
                             <th>Country</th>
+                            <th>city</th>
                             <th>Date</th>
   
                            
@@ -44,6 +45,7 @@
   
                             <td>{{ contactItem.name }}</td>
                             <td>{{ contactItem.phone }}</td>
+                            <td>{{ contactItem.country }}</td>
                             <td>{{ contactItem.city }}</td>
                             <td>
                               {{ contactItem.created_at.substring(0, 10) }}
