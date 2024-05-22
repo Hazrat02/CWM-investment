@@ -483,7 +483,7 @@
   import axios from "axios";
   import { login } from "./../midleware/auth.js";
   import { useAuthUserStore } from "./../store/user";
-  
+  import { leadStore } from "../store/lead";
   // import { notify } from 'vue3-notify'
   export default {
     data() {
@@ -498,7 +498,17 @@
     },
 
     created() {
+      
 
+    const getContact = leadStore();
+  
+  // Try to get the data from the store
+  const contactData = getContact.lead_page;
+
+  if (contactData) {
+
+    getContact.leadfalse();
+  }
 
       this.$setLoading(false);
       

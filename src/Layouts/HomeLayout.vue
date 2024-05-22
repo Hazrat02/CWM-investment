@@ -4,12 +4,14 @@ import isAuthenticated from "./../midleware/auth";
 import { logout } from "./../midleware/auth";
 import axios from "axios";
 import { useAuthUserStore } from "./../store/user";
+import { leadStore } from "./../store/lead";
+ 
 import popup from "../components/popup.vue";
 export default {
   components: { popup },
   data() {
     return {
-      popup:true,
+      popup:false,
       authUser: [],
       bot: false,
       messages: [
@@ -23,14 +25,26 @@ export default {
 
   async created() {
 
-    if (localStorage.getItem('popup')) {
-      this.popup =false;
-   
-    } else {
-      this.popup =true;
-      localStorage.setItem('popup','fdsakflhsadfh');
 
-    }
+    const getContact = leadStore();
+  
+  // Try to get the data from the store
+  const contactData = getContact.lead_page;
+
+  if (contactData) {
+    this.popup = true;
+    getContact.leadfalse();
+  }
+
+
+    // if (localStorage.getItem('popup')) {
+    //   this.popup =false;
+   
+    // } else {
+    //   this.popup =true;
+    //   localStorage.setItem('popup','fdsakflhsadfh');
+
+    // }
    
 
 

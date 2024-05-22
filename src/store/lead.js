@@ -4,11 +4,15 @@ import axios from "axios";
 export const leadStore = defineStore("lead", {
   state: () => ({
     lead: "",
+    lead_page: true,
     
   }),
   actions: {
     setlead(payload) {
       this.lead = payload;
+    },
+    leadfalse() {
+      this.lead_page = false;
     },
   
    
