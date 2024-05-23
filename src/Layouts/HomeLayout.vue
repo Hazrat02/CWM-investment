@@ -166,7 +166,7 @@ export default {
       <div class="p-0 row justify-content-center">
         <div
           class="col-11 col-md-8 row p-0"
-          style="background-color: black; border-radius: 2%; position: relative"
+          style=" position: relative"
         >
           <div>
             <i @click="popup = false"
@@ -185,7 +185,7 @@ export default {
           </div>
 
           <img
-            class="col-6 img-fluid"
+            class="col-6 p-0 img-fluid"
             src="./../assets/frontend/img/popup.png"
             alt=""
           />
@@ -202,7 +202,7 @@ export default {
                   <h1 class=""><span>5</span><sup>% </sup>   <sub>R E T U R N S</sub></h1>
                   <h1 style="color: #0474c9">Monthly</h1>
                   <p class="text-dark">On Your Investment</p>
-                  <a  href="https://capitalswealthmanagement.com/leads" class="btn btn-primary">Sing Up Now</a>
+                  <a  href="https://capitalswealthmanagement.com/leads" class="btn btn-primary">Sign Up Now</a>
                 </div>
               </div>
             </div>

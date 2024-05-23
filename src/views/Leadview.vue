@@ -481,8 +481,7 @@
   
   <script>
   import axios from "axios";
-  import { login } from "./../midleware/auth.js";
-  import { useAuthUserStore } from "./../store/user";
+
   import { leadStore } from "../store/lead";
   // import { notify } from 'vue3-notify'
   export default {
@@ -547,7 +546,6 @@
               type: "error",
             });
 
-            
           this.$setLoading(false);
           });
   
