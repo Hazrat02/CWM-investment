@@ -2,13 +2,13 @@
 <script>
 import isAuthenticated from "./../midleware/auth";
 import { logout } from "./../midleware/auth";
-import axios from "axios";
+// import axios from "axios";
 import { useAuthUserStore } from "./../store/user";
 import { leadStore } from "./../store/lead";
  
-import popup from "../components/popup.vue";
+// import popup from "../components/popup.vue";
 export default {
-  components: { popup },
+
   data() {
     return {
       popup:false,
@@ -36,16 +36,6 @@ export default {
     getContact.leadfalse();
   }
 
-
-    // if (localStorage.getItem('popup')) {
-    //   this.popup =false;
-   
-    // } else {
-    //   this.popup =true;
-    //   localStorage.setItem('popup','fdsakflhsadfh');
-
-    // }
-   
 
 
 
@@ -186,7 +176,7 @@ export default {
 
           <img
             class="col-6 p-0 img-fluid"
-            src="./../assets/frontend/img/popup.png"
+            src="./../assets/frontend/img/popup.jpg"
             alt=""
           />
 

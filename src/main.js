@@ -12,10 +12,6 @@ import Notifications from '@kyvg/vue3-notification'
 import { createPinia } from 'pinia';
 
 
-// import './assets/deshboard/vendor/bootstrap/js/bootstrap.bundle.min.js';
-// import './assets/main.css';
-
-// layouts
 import HomeLayout from "./Layouts/HomeLayout.vue";
 import DeshboardLayout from "./Layouts/DeshboardLayout.vue";
 import AdminDeshboardLayout from "./Layouts/AdminDeshboardLayout.vue";

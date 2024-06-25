@@ -1,25 +1,4 @@
-<script>
-import { RouterLink, RouterView } from "vue-router";
-export default {
 
-  data() {
-    return {
-      targetDate: new Date('2023-12-05'),
-    };
-  },
-
-  computed: {
-
-    isBeforeDate() {
-      const today = new Date();
-      return today < this.targetDate;
-    },
-    
-}
-
-
-}
-</script>
 
 
 
