@@ -86,7 +86,7 @@
                       <div class="col-lg-10">
                         <div>
                           <b for="">Communication Language: </b
-                          ><span>Einglish</span>
+                          ><span>English</span>
                         </div>
                       </div>
                       <div class="col-lg-10 mb-3">
