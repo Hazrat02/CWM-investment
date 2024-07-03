@@ -579,10 +579,9 @@ color: rgb(211, 225, 238) !important; background-color: #0C3B41 !important;
   z-index: 4545454;
 }
 .background-radial-gradient {
-  
-  background-color: rgb(40, 45, 82) 59, 77);
+ 
 
-  background-image: linear-gradient(300deg, #232b4e 10%, #000000 100%);
+  background-image: linear-gradient( #232b4e 10%, #000000 100%);
 }
 
 .get {
